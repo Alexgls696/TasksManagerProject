@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать задачу</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/create-task.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Создать задачу</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">На главную</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <form id="create-task-form">
+        <div class="form-group">
+            <label for="title">Заголовок:</label>
+            <input type="text" id="title" name="title" required minlength="2" maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description" maxlength="1000"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Приоритет:</label>
+            <input type="number" id="priority" name="priority" required min="1" max="5">
+        </div>
+
+        <div class="form-group">
+            <label for="deadline">Дедлайн:</label>
+            <input type="datetime-local" id="deadline" name="deadline" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Категория:</label>
+            <select id="category" name="categoryId" required>
+                <!-- Категории будут заполнены динамически -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="assignee">Исполнитель:</label>
+            <select id="assignee" name="assigneeId" required>
+                <!-- Исполнители будут заполнены динамически -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="project">Проект:</label>
+            <select id="project" name="projectId" required>
+                <!-- Проекты будут заполнены динамически -->
+            </select>
+        </div>
+
+        <button type="submit">Создать задачу</button>
+    </form>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Tasks Manager. Все права защищены.</p>
+    </div>
+</footer>
+
+<script th:src="@{/js/create-task.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

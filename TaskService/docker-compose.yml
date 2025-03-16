@@ -1,0 +1,25 @@
+volumes:
+  tasks_catalogue:
+
+services:
+  tasks_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=tasks_db
+    volumes:
+      - tasks_catalogue:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"
+  tasks-service-application:
+    restart: always
+    build: .
+    ports:
+      - "127.0.0.1:8081:8081"
+    depends_on:
+      - tasks_db
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:postgresql://tasks_db:5433/tasks_db'
+      JAVA_OPTS: '-Xmx512m'

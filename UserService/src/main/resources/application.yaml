@@ -1,0 +1,8 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/tasks_db
+    username: postgres
+    password: admin
