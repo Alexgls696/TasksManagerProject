@@ -8,17 +8,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PagesController {
 
-    @RequestMapping("/")
+    @RequestMapping(value = {"/","index"})
     public String index() {
         return "index";
     }
 
-    @RequestMapping("edit")
+    @RequestMapping("/edit")
     public String editTaskPage(@RequestParam("id") int id) {
         return "edit-task";
     }
-    @RequestMapping("create-task")
+
+    @RequestMapping("/create-task")
     public String createTaskPage() {
         return "create-task";
+    }
+
+    @RequestMapping("/tasks")
+    public String tasksPage(@RequestParam("projectId") int id) {
+        return "tasks";
     }
 }

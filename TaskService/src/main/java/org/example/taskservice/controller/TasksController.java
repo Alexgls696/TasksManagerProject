@@ -22,10 +22,17 @@ import java.util.Map;
 public class TasksController {
 
     private final TaskService taskService;
+
     @GetMapping
     public Iterable<Task> getTasks() {
         return taskService.findAll();
     }
+
+    @GetMapping("/by-project-id/{id:\\d+}")
+    public Iterable<Task> getTasksByProjectId(@PathVariable("id") int id) {
+        return taskService.findAllByProjectId(id);
+    }
+
 
     @PostMapping
     public ResponseEntity<Task> createTask(@Valid @RequestBody NewTaskPayload taskPayload, BindingResult bindingResult, UriComponentsBuilder builder) throws BindException {

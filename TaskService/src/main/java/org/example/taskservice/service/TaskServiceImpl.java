@@ -23,12 +23,16 @@ public class TaskServiceImpl implements TaskService {
     private final TaskStatusRepository taskStatusRepository;
     private final CategoryRepository categoryRepository;
     private final ProjectRepository projectRepository;
-    private final TaskStatusRepository statusRepository;
 
 
     @Override
     public Iterable<Task> findAll() {
         return taskRepository.findAll();
+    }
+
+    @Override
+    public Iterable<Task> findAllByProjectId(Integer projectId) {
+        return taskRepository.findAllByProjectId(projectId);
     }
 
     @Override

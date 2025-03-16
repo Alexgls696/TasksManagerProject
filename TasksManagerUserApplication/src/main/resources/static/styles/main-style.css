@@ -1,11 +1,18 @@
 /* Общие стили */
-body {
-    font-family: 'Roboto', sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
     background-color: #F8F9FA;
     color: #333;
     line-height: 1.6;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
@@ -50,6 +57,48 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
+}
+
+/* Секция проектов */
+.projects {
+    margin: 40px 0;
+}
+
+.projects h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #4A90E2;
+    margin-bottom: 20px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.project p {
+    margin: 0 0 15px;
+    color: #666;
 }
 
 /* Секция задач */
@@ -146,7 +195,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-top: 40px;
+    margin-top: auto; /* Прижимаем футер к низу */
 }
 
 footer p {

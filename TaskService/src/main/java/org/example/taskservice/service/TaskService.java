@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface TaskService {
     Iterable<Task> findAll();
+    Iterable<Task>findAllByProjectId(Integer projectId);
     Optional<Task> findById(int id);
     void update(int id, UpdateTaskPayload payload);
     Task save(NewTaskPayload payload);

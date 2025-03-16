@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="1">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/java/org/example/taskmanagerapigatewayservice/TaskManagerApiGatewayServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/java/org/example/taskmanagerapigatewayservice/TaskManagerApiGatewayServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/TasksManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/TasksManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/UserServiceApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +39,13 @@
 }]]></component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Alexgls696/TasksManagerApp.git",
+    "url": "https://github.com/Alexgls696/TasksManagerProject.git",
     "accountId": "d7d25a6e-b81e-4aa5-97a7-7347f85c6f3b"
   }
+}]]></component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
 }]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -42,16 +59,45 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
+    "Spring Boot.TaskServiceApplication.executor": "Run",
+    "Spring Boot.TasksManager.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.TasksManager">
     <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="TaskManagerApiGatewayService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
@@ -59,6 +105,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TaskServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="TaskService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskservice.TaskServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.taskservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TasksManager" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="TasksManagerUserApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.tasksmanager.TasksManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.tasksmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="UserService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.userservice.UserServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.userservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.UserServiceApplication" />
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -76,7 +169,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742123358149</updated>
-      <workItem from="1742123359194" duration="124000" />
+      <workItem from="1742123359194" duration="2954000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
