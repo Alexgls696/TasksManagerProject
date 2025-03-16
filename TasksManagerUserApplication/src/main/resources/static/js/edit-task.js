@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки задачи
     async function fetchTask(taskId) {
-        const response = await fetch(`http://localhost:8082/task-manager-api/tasks/${taskId}`);
+        const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`);
         if (!response.ok) {
             throw new Error("Ошибка при загрузке задачи");
         }
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки списка пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8082/task-manager-api/users");
+        const response = await fetch("http://localhost:8080/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchStatuses(){
-        const response = await fetch('http://localhost:8082/task-manager-api/tasks/statuses');
+        const response = await fetch('http://localhost:8080/task-manager-api/tasks/statuses');
         if(!response.ok){
             throw new Error("Ошибка при загрузке статусов задачи");
         }
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function updateTask(taskId, data) {
         try {
-            const response = await fetch(`http://localhost:8082/task-manager-api/tasks/${taskId}`, {
+            const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

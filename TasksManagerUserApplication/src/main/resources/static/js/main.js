@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки проектов
     async function fetchProjects() {
-        const response = await fetch("http://localhost:8082/task-manager-api/projects");
+        const response = await fetch("http://localhost:8080/task-manager-api/projects");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке проектов");
         }

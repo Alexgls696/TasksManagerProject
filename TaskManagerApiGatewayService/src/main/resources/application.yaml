@@ -35,7 +35,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]': #api, доступ к которым будет открыт
-            allowed-origins: "http://localhost:8080" # Разрешенные источники
+            allowed-origins: "http://localhost:8081" # Разрешенные источники
             allowed-methods: GET,POST,PUT,DELETE,OPTIONS,PATCH # Разрешенные методы
             allowed-headers: "*" # Разрешенные заголовки
             allow-credentials: true # Разрешить передачу куки и заголовков авторизации

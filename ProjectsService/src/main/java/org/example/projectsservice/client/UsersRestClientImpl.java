@@ -1,7 +1,8 @@
 package org.example.projectsservice.client;
 
 import lombok.RequiredArgsConstructor;
-import org.example.taskservice.entity.User;
+
+import org.example.projectsservice.entity.User;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;

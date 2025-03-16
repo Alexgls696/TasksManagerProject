@@ -2,7 +2,6 @@ package org.example.projectsservice.exception_handling;
 
 import lombok.RequiredArgsConstructor;
 import org.example.projectsservice.exception.NoSuchProjectException;
-import org.example.taskservice.exceptions.NoSuchTaskException;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

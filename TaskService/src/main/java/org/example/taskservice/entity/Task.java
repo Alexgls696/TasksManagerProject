@@ -41,17 +41,18 @@ public class Task {
     @OneToOne
     private Category category;
 
-    @JoinColumn(name = "assignee_id")
-    @OneToOne
-    private User assignee; //Кому назначена задача
+    @Column(name = "assignee_id")
+    private Integer assigneeId; //Кому назначена задача
 
-    @JoinColumn(name = "creator_id")
-    @OneToOne
-    private User creator;
+    @Column(name = "creator_id")
+    private Integer creatorId;
 
-    @JoinColumn(name = "project_id")
-    @OneToOne
-    private Project project;
+    @Column(name = "project_id")
+    private Integer projectId;
+
+    private transient Project project;
+    private transient User assignee;
+    private transient User creator;
 
     public Task(NewTaskPayload payload) {
         this.title = payload.title();

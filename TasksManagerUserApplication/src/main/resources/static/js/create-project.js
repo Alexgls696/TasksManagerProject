@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8082/task-manager-api/users");
+        const response = await fetch("http://localhost:8080/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
@@ -43,21 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function getFormData() {
         const members = Array.from(document.getElementById("members").selectedOptions)
             .map(option => parseInt(option.value));
-
+        console.log(members);
         return {
             name: document.getElementById("name").value,
             description: document.getElementById("description").value,
             deadline: document.getElementById("deadline").value,
-            status: document.getElementById("status").value,
             creatorId: parseInt(document.getElementById("creator").value),
-            memberIds: members
+            membersId: members
         };
     }
 
     // Функция для создания проекта
     async function createProject(data) {
         try {
-            const response = await fetch("http://localhost:8082/task-manager-api/projects", {
+            const response = await fetch("http://localhost:8080/task-manager-api/projects", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

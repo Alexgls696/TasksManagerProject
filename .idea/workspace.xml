@@ -4,23 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Настроено добавление и удаление задач">
-      <change afterPath="$PROJECT_DIR$/ProjectsService/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewProjectPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/create-project-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим.">
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/ProjectMembers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/ProjectMembersId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectMembersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/ProjectsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/exception_handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/ProjectStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/ProjectStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +42,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
+        <option value="Exception" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -76,14 +89,16 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Debug",
-    "Spring Boot.TaskServiceApplication.executor": "Run",
+    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
+    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
+    "Spring Boot.TaskServiceApplication.executor": "Debug",
     "Spring Boot.TasksManager.executor": "Debug",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Alexandr/Desktop/TasksManagerProject/ProjectsService/src/main/java/org/example/projectsservice/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,7 +119,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.taskservice.client" />
       <recent name="org.example.taskservice" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice\client" />
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.projectsservice.entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,7 +140,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.ProjectsService.projects_db: Compose Deployment">
+  <component name="RunManager" selected="Spring Boot.ProjectsServiceApplication">
     <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ProjectsService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
@@ -199,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
         <item itemvalue="Docker.ProjectsService: Compose Deployment" />
-        <item itemvalue="Spring Boot.TasksManager" />
-        <item itemvalue="Spring Boot.TaskServiceApplication" />
-        <item itemvalue="Spring Boot.UserServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +247,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742123358149</updated>
       <workItem from="1742123359194" duration="3020000" />
-      <workItem from="1742139276958" duration="5952000" />
+      <workItem from="1742139276958" duration="17094000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -250,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742143700795</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим.">
+      <option name="closed" value="true" />
+      <created>1742148704417</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742148704417</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +294,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="2" />
     <MESSAGE value="Настроено добавление и удаление задач" />
-    <option name="LAST_COMMIT_MESSAGE" value="Настроено добавление и удаление задач" />
+    <MESSAGE value="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим." />
+    <option name="LAST_COMMIT_MESSAGE" value="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим." />
   </component>
 </project>

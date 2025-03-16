@@ -2,8 +2,11 @@ package org.example.projectsservice.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.example.projectsservice.controller.payload.NewProjectPayload;
+import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -14,6 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +36,21 @@ public class Project {
     @OneToOne
     private ProjectStatus projectStatus; // ID статуса проекта
 
-    // Список ID участников (не используем @ElementCollection)
-    @Transient // Поле не сохраняется в БД
-    private Set<Long> memberIds = new HashSet<>();
+    @Transient
+    private Set<Integer> memberIds = new HashSet<>();
+
+    public Project(NewProjectPayload payload){
+        name= payload.name();
+        description= payload.description();
+        creatorId= payload.creatorId();
+        deadline= payload.deadline();
+        creationDate=LocalDateTime.now();
+    }
+
+    public void update(UpdateProjectPayload payload){
+        name= payload.name();
+        description= payload.description();
+        deadline= payload.deadline();
+    }
 
 }

@@ -1,6 +1,7 @@
 package org.example.projectsservice.client;
 
-import org.example.taskservice.entity.User;
+
+import org.example.projectsservice.entity.User;
 
 import java.util.Optional;
 

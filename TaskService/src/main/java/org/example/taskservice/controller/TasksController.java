@@ -33,7 +33,6 @@ public class TasksController {
         return taskService.findAllByProjectId(id);
     }
 
-
     @PostMapping
     public ResponseEntity<Task> createTask(@Valid @RequestBody NewTaskPayload taskPayload, BindingResult bindingResult, UriComponentsBuilder builder) throws BindException {
         if (bindingResult.hasErrors()) {

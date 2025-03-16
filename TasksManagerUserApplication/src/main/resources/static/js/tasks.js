@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Загружаем задачи для проекта
     fetchTasksByProjectId(projectId)
         .then(tasks => {
-            displayTasks(tasks);
+            if(tasks.length > 0) {
+                displayTasks(tasks);
+            }
         })
         .catch(error => {
             console.error("Ошибка при загрузке задач:", error);
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки задач по ID проекта
     async function fetchTasksByProjectId(projectId) {
-        const response = await fetch(`http://localhost:8082/task-manager-api/tasks/by-project-id/${projectId}`);
+        const response = await fetch(`http://localhost:8080/task-manager-api/tasks/by-project-id/${projectId}`);
         if (!response.ok) {
             throw new Error("Ошибка при загрузке задач");
         }
@@ -35,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Функция для отображения задач
     function displayTasks(tasks) {
         taskList.innerHTML = ""; // Очищаем список задач
-        document.getElementById('project_name_input').value = tasks[0].project.name;
         tasks.forEach(task => {
             const taskElement = document.createElement("div");
             taskElement.classList.add("task");
@@ -49,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
             // Создание HTML для задачи
             taskElement.innerHTML = `
             <h3>${task.title}</h3>
-            <p>${task.description}</p>
             <div class="task-meta">
                 <span class="status">Статус: ${task.status.status}</span>
                 <span class="priority">Приоритет: ${task.priority}</span>
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Отправка DELETE-запроса на сервер
-                    fetch(`http://localhost:8082/task-manager-api/tasks/${taskId}`, {
+                    fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`, {
                         method: 'DELETE'
                     })
                         .then(response => {
@@ -161,4 +161,22 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Отменяем стандартное поведение ссылки
         document.getElementById('create-task-form').submit(); // Отправляем форму
     });
+
+    let project = getProject()
+        .then(_project=>{
+            project = _project;
+        })
+
+    async function getProject(){
+        const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`);
+        if (!response.ok) {
+            throw new Error("Ошибка при загрузке задач");
+        }
+        return response.json();
+    }
+
+    (async ()=>{
+        let project = await getProject();
+        document.getElementById('project_name_input').value = project.name;
+    })();
 });

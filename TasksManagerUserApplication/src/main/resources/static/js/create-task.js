@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки категорий
     async function fetchCategories() {
-        const response = await fetch("http://localhost:8082/task-manager-api/tasks/categories");
+        const response = await fetch("http://localhost:8080/task-manager-api/tasks/categories");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке категорий");
         }
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8082/task-manager-api/users");
+        const response = await fetch("http://localhost:8080/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Функция для создания задачи
     async function createTask(data) {
         try {
-            const response = await fetch("http://localhost:8082/task-manager-api/tasks", {
+            const response = await fetch("http://localhost:8080/task-manager-api/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
