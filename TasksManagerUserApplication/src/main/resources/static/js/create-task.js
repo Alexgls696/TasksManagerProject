@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             showSuccess("Задача успешно создана!", () => {
-                window.location.href = "index"; // Перенаправляем на главную страницу
+                window.location.href = `/tasks?projectId=${data.projectId}`; // Перенаправляем на главную страницу
             });
         } catch (error) {
             console.error("Ошибка:", error);
