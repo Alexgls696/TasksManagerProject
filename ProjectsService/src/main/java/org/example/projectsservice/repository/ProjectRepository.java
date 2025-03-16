@@ -1,6 +1,7 @@
-package org.example.taskservice.repository;
+package org.example.projectsservice.repository;
 
-import org.example.taskservice.entity.Project;
+
+import org.example.projectsservice.entity.Project;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

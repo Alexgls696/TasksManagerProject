@@ -161,6 +161,4 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Отменяем стандартное поведение ссылки
         document.getElementById('create-task-form').submit(); // Отправляем форму
     });
-
-
 });

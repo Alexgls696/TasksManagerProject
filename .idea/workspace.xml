@@ -4,29 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="2">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/UsersRestClientConfig.java" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Настроено добавление и удаление задач">
+      <change afterPath="$PROJECT_DIR$/ProjectsService/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewProjectPayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/create-project-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/ProjectsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/ProjectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +59,17 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2uOd3gDdogltBigUxQ9J5jV1Hzh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
+    "Docker.ProjectsService: Compose Deployment.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -84,6 +82,7 @@
     "Spring Boot.UserServiceApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -118,7 +117,14 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TaskServiceApplication">
+  <component name="RunManager" selected="Docker.ProjectsService.projects_db: Compose Deployment">
+    <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ProjectsService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="TaskManagerApiGatewayService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
@@ -166,10 +172,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProjectsService: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="ProjectsService/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="ProjectsService.projects_db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="projects_db" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="ProjectsService/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
+        <item itemvalue="Docker.ProjectsService: Compose Deployment" />
         <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
         <item itemvalue="Spring Boot.UserServiceApplication" />
       </list>
     </recent_temporary>
@@ -191,7 +224,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742123358149</updated>
       <workItem from="1742123359194" duration="3020000" />
-      <workItem from="1742139276958" duration="4055000" />
+      <workItem from="1742139276958" duration="5952000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -209,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742126368837</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Настроено добавление и удаление задач">
+      <option name="closed" value="true" />
+      <created>1742143700795</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1742143700795</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +262,7 @@
     </ignored-roots>
     <MESSAGE value="1" />
     <MESSAGE value="2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2" />
+    <MESSAGE value="Настроено добавление и удаление задач" />
+    <option name="LAST_COMMIT_MESSAGE" value="Настроено добавление и удаление задач" />
   </component>
 </project>

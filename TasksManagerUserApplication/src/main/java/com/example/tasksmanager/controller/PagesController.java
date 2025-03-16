@@ -30,4 +30,9 @@ public class PagesController {
     public String tasksPage(@RequestParam("projectId") int id) {
         return "tasks";
     }
+
+    @RequestMapping("create-project")
+    public String createProjectPage(){
+        return "create-project";
+    }
 }

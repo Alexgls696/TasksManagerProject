@@ -1,14 +1,13 @@
 package org.example.taskservice.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.taskservice.client.ProjectsRestClient;
 import org.example.taskservice.client.UsersRestClient;
-import org.example.taskservice.controller.ProjectsController;
 import org.example.taskservice.controller.payload.NewTaskPayload;
 import org.example.taskservice.controller.payload.UpdateTaskPayload;
 import org.example.taskservice.entity.*;
 import org.example.taskservice.exceptions.NoSuchTaskException;
 import org.example.taskservice.repository.CategoryRepository;
-import org.example.taskservice.repository.ProjectRepository;
 import org.example.taskservice.repository.TaskRepository;
 import org.example.taskservice.repository.TaskStatusRepository;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,8 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskStatusRepository taskStatusRepository;
     private final CategoryRepository categoryRepository;
-    private final ProjectRepository projectRepository;
+
+    private final ProjectsRestClient projectsRestClient;
     private final UsersRestClient usersRestClient;
 
     @Override
@@ -64,7 +64,7 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
         User assignee =usersRestClient.findUserById(payload.assigneeId())
                 .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
-        Project project = projectRepository.findById(payload.projectId())
+        Project project = projectsRestClient.findProjectById(payload.projectId())
                 .orElseThrow(()->new NoSuchElementException("Project with id " + payload.projectId() + " not found"));
         Category category = categoryRepository.findById(payload.categoryId())
                 .orElseThrow(()->new NoSuchElementException("Category with id " + payload.categoryId() + " not found"));

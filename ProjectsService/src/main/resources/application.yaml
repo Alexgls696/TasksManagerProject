@@ -1,0 +1,16 @@
+server:
+  port: 8083
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/projects_db
+    password: postgres
+    username: admin
+
+services:
+  user-service:
+    url: http://localhost:8084/

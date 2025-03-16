@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8080
   jetty:
     max-http-response-header-size: 65536
 
@@ -8,27 +8,27 @@ spring:
     gateway:
       routes:
         - id: manager-application
-          uri: http://localhost:8080/
+          uri: http://localhost:8081/
           predicates:
             - Path=/**
-          order: 5
+          order: 10
 
         - id: tasks-service
-          uri: http://localhost:8081/task-manager-api/tasks
+          uri: http://localhost:8082/task-manager-api/tasks
           predicates:
             - Path=/task-manager-api/tasks/**
           order: 1
+
+        - id: projects-service
+          uri: http://localhost:8083/task-manager-api/projects
+          predicates:
+            - Path=/task-manager-api/projects/**
+          order: 2
 
         - id: user-service
           uri: http://localhost:8084/task-manager-api/users
           predicates:
             - Path=/task-manager-api/users/**
-          order: 2
-
-        - id: projects-service
-          uri: http://localhost:8081/task-manager-api/projects
-          predicates:
-            - Path=/task-manager-api/projects/**
           order: 3
 
 

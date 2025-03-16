@@ -1,0 +1,15 @@
+volumes:
+  projects_catalogue:
+
+services:
+  projects_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=projects_db
+    volumes:
+      - projects_catalogue:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5434:5432"

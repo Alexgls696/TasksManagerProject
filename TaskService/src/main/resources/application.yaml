@@ -9,3 +9,5 @@ spring:
 services:
   user-service:
     url: http://localhost:8084/
+  project-service:
+    url: http//localhost:8083/
