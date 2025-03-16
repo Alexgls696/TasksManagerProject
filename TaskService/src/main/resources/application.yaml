@@ -5,3 +5,7 @@ spring:
     url: jdbc:postgresql://localhost:5433/tasks_db
     username: postgres
     password: admin
+
+services:
+  user-service:
+    url: http://localhost:8084/

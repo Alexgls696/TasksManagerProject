@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!projectId) {
         alert("ID проекта не указан.");
-        window.location.href = "index.html"; // Перенаправляем на главную страницу
+        window.location.href = "/index"; // Перенаправляем на главную страницу
         return;
     }
+    document.getElementById('project_id_input').value = projectId;
 
     // Загружаем задачи для проекта
     fetchTasksByProjectId(projectId)
@@ -30,10 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
     }
 
+    let projectNameToModel = null;
     // Функция для отображения задач
     function displayTasks(tasks) {
         taskList.innerHTML = ""; // Очищаем список задач
-
+        document.getElementById('project_name_input').value = tasks[0].project.name;
         tasks.forEach(task => {
             const taskElement = document.createElement("div");
             taskElement.classList.add("task");
@@ -46,29 +48,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Создание HTML для задачи
             taskElement.innerHTML = `
-                <h3>${task.title}</h3>
-                <p>${task.description}</p>
-                <div class="task-meta">
-                    <span class="status">Статус: ${task.status.status}</span>
-                    <span class="priority">Приоритет: ${task.priority}</span>
-                    <span class="deadline">Дедлайн: ${deadline}</span>
-                </div>
-                <div class="task-details">
-                    <p><strong>Начало:</strong> ${startDate}</p>
-                    <p><strong>Обновлено:</strong> ${updateDate}</p>
-                    <p><strong>Категория:</strong> ${task.category ? task.category.name : "Нет"}</p>
-                    <p><strong>Исполнитель:</strong> ${task.assignee ? task.assignee.name : "Не назначен"}</p>
-                    <p><strong>Создатель:</strong> ${task.creator.name}</p>
-                    <p><strong>Проект:</strong> ${task.project ? task.project.name : "Нет"}</p>
-                </div>
-                <button class="btn-edit">Редактировать</button>
-                <button class="btn-delete">Удалить</button>
-            `;
+            <h3>${task.title}</h3>
+            <p>${task.description}</p>
+            <div class="task-meta">
+                <span class="status">Статус: ${task.status.status}</span>
+                <span class="priority">Приоритет: ${task.priority}</span>
+                <span class="deadline">Дедлайн: ${deadline}</span>
+            </div>
+            <div class="task-details">
+                <p><strong>Начало:</strong> ${startDate}</p>
+                <p><strong>Обновлено:</strong> ${updateDate}</p>
+                <p><strong>Категория:</strong> ${task.category ? task.category.name : "Нет"}</p>
+                <p><strong>Исполнитель:</strong> ${task.assignee ? task.assignee.name : "Не назначен"}</p>
+                <p><strong>Создатель:</strong> ${task.creator.name}</p>
+                <p><strong>Проект:</strong> ${task.project ? task.project.name : "Нет"}</p>
+            </div>
+            <button class="btn-edit">Редактировать</button>
+            <button class="btn-delete">Удалить</button>
+        `;
 
             taskList.appendChild(taskElement);
         });
     }
-
     // Функция для форматирования даты
     function formatDate(dateString) {
         if (!dateString) return "Нет данных";
@@ -98,9 +99,68 @@ document.addEventListener("DOMContentLoaded", function () {
     // Обработчик для кнопки "Удалить"
     taskList.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-delete")) {
-            const task = event.target.closest(".task");
-            task.remove();
-            alert("Задача удалена!");
+            const taskElement = event.target.closest(".task");
+            const taskId = taskElement.getAttribute("data-task-id");
+
+            // Подтверждение удаления
+            Swal.fire({
+                icon: 'warning',
+                title: 'Вы уверены?',
+                text: 'Вы действительно хотите удалить эту задачу?',
+                showCancelButton: true,
+                confirmButtonText: 'Да, удалить',
+                cancelButtonText: 'Отмена'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Отправка DELETE-запроса на сервер
+                    fetch(`http://localhost:8082/task-manager-api/tasks/${taskId}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                // Удаление задачи из DOM
+                                taskElement.remove();
+                                showSuccess("Задача успешно удалена!");
+                            } else {
+                                showError("Ошибка при удалении задачи.");
+                            }
+                        })
+                        .catch(error => {
+                            showError("Ошибка при удалении задачи.");
+                        });
+                }
+            });
         }
     });
+
+// Функция для показа успешного уведомления
+    function showSuccess(message, callback) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Успех!',
+            text: message,
+            confirmButtonText: 'ОК'
+        }).then((result) => {
+            if (result.isConfirmed && callback) {
+                callback();
+            }
+        });
+    }
+
+// Функция для показа уведомления об ошибке
+    function showError(message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Ошибка!',
+            text: message,
+            confirmButtonText: 'ОК'
+        });
+    }
+
+    document.getElementById('add-task-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Отменяем стандартное поведение ссылки
+        document.getElementById('create-task-form').submit(); // Отправляем форму
+    });
+
+
 });

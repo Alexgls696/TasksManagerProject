@@ -8,7 +8,7 @@ spring:
     gateway:
       routes:
         - id: manager-application
-          uri: http://localhost:8082/
+          uri: http://localhost:8080/
           predicates:
             - Path=/**
           order: 5

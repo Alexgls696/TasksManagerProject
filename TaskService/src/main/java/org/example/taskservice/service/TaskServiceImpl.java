@@ -1,6 +1,7 @@
 package org.example.taskservice.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.taskservice.client.UsersRestClient;
 import org.example.taskservice.controller.ProjectsController;
 import org.example.taskservice.controller.payload.NewTaskPayload;
 import org.example.taskservice.controller.payload.UpdateTaskPayload;
@@ -23,7 +24,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskStatusRepository taskStatusRepository;
     private final CategoryRepository categoryRepository;
     private final ProjectRepository projectRepository;
-
+    private final UsersRestClient usersRestClient;
 
     @Override
     public Iterable<Task> findAll() {
@@ -43,10 +44,13 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     @Override
     public void update(int id, UpdateTaskPayload payload) {
-        var task = taskRepository.findById(id).orElseThrow(()->new NoSuchTaskException("Task with id " + id + " not found"));
+        var task = taskRepository.findById(id)
+                .orElseThrow(()->new NoSuchTaskException("Task with id " + id + " not found"));
         var status = taskStatusRepository.findById(payload.statusId())
                 .orElseThrow(()->new NoSuchElementException("Status with id " + payload.statusId() + " not found"));
-        var assignee = taskRepository.findUserById(payload.assigneeId());
+        var assignee = usersRestClient.findUserById(payload.assigneeId())
+                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
+
         task.update(payload);
         task.setStatus(status);
         task.setAssignee(assignee);
@@ -56,8 +60,10 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     @Override
     public Task save(NewTaskPayload payload) {
-        User creator = taskRepository.findUserById(1);
-        User assignee = taskRepository.findUserById(payload.assigneeId());
+        User creator = usersRestClient.findUserById(payload.assigneeId())
+                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
+        User assignee =usersRestClient.findUserById(payload.assigneeId())
+                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
         Project project = projectRepository.findById(payload.projectId())
                 .orElseThrow(()->new NoSuchElementException("Project with id " + payload.projectId() + " not found"));
         Category category = categoryRepository.findById(payload.categoryId())

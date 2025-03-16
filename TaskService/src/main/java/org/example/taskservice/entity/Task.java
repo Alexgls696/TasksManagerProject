@@ -26,7 +26,7 @@ public class Task {
     private String description;
 
     @JoinColumn(name = "status_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private TaskStatus status;
 
     private int priority;
@@ -38,19 +38,19 @@ public class Task {
     private LocalDateTime updateDate;
 
     @JoinColumn(name = "category_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private Category category;
 
     @JoinColumn(name = "assignee_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private User assignee; //Кому назначена задача
 
     @JoinColumn(name = "creator_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private User creator;
 
     @JoinColumn(name = "project_id")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     private Project project;
 
     public Task(NewTaskPayload payload) {

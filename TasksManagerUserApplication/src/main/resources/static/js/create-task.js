@@ -5,11 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectSelect = document.getElementById("project");
 
     // Загружаем данные для формы
-    Promise.all([fetchCategories(), fetchUsers(), fetchProjects()])
+    Promise.all([fetchCategories(), fetchUsers()])
         .then(([categories, users, projects]) => {
             fillSelect(categorySelect, categories, "name"); // Заполняем категории
-            fillSelect(assigneeSelect, users, "name"); // Заполняем исполнителей
-            fillSelect(projectSelect, projects, "name"); // Заполняем проекты
+            fillSelect(assigneeSelect, users, "name"); // Заполняем исполнителей// Заполняем проекты
         })
         .catch(error => {
             console.error("Ошибка при загрузке данных:", error);
@@ -41,13 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Функция для загрузки проектов
-    async function fetchProjects() {
-        const response = await fetch("http://localhost:8082/task-manager-api/projects");
-        if (!response.ok) {
-            throw new Error("Ошибка при загрузке проектов");
-        }
-        return response.json();
-    }
 
     // Функция для заполнения выпадающего списка
     function fillSelect(select, data, displayField) {

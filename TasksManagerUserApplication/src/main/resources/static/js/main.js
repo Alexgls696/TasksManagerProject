@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3><a href="tasks?projectId=${project.id}">${project.name}</a></h3>
                 <p>${project.description}</p>
             `;
-
             projectList.appendChild(projectElement);
         });
     }
