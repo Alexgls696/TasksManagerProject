@@ -69,9 +69,11 @@ public class ProjectServiceImpl implements ProjectService {
         return projectRepository.save(project);
     }
 
+    @Transactional
     @Override
     public void deleteById(int id) {
         if (projectRepository.existsById(id)) {
+            projectMembersRepository.deleteByProjectId(id);
             projectRepository.deleteById(id);
         } else {
             throw new NoSuchProjectException("Project with id " + id + " does not exist");
