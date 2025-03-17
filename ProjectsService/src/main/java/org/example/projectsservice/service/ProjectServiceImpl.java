@@ -3,6 +3,7 @@ package org.example.projectsservice.service;
 import lombok.RequiredArgsConstructor;
 
 import org.example.projectsservice.client.UsersRestClient;
+import org.example.projectsservice.controller.payload.GetUserPayload;
 import org.example.projectsservice.controller.payload.NewProjectPayload;
 import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 import org.example.projectsservice.entity.Project;
@@ -17,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +30,13 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Iterable<Project> findAll() {
-        return projectRepository.findAll();
+        Iterable<Project>projects = projectRepository.findAll();
+        return StreamSupport.stream(projects.spliterator(),false)
+                .peek(project -> {
+                    var user = usersRestClient.findUserById(project.getCreatorId())
+                            .orElseThrow(()-> new NoSuchElementException("User with id " + project.getCreatorId() + " not found"));
+                    project.setCreator(new GetUserPayload(user.getName(), user.getSurname()));
+                }).collect(Collectors.toList());
     }
 
     @Override
@@ -59,7 +68,7 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(() -> new NoSuchProjectException("Project with id " + projectId + " not found."));
 
         project.update(payload);
-        projectMembersRepository.findById(projectId);
+        projectMembersRepository.deleteByProjectId(projectId);
 
         payload.membersId()
                 .forEach(id->{

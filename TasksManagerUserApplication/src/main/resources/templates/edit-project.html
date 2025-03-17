@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование проекта</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/edit-project.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Редактирование проекта</h1>
+    <form id="edit-project-form">
+        <div class="form-group">
+            <label for="name">Название проекта:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="deadline">Дедлайн:</label>
+            <input type="datetime-local" id="deadline" name="deadline">
+        </div>
+        <div class="form-group">
+            <label for="status">Статус:</label>
+            <select id="status" name="status" required></select>
+        </div>
+        <div class="form-group">
+            <label for="members">Участники:</label>
+            <select id="members" name="members" multiple>
+                <!-- Участники будут добавлены динамически -->
+            </select>
+        </div>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+
+<script th:src="@{/js/edit-project.js}"></script>
+</body>
+</html>

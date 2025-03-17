@@ -23,7 +23,7 @@ public class ProjectController {
     }
 
     @PatchMapping
-    public ResponseEntity<Void> updateProject(@PathVariable int id, @Valid @RequestBody UpdateProjectPayload payload, BindingResult bindingResult)  throws BindException {
+    public ResponseEntity<Void> updateProject(@PathVariable("id") int id, @Valid @RequestBody UpdateProjectPayload payload, BindingResult bindingResult)  throws BindException {
         if(bindingResult.hasErrors()) {
             if(bindingResult instanceof BindException exception){
                 throw exception;

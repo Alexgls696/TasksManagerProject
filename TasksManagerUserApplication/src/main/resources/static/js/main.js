@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Функция для отображения проектов
-    function displayProjects(projects) {
+    function displayProjects(projects,creator) {
         projectList.innerHTML = ""; // Очищаем список проектов
         projects.forEach(project => {
             const projectElement = document.createElement("div");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="project-details">
                     <p><strong>Дата создания:</strong> ${creationDate}</p>
-                    <p><strong>Создатель:</strong> Пользователь #${project.creatorId}</p>
+                    <p><strong>Создатель:</strong> ${project.creator.name} ${project.creator.surname}</p>
                 </div>
                 <div class="project-actions">
                     <button class="btn-edit">Редактировать</button>

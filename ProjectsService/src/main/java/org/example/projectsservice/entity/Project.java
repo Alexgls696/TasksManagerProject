@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.example.projectsservice.controller.payload.GetUserPayload;
 import org.example.projectsservice.controller.payload.NewProjectPayload;
 import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 
@@ -31,6 +32,9 @@ public class Project {
 
     private LocalDateTime creationDate;
     private LocalDateTime deadline;
+
+    @Transient
+    private GetUserPayload creator;
 
     @JoinColumn(name = "status_id")
     @OneToOne

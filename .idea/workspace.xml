@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Исправление пары моментов">
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="3">
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/GetUserPayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectStatusRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectStatusService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectStatusServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/edit-project.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +31,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
-        <option value="Class" />
+        <option value="package.json" />
+        <option value="CSS File" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,16 +79,18 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Run",
+    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
+    "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Alexandr/Desktop/TasksManagerProject/ProjectsService/src/main/java/org/example/projectsservice/client",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -96,12 +111,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.projectsservice.service" />
       <recent name="org.example.taskservice.client" />
       <recent name="org.example.taskservice" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice\client" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\templates" />
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\static\styles" />
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\static\js" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.projectsservice.entity" />
@@ -199,11 +220,20 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
+      <item itemvalue="Docker.ProjectsService: Compose Deployment" />
+      <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
+      <item itemvalue="Spring Boot.ProjectsServiceApplication" />
+      <item itemvalue="Spring Boot.TaskServiceApplication" />
+      <item itemvalue="Spring Boot.TasksManager" />
+      <item itemvalue="Spring Boot.UserServiceApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
         <item itemvalue="Docker.ProjectsService: Compose Deployment" />
       </list>
@@ -227,7 +257,10 @@
       <updated>1742123358149</updated>
       <workItem from="1742123359194" duration="3020000" />
       <workItem from="1742139276958" duration="17688000" />
-      <workItem from="1742215735554" duration="966000" />
+      <workItem from="1742215735554" duration="1201000" />
+      <workItem from="1742217139357" duration="9000" />
+      <workItem from="1742217466872" duration="1099000" />
+      <workItem from="1742234093761" duration="3826000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -277,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742156880187</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="3">
+      <option name="closed" value="true" />
+      <created>1742216816934</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1742216816934</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +334,7 @@
     <MESSAGE value="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим." />
     <MESSAGE value="Сервис проектов. Доделать обновление и удаление проектов, интерактивные задачи (при условии, что пользователь выполняет данную задачу), создать аутентификацию" />
     <MESSAGE value="Исправление пары моментов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление пары моментов" />
+    <MESSAGE value="3" />
+    <option name="LAST_COMMIT_MESSAGE" value="3" />
   </component>
 </project>

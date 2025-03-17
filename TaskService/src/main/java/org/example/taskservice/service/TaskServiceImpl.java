@@ -104,14 +104,11 @@ public class TaskServiceImpl implements TaskService {
         Category category = categoryRepository.findById(payload.categoryId())
                 .orElseThrow(()->new NoSuchElementException("Category with id " + payload.categoryId() + " not found"));
 
-        TaskStatus status = taskStatusRepository.findById(1)
-                .orElseThrow(()->new NoSuchElementException("Task status with id " + 1 + " not found"));
         Task task = new Task(payload);
         task.setAssignee(assignee);
         task.setProject(project);
         task.setCategory(category);
         task.setCreator(creator);
-        task.setStatus(status);
 
         task.setAssigneeId(payload.assigneeId());
         task.setProjectId(payload.projectId());

@@ -35,4 +35,14 @@ public class PagesController {
     public String createProjectPage(){
         return "create-project";
     }
+
+    @RequestMapping("test")
+    public String testPage(){
+        return "test";
+    }
+
+    @RequestMapping("edit-project")
+    public String editProjectPage(@RequestParam("id") int id) {
+        return "edit-project";
+    }
 }
