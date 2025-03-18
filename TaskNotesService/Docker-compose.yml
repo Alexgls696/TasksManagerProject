@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  task_notes_mongo_db:
+    container_name: task_notes_mongo_db
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: alexgls
+      MONGO_INITDB_ROOT_PASSWORD: AS04SERa1
+      MONGO_INITDB_DATABASE: task_notes
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  mongodb_data:

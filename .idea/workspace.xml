@@ -4,23 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="3">
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/GetUserPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectStatusRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectStatusService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectStatusServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/edit-project.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Изменение проектов реализовано">
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/Docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/NoteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/NewNotePayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/UpdateNotePayload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/entity/Note.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/repository/NoteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/service/NoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/service/NoteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/payload/UpdateProjectPayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +35,7 @@
         <option value="package.json" />
         <option value="CSS File" />
         <option value="Interface" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -73,14 +75,16 @@
   "keyToString": {
     "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
     "Docker.ProjectsService: Compose Deployment.executor": "Run",
+    "Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
+    "Spring Boot.ProjectsServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
+    "Spring Boot.TaskNotesServiceApplication.executor": "Run",
     "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
@@ -97,12 +101,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "File.Encoding",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "postgresql"
+      "postgresql",
+      "mongo"
     ]
   }
 }]]></component>
@@ -111,6 +116,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example.tasknotesservice.service" />
       <recent name="org.example.projectsservice.service" />
       <recent name="org.example.taskservice.client" />
       <recent name="org.example.taskservice" />
@@ -138,7 +144,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProjectsServiceApplication">
+  <component name="RunManager" selected="Spring Boot.TaskManagerApiGatewayServiceApplication">
     <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ProjectsService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
@@ -149,6 +155,19 @@
     <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="TaskManagerApiGatewayService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskNotesServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="TaskNotesService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.tasknotesservice.TaskNotesServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.tasknotesservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,23 +212,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProjectsService: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="ProjectsService/docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="ProjectsService.projects_db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
             <list>
-              <option value="projects_db" />
+              <option value="task_notes_mongo_db" />
             </list>
           </option>
-          <option name="sourceFilePath" value="ProjectsService/docker-compose.yml" />
+          <option name="sourceFilePath" value="TaskNotesService/Docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -221,21 +232,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
-      <item itemvalue="Docker.ProjectsService: Compose Deployment" />
+      <item itemvalue="Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment" />
       <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
       <item itemvalue="Spring Boot.ProjectsServiceApplication" />
+      <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       <item itemvalue="Spring Boot.TaskServiceApplication" />
       <item itemvalue="Spring Boot.TasksManager" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.TaskServiceApplication" />
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Docker.ProjectsService.projects_db: Compose Deployment" />
-        <item itemvalue="Docker.ProjectsService: Compose Deployment" />
+        <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
+        <item itemvalue="Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -260,7 +271,8 @@
       <workItem from="1742215735554" duration="1201000" />
       <workItem from="1742217139357" duration="9000" />
       <workItem from="1742217466872" duration="1099000" />
-      <workItem from="1742234093761" duration="3826000" />
+      <workItem from="1742234093761" duration="5873000" />
+      <workItem from="1742285259700" duration="9319000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -318,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742216816934</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Изменение проектов реализовано">
+      <option name="closed" value="true" />
+      <created>1742238100623</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1742238100623</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +355,11 @@
     <MESSAGE value="Сервис проектов. Доделать обновление и удаление проектов, интерактивные задачи (при условии, что пользователь выполняет данную задачу), создать аутентификацию" />
     <MESSAGE value="Исправление пары моментов" />
     <MESSAGE value="3" />
-    <option name="LAST_COMMIT_MESSAGE" value="3" />
+    <MESSAGE value="Изменение проектов реализовано" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменение проектов реализовано" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

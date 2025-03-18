@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://alexgls:AS04SERa1@localhost:27017/task_notes?authSource=admin
+
+server:
+  port: 8085

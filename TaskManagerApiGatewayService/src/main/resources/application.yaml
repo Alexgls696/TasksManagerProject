@@ -31,6 +31,12 @@ spring:
             - Path=/task-manager-api/users/**
           order: 3
 
+        - id: task-nodes-service
+          uri:  http://localhost:8085/task-manager-api/task-notes
+          predicates:
+            - Path=/task-manager-api/task-notes/**
+          order: 4
+
 
       globalcors:
         cors-configurations:
