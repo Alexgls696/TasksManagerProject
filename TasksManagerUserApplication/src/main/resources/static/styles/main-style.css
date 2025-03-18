@@ -211,3 +211,7 @@ footer p {
     color: black;
     text-decoration: none;
 }
+
+.task-name{
+    cursor: pointer;
+}

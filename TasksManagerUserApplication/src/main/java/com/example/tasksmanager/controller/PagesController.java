@@ -45,4 +45,9 @@ public class PagesController {
     public String editProjectPage(@RequestParam("id") int id) {
         return "edit-project";
     }
+
+    @RequestMapping("task-page/{id}")
+    public String taskPage(@PathVariable("id") int id) {
+        return "task-page";
+    }
 }

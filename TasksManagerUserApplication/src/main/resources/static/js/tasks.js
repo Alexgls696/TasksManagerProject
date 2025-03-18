@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskList = document.querySelector(".task-list");
 
@@ -35,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let projectNameToModel = null;
     // Функция для отображения задач
+
+
+
     function displayTasks(tasks) {
         taskList.innerHTML = ""; // Очищаем список задач
         tasks.forEach(task => {
@@ -48,8 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const updateDate = formatDate(task.updateDate);
 
             // Создание HTML для задачи
+            let taskId = task.id;
             taskElement.innerHTML = `
-            <h3>${task.title}</h3>
+            <h3 class="task-name" onclick="window.location.href=\`http://localhost:8080/task-page/${taskId}\`">${task.title}</h3>
             <div class="task-meta">
                 <span class="status">Статус: ${task.status.status}</span>
                 <span class="priority">Приоритет: ${task.priority}</span>

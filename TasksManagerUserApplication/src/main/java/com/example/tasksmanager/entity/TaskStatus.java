@@ -12,13 +12,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class TaskStatus {
-
     private int id;
     private String status;
-
-    public TaskStatus() {
-        id = 1;
-        status = "Создан";
-    }
-
 }

@@ -4,24 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Изменение проектов реализовано">
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/Docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/NoteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/NewNotePayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/UpdateNotePayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/entity/Note.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/repository/NoteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/service/NoteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/service/NoteServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Добавлен сервис заметок к задачам">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/29ba14c0-e0a7-443b-81c5-c825d9b4da96.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/postgres.edMnLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA/schema/information_schema.FNRwLQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA/schema/pg_catalog.0S1ZNQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/81e280bc-dc64-4abf-9293-13af0e8ba439/storage_v2/_src_/database/projects_db.Y84IyA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/ce4a46df-383b-4fcf-93c2-7bd816b1654f.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/ProjectsServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectsService/src/test/java/org/example/projectsservice/ProjectsServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/TaskNotesServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/test/java/org/example/tasknotesservice/TaskNotesServiceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/task-page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/task-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/exception_handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/entity/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/entity/TaskStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/main-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +172,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TaskManagerApiGatewayServiceApplication">
+  <component name="RunManager" selected="Spring Boot.TasksManager">
     <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ProjectsService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
@@ -242,8 +270,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Spring Boot.TaskServiceApplication" />
         <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
         <item itemvalue="Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment" />
@@ -272,7 +300,7 @@
       <workItem from="1742217139357" duration="9000" />
       <workItem from="1742217466872" duration="1099000" />
       <workItem from="1742234093761" duration="5873000" />
-      <workItem from="1742285259700" duration="9319000" />
+      <workItem from="1742285259700" duration="11968000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -338,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742238100623</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавлен сервис заметок к задачам">
+      <option name="closed" value="true" />
+      <created>1742295061005</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1742295061005</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,7 +392,8 @@
     <MESSAGE value="Исправление пары моментов" />
     <MESSAGE value="3" />
     <MESSAGE value="Изменение проектов реализовано" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменение проектов реализовано" />
+    <MESSAGE value="Добавлен сервис заметок к задачам" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен сервис заметок к задачам" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
