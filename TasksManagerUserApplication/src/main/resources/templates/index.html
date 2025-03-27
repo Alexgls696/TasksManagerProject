@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/styles/main-style.css}">
+    <title>Проекты | Tasks Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" th:href="@{/styles/projects-page.css}">
 </head>
+
 <body>
 <div class="wrapper">
     <!-- Шапка -->
     <header>
         <div class="container">
-            <h1>Tasks Manager</h1>
             <nav>
                 <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/create-project">Создать проект</a> </li>
+                    <li><a href="/"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="/create-project" class="btn-primary"><i class="fas fa-plus"></i> Создать проект</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,10 +26,21 @@
 
     <!-- Основной контент -->
     <main class="container">
-        <section class="projects">
-            <h2>Мои проекты</h2>
-            <div class="project-list">
+        <!-- Заголовок страницы -->
+        <section class="page-header">
+            <h1><i class="fas fa-project-diagram"></i> Мои проекты</h1>
+            <p class="page-description">Здесь отображаются все ваши проекты. Нажмите на проект, чтобы просмотреть его задачи.</p>
+        </section>
+
+        <!-- Список проектов -->
+        <section class="projects-content">
+            <div class="projects-grid" id="projects-grid">
                 <!-- Проекты будут добавляться динамически -->
+                <div class="empty-projects">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>У вас пока нет проектов</p>
+                    <a href="/create-project" class="btn-primary"><i class="fas fa-plus"></i> Создать первый проект</a>
+                </div>
             </div>
         </section>
     </main>
@@ -37,13 +48,13 @@
     <!-- Футер -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Tasks Manager. Все права защищены.</p>
+            <p>&copy; 2025 Task Manager. Все права защищены.</p>
         </div>
     </footer>
 </div>
 
 <!-- Скрипты -->
-<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/projects.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

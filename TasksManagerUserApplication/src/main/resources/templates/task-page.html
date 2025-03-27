@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Просмотр задачи</title>
     <link rel="stylesheet" th:href="@{/styles/task-page.css}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <div class="wrapper">
     <!-- Шапка -->
     <header>
         <div class="container">
-            <h1>Просмотр задачи</h1>
             <nav>
                 <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li> <a id="back-to-task-list" href="#">Назад</a> </li>
+                    <li><a id="back-to-task-list" href="#"><i class="fas fa-arrow-left"></i> Назад к списку</a></li>
+                    <li><a href="/"><i class="fas fa-home"></i> Главная</a></li>
                 </ul>
             </nav>
         </div>
@@ -24,34 +24,73 @@
 
     <!-- Основной контент -->
     <main class="container">
-        <!-- Детали задачи -->
-        <section class="task-details">
-            <h2>Детали задачи</h2>
-            <div class="task-info">
-                <p><label>ID:</label> <span id="task-id"></span></p>
-                <p><label>Название:</label> <span id="task-title"></span></p>
-                <p><label>Описание:</label> <span id="task-description"></span></p>
-                <p><label>Статус:</label> <span id="task-status"></span></p>
-                <p><label>Приоритет:</label> <span id="task-priority"></span></p>
-                <p><label>Дедлайн:</label> <span id="task-deadline"></span></p>
-                <p><label>Дата начала:</label> <span id="task-startDate"></span></p>
-                <p><label>Дата обновления:</label> <span id="task-updateDate"></span></p>
-                <p><label>Категория:</label> <span id="task-category"></span></p>
-                <p><label>Исполнитель:</label> <span id="task-assignee"></span></p>
-                <p><label>Создатель:</label> <span id="task-creator"></span></p>
-                <p><label>Проект:</label> <span id="task-project"></span></p>
+        <!-- Заголовок задачи -->
+        <section class="task-header">
+            <h1 id="task-title" class="task-title"></h1>
+            <div class="task-meta">
+                <span id="task-status" class="status-badge"></span>
+                <span id="task-priority" class="priority-badge"></span>
             </div>
         </section>
 
-        <!-- Заметки -->
-        <section class="notes-section">
-            <h2>Заметки</h2>
-            <div class="notes-grid" id="notes-grid">
-                <!-- Заметки будут добавляться сюда динамически -->
+        <!-- Основные детали задачи -->
+        <section class="task-content">
+            <div class="task-details">
+                <div class="detail-card">
+                    <h3><i class="fas fa-align-left"></i> Описание</h3>
+                    <p id="task-description" class="task-description"></p>
+                </div>
+
+                <div class="detail-grid">
+                    <div class="detail-card">
+                        <h3><i class="fas fa-calendar-day"></i> Дата начала</h3>
+                        <p id="task-startDate"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-calendar-times"></i> Дедлайн</h3>
+                        <p id="task-deadline"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-sync-alt"></i> Последнее обновление</h3>
+                        <p id="task-updateDate"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-tag"></i> Категория</h3>
+                        <p id="task-category"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-user-tie"></i> Исполнитель</h3>
+                        <p id="task-assignee"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-user-edit"></i> Создатель</h3>
+                        <p id="task-creator"></p>
+                    </div>
+                    <div class="detail-card">
+                        <h3><i class="fas fa-project-diagram"></i> Проект</h3>
+                        <p id="task-project"></p>
+                    </div>
+                </div>
             </div>
-            <div class="add-note">
-                <textarea id="new-note" placeholder="Введите новую заметку..."></textarea>
-                <button id="add-note-btn">Добавить заметку</button>
+
+            <!-- Заметки -->
+            <div class="notes-section">
+                <h2><i class="fas fa-sticky-note"></i> Заметки</h2>
+                <div class="notes-grid" id="notes-grid">
+                    <div class="empty-notes">
+                        <i class="fas fa-comment-slash"></i>
+                        <p>Пока нет заметок для этой задачи</p>
+                    </div>
+                </div>
+                <div class="add-note">
+                    <h3><i class="fas fa-plus-circle"></i> Добавить заметку</h3>
+                    <input type="text" id="note-title" placeholder="Заголовок (необязательно)" maxlength="50">
+                    <textarea id="new-note" placeholder="Введите текст заметки..." maxlength="1000"></textarea>
+                    <div class="char-counter"><span id="char-count">0</span>/1000 символов</div>
+                    <button id="add-note-btn" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Добавить заметку
+                    </button>
+                </div>
             </div>
         </section>
     </main>
@@ -59,7 +98,7 @@
     <!-- Футер -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Task Manager. Все права защищены.</p>
+            <p>&copy; 2025 Task Manager. Все права защищены.</p>
         </div>
     </footer>
 </div>

@@ -14,7 +14,7 @@ public class PagesController {
         return "index";
     }
 
-    @RequestMapping("/edit")
+    @RequestMapping("/edit-task")
     public String editTaskPage(@RequestParam("id") int id) {
         return "edit-task";
     }
