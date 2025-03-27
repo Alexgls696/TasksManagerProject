@@ -22,6 +22,12 @@ public class UserController {
         return userService.findById(id).orElseThrow(()->new NoSuchUserException("User with id "+id+" not found"));
     }
 
+    @GetMapping("/initials")
+    public String getUserInitialsById(@PathVariable("id") int id) {
+        var user = userService.findById(id).orElseThrow(()->new NoSuchUserException("User with id "+id+"not found"));
+        return user.getName() + " "+user.getSurname();
+    }
+
     @PatchMapping
     public ResponseEntity<Void> updateUser(@PathVariable("id") int id, @Valid @RequestBody UpdateUserPayload payload, BindingResult bindingResult) throws BindException {
         if(bindingResult.hasErrors()) {

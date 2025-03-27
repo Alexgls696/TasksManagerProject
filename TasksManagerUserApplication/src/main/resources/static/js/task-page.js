@@ -46,7 +46,8 @@ async function fetchTaskNotes(taskId) {
 }
 
 // Функция для отображения заметок
-function displayNotes(notes) {
+// Функция для отображения заметок
+async function displayNotes(notes) {
     const notesGrid = document.getElementById('notes-grid');
     if (!notesGrid) return;
 
@@ -62,11 +63,31 @@ function displayNotes(notes) {
         return;
     }
 
-    notes.forEach(note => {
+    // Создаем массив промисов для загрузки данных создателей
+    const notesWithCreators = await Promise.all(notes.map(async note => {
+        try {
+            // Загружаем данные создателя заметки
+            const response = await fetch(`http://localhost:8080/task-manager-api/users/${note.creatorId}/initials`);
+            if (!response.ok) {
+                throw new Error('Ошибка при загрузке данных пользователя');
+            }
+            const creatorName = await response.text();
+            return { ...note, creatorName };
+        } catch (error) {
+            console.error('Ошибка загрузки данных создателя:', error);
+            return { ...note, creatorName: 'Неизвестный автор' };
+        }
+    }));
+
+    // Отображаем заметки с информацией о создателе
+    notesWithCreators.forEach(note => {
         const noteElement = document.createElement('div');
         noteElement.classList.add('note');
         noteElement.innerHTML = `
-            <h3>${note.title || 'Без названия'}</h3>
+            <div class="note-header">
+                <h3>${note.title || 'Без названия'}</h3>
+                <span class="note-creator">${note.creatorName}</span>
+            </div>
             <p>${note.content || ''}</p>
             <div class="note-meta">
                 <span>${formatDate(note.creationDate)}</span>
@@ -101,7 +122,15 @@ async function fetchTaskDetails(taskId) {
         const taskStatus = document.getElementById('task-status');
         if (taskStatus) {
             taskStatus.textContent = task.status?.status || 'Не указано';
-            taskStatus.className = 'status-badge ' + (task.status?.status?.toLowerCase() || '');
+
+            // Очищаем все классы статуса
+            taskStatus.className = 'status-badge';
+
+            // Добавляем соответствующий класс для статуса
+            if (task.status?.id === 5) {
+                taskStatus.classList.add('status-overdue');
+                console.log('Статус задачи: просроченный (id=5)');
+            }
         }
 
         const taskPriority = document.getElementById('task-priority');
@@ -148,14 +177,12 @@ async function addNote() {
     const noteContent = document.getElementById('new-note')?.value.trim() || '';
     const charCounter = document.getElementById('char-count');
 
-    // Обновляем счетчик символов
     if (charCounter) {
         charCounter.textContent = noteContent.length;
     }
 
-    // Валидация полей
-    if (noteTitle.length > 50) {
-        alert('Заголовок заметки не должен превышать 50 символов');
+    if (noteTitle.length > 50 || noteTitle.length > 3) {
+        alert('Заголовок заметки не должен превышать 50 символов и быть не короче 3 символов');
         return;
     }
 
@@ -173,8 +200,8 @@ async function addNote() {
             body: JSON.stringify({
                 title: noteTitle || 'Новая заметка',
                 content: noteContent,
-                creatorId: 1, // Фиксированный ID создателя
-                taskId: parseInt(taskId) // ID задачи из URL
+                creatorId: 1,
+                taskId: parseInt(taskId)
             })
         });
 
@@ -183,11 +210,9 @@ async function addNote() {
             throw new Error(errorData.message || 'Ошибка при сохранении заметки');
         }
 
-        // Обновляем список заметок
         const notes = await fetchTaskNotes(taskId);
         displayNotes(notes);
 
-        // Очищаем поля формы
         document.getElementById('note-title').value = '';
         document.getElementById('new-note').value = '';
         if (charCounter) {
@@ -215,17 +240,11 @@ function initCharCounter() {
 // Основная функция инициализации страницы
 async function initializePage() {
     try {
-        // Инициализация счетчика символов
         initCharCounter();
-
-        // Загружаем данные задачи
         await fetchTaskDetails(taskId);
-
-        // Загружаем и отображаем заметки
         const notes = await fetchTaskNotes(taskId);
         displayNotes(notes);
 
-        // Назначаем обработчик для кнопки добавления заметки
         const addButton = document.getElementById('add-note-btn');
         if (addButton) {
             addButton.addEventListener('click', addNote);
@@ -236,5 +255,4 @@ async function initializePage() {
     }
 }
 
-// Запускаем инициализацию при загрузке страницы
 document.addEventListener('DOMContentLoaded', initializePage);

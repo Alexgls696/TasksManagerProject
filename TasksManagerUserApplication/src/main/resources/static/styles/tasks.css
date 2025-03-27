@@ -161,6 +161,12 @@ nav i {
     color: var(--success-color);
 }
 
+.status-overdue {
+    background-color: #ffebee;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
 .priority {
     background-color: #fff3e0;
     color: var(--warning-color);

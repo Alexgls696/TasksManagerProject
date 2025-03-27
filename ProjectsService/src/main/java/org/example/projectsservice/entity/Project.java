@@ -55,6 +55,7 @@ public class Project {
         name= payload.name();
         description= payload.description();
         deadline= payload.deadline();
+        projectStatus = payload.status();
     }
 
 }

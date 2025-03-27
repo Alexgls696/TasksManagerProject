@@ -102,7 +102,7 @@ function displayTasks(tasks) {
         taskElement.innerHTML = `
             <h3 onclick="window.location.href='/task-page/${task.id}'">${task.title || 'Без названия'}</h3>
             <div class="task-meta">
-                <span class="status">${task.status?.status || 'Не указан'}</span>
+                <span class="status ${task.status?.id === 5 ? 'status-overdue' : ''}">${task.status?.status || 'Не указан'}</span>
                 <span class="priority">Приоритет: ${task.priority || 'Не указан'}</span>
                 <span class="deadline">${deadline}</span>
             </div>

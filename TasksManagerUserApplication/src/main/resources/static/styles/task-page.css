@@ -10,6 +10,25 @@
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Общие стили для статусов */
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-block;
+    background-color: #e8f5e9; /* Зеленый фон по умолчанию */
+    color: var(--success-color);
+}
+
+/* Просроченный статус (id=5) */
+.status-badge.status-overdue {
+    background-color: #ffebee;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Остальные ваши стили... */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f5f7fa;
@@ -83,19 +102,11 @@ nav i {
     margin-top: 10px;
 }
 
-.status-badge, .priority-badge {
+.priority-badge {
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-}
-
-.status-badge {
-    background-color: #e8f5e9;
-    color: var(--success-color);
-}
-
-.priority-badge {
     background-color: #fff3e0;
     color: var(--warning-color);
 }
@@ -174,26 +185,40 @@ nav i {
     transition: transform 0.3s;
 }
 
-.note:hover {
-    transform: translateY(-5px);
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.note-creator {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    background-color: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 500;
 }
 
 .note h3 {
     margin-top: 0;
     color: var(--dark-color);
     font-size: 1.2rem;
+    margin-bottom: 0;
 }
 
 .note p {
     color: #555;
     line-height: 1.6;
+    margin-bottom: 10px;
 }
 
 .note .note-meta {
     font-size: 0.8rem;
     color: var(--secondary-color);
     text-align: right;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .empty-notes {
