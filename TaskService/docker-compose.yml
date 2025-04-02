@@ -13,6 +13,7 @@ services:
       - tasks_catalogue:/var/lib/postgresql/data
     ports:
       - "127.0.0.1:5433:5432"
+
   tasks-service-application:
     restart: always
     build: .

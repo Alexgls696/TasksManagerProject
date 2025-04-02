@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Изменен интерфейс, добавлены заметки к задачам на фронт">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Интерфейс, заметки, создатель заметки, другие исправления">
+      <change afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/task-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/task-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/tasks.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +27,13 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="7ddc05bd92fb05d278aa8adf7f49fa6dea05c628" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -68,46 +63,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
-    "Docker.ProjectsService: Compose Deployment.executor": "Run",
-    "Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
-    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
-    "Spring Boot.TaskNotesServiceApplication.executor": "Run",
-    "Spring Boot.TaskServiceApplication.executor": "Debug",
-    "Spring Boot.TasksManager.executor": "Debug",
-    "Spring Boot.UserServiceApplication.executor": "Run",
-    "data.sources.detected.do.not.suggest.again": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "jbr-17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Alexandr/Desktop/TasksManagerProject/ProjectsService/src/main/java/org/example/projectsservice/client",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.ProjectsService.projects_db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.ProjectsService: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ProjectsServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TaskManagerApiGatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TaskNotesServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TaskServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TasksManager.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;data.sources.detected.do.not.suggest.again&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alexandr/Desktop/TasksManagerProject/ProjectsService/src/main/java/org/example/projectsservice/client&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql",
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;,
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -275,6 +270,7 @@
       <workItem from="1742403819537" duration="3000" />
       <workItem from="1742488969756" duration="5000" />
       <workItem from="1743065453904" duration="13046000" />
+      <workItem from="1743582901696" duration="166000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -369,6 +365,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>

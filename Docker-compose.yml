@@ -1,0 +1,44 @@
+volumes:
+  projects_catalogue:
+  mongodb_data:
+  tasks_catalogue:
+
+
+services:
+  projects_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=projects_db
+    volumes:
+      - projects_catalogue:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5434:5432"
+
+
+  task_notes_mongo_db:
+    container_name: task_notes_mongo_db
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: alexgls
+      MONGO_INITDB_ROOT_PASSWORD: AS04SERa1
+      MONGO_INITDB_DATABASE: task_notes
+    ports:
+      - "127.0.0.2:27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  tasks_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=tasks_db
+    volumes:
+      - tasks_catalogue:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.3:5433:5432"
