@@ -1,0 +1,33 @@
+server:
+  port: 8086
+
+keycloak:
+  auth-server-url: http://localhost:8090  # URL сервера Keycloak
+  realm: task-manager-realm                     # Название Realm
+  username: admin                        # Логин админа Keycloak (если используется Admin API)
+  password: admin                        # Пароль админа Keycloak (не храните в коде!)
+  client-id: spring-auth-app
+  token-store: cookie
+  enable-persistent-tokens: true
+  remember-me: true
+
+  admin-realm: master       # Реалм, где находится админ
+  admin-username: admin
+  admin-password: admin
+  admin-client-id: admin-cli
+  client-secret: Lkb2AN5HmkgNt6YaULT8IuREsdVMossd
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: spring-auth-app
+            client-secret: "CjOqCisDEx7nOLYJwqvDw5tLpPdlEqMl"
+            scope: openid,profile, email, view_projects, edit_projects, microprofile-jwt
+            redirect-uri: http://localhost:8080/security/login/oauth2/code/keycloak
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8090/realms/task-manager-realm
+            user-name-attribute: preferred_username

@@ -9,16 +9,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TaskNotesService" />
         <module name="ProjectsService" />
-        <module name="TasksManagerUserApplication" />
-        <module name="TaskManagerApiGatewayService" />
         <module name="UserService" />
         <module name="TaskService" />
+        <module name="SecurityService" />
+        <module name="TasksManagerUserApplication" />
+        <module name="TaskManagerApiGatewayService" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ProjectsService" options="-parameters" />
+      <module name="SecurityService" options="-parameters" />
       <module name="TaskManagerApiGatewayService" options="-parameters" />
       <module name="TaskNotesService" options="-parameters" />
       <module name="TaskService" options="-parameters" />

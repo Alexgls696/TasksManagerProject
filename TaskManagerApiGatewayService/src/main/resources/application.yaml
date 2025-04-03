@@ -32,10 +32,25 @@ spring:
           order: 3
 
         - id: task-nodes-service
-          uri:  http://localhost:8085/task-manager-api/task-notes
+          uri: http://localhost:8085/task-manager-api/task-notes
           predicates:
             - Path=/task-manager-api/task-notes/**
           order: 4
+
+        - id: security-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/security/**
+          filters:
+            - RewritePath=/security/(?<segment>.*), /$\{segment}
+          order: 5
+
+        - id: keycloak-redirect-fix
+          uri: http://localhost:8086
+          predicates:
+            - Path=/login/oauth2/code/keycloak
+          filters:
+              - RewritePath=/login/oauth2/code/keycloak, /login/oauth2/code/keycloak
 
 
       globalcors:

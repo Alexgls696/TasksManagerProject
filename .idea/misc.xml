@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/TaskManagerApiGatewayService/pom.xml" />
         <option value="$PROJECT_DIR$/ProjectsService/pom.xml" />
         <option value="$PROJECT_DIR$/TaskNotesService/pom.xml" />
+        <option value="$PROJECT_DIR$/SecurityService/pom.xml" />
       </list>
     </option>
   </component>

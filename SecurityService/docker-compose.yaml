@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - keycloak-network
+    restart: unless-stopped
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      # Для production используйте HTTPS:
+      # KC_HOSTNAME: your.domain.com
+      # KC_HTTP_ENABLED: false
+      # KC_PROXY: edge
+    command: ["start-dev"] # Для production используйте: ["start", "--optimized"]
+    ports:
+      - "8090:8080"
+    depends_on:
+      - postgres
+    networks:
+      - keycloak-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  keycloak-network:
+    driver: bridge
