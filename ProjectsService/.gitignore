@@ -18,6 +18,16 @@ target/
 *.iws
 *.iml
 *.ipr
+.gradle
+.idea/
+.intellijPlatform/
+!.idea/icon*.png
+*.iml
+build/
+src/main/gen
+src/main/resources/templates.list
+src/main/resources/gitignore/*
+src/main/resources/toptal/*
 
 ### NetBeans ###
 /nbproject/private/
