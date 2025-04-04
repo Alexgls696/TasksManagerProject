@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Переадресация</title>
+</head>
+
+<body>
+<p>Пожалуйста, подождите, вы будете перенаправлены автоматически...</p>
+</body>
+<script>
+    (function() {
+        const hash = window.location.hash.substring(1); // Убираем '#' в начале
+        const params = new URLSearchParams(hash);
+        const accessToken = params.get('access_token');
+        const error = params.get('error');
+
+        const storageKey = 'accessToken';
+        const redirectPath = '/';
+        const loginPath = '/login';
+
+        if (error) {
+            console.error("Ошибка входа:", error);
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+            window.location.replace(loginPath + '?error=' + encodeURIComponent(error)); // Перенаправляем на страницу входа с ошибкой
+            return;
+        }
+
+        if (accessToken) {
+            console.log("Токен доступа получен.");
+            try {
+                // Сохраняем токен. sessionStorage - живет пока открыта вкладка/браузер.
+                // localStorage - живет дольше, но менее безопасно при XSS.
+                sessionStorage.setItem(storageKey, accessToken);
+                console.log("Токен сохранен в sessionStorage.");
+
+                // Очищаем хеш из URL, чтобы токен не оставался в адресной строке
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+
+                // Перенаправляем пользователя на нужную страницу
+                console.log("Перенаправление на:", redirectPath);
+                window.location.replace(redirectPath);
+
+            } catch (e) {
+                console.error("Не удалось сохранить токен:", e);
+                // Очищаем хеш и перенаправляем на страницу входа
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+                window.location.replace(loginPath + '?error=storage_failed');
+            }
+        } else {
+            console.error("Токен доступа не найден в URL.");
+            // Очищаем хеш и перенаправляем на страницу входа
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+            window.location.replace(loginPath + '?error=token_missing');
+        }
+    })();
+</script>
+</html>

@@ -2,6 +2,7 @@ package org.example.securityservice.configuration;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
@@ -16,9 +20,6 @@ import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -69,7 +70,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            @Value("${frontend.redirect.uri}") String frontendRedirectUri,
+            // ----- Внедряем OAuth2AuthorizedClientService как параметр -----
+            OAuth2AuthorizedClientService authorizedClientService
+    ) throws Exception {
         return http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(CsrfConfigurer::disable)
@@ -78,27 +84,57 @@ public class SecurityConfig {
                         .requestMatchers("/manager").hasRole("MANAGER")
                         .anyRequest().permitAll())
                 .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/security/oauth2/authorization/keycloak")
+                        .loginPage("/oauth2/authorization/keycloak")
                         .userInfoEndpoint(userInfo -> userInfo
                                 .oidcUserService(oidcUserService())
                         )
                         .successHandler((request, response, authentication) -> {
-                            if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
-                                request.getSession().setAttribute("id_token",
-                                        oidcUser.getIdToken().getTokenValue());
+                            String tokenValue = null;
+                            // Проверяем, что аутентификация - это OAuth2AuthenticationToken
+                            if (authentication instanceof OAuth2AuthenticationToken oauthToken) {
+                                // ---- Используем внедренный authorizedClientService ----
+                                OAuth2AuthorizedClient authorizedClient =
+                                        authorizedClientService.loadAuthorizedClient(
+                                                oauthToken.getAuthorizedClientRegistrationId(), // ID регистрации клиента (например, "keycloak")
+                                                authentication.getName()); // Имя принципала (обычно sub из токена)
+
+                                if (authorizedClient != null && authorizedClient.getAccessToken() != null) {
+                                    tokenValue = authorizedClient.getAccessToken().getTokenValue();
+                                    System.out.println("Access Token получен!"); // Логирование для отладки
+                                } else {
+                                    System.out.println("AuthorizedClient или Access Token не найдены."); // Логирование
+                                }
+                            } else {
+                                System.out.println("Тип Authentication не OAuth2AuthenticationToken: " + authentication.getClass().getName());
                             }
-                            response.sendRedirect("/security/profile");
+
+                            // Запасной вариант: ID Token (если Access Token не нужен или не получен)
+                            if (tokenValue == null && authentication.getPrincipal() instanceof OidcUser oidcUser) {
+                                tokenValue = oidcUser.getIdToken().getTokenValue();
+                                request.getSession().setAttribute("id_token", tokenValue);
+                                System.out.println("Используется ID Token как запасной вариант."); // Логирование
+                            }
+
+                            if (tokenValue != null) {
+                                System.out.println("Перенаправление на фронтенд с токеном..."); // Логирование
+                                response.sendRedirect(frontendRedirectUri + "#access_token=" + tokenValue);
+                            } else {
+                                System.err.println("Токен не был получен, перенаправление с ошибкой."); // Логирование ошибки
+                                response.sendRedirect(frontendRedirectUri + "#error=token_missing");
+                            }
                         })
-                        .redirectionEndpoint(redirection -> redirection
-                                .baseUri("/security/login/oauth2/code/keycloak")
-                        )
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                        .logoutSuccessHandler(logoutSuccessHandler())
+                        // Убедитесь, что ваш logoutSuccessHandler тоже внедрен или создан правильно
+                        // .logoutSuccessHandler(logoutSuccessHandler())
+                        .logoutSuccessHandler((request, response, authentication) -> {
+                            System.out.println("Выход выполнен, перенаправление на фронтенд..."); // Логирование
+                            response.sendRedirect(frontendRedirectUri);
+                        })
                         .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID", "KEYCLOAK_SESSION")
+                        .deleteCookies("JSESSIONID")
                 )
                 .build();
     }

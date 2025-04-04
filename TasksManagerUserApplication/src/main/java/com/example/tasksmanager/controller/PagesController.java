@@ -41,6 +41,11 @@ public class PagesController {
         return "test";
     }
 
+    @RequestMapping("login-callback")
+    public String loginCallback(){
+        return "login-callback";
+    }
+
     @RequestMapping("edit-project")
     public String editProjectPage(@RequestParam("id") int id) {
         return "edit-project";

@@ -16,3 +16,8 @@ spring:
 services:
   user-service:
     url: http://localhost:8084/
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG #

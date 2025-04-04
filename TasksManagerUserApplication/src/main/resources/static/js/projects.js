@@ -1,3 +1,72 @@
+const API_GATEWAY_BASE_URL = 'http://localhost:8080'; // URL вашего API Gateway
+const storageKey = 'accessToken'; // Тот же ключ, что и при сохранении
+
+/**
+ * Получает сохраненный токен доступа.
+ * @returns {string|null} Токен или null, если не найден.
+ */
+function getAccessToken() {
+    // Используйте тот же storage, что и в login-callback
+    return sessionStorage.getItem(storageKey);
+    // или return localStorage.getItem(storageKey);
+}
+
+/**
+ * Обертка для fetch, которая автоматически добавляет заголовок Authorization.
+ * @param {string} url - URL эндпоинта (относительный путь к API Gateway)
+ * @param {object} options - Настройки fetch (method, body, headers и т.д.)
+ * @returns {Promise<Response>} Промис с ответом fetch.
+ */
+async function fetchWithAuth(url, options = {}) {
+    const token = getAccessToken();
+    const headers = {
+        // Копируем существующие заголовки из options
+        ...(options.headers || {}),
+    };
+
+    // Добавляем Content-Type по умолчанию для POST/PUT, если он не задан
+    if (!headers['Content-Type'] && ['POST', 'PUT', 'PATCH'].includes(options.method?.toUpperCase())) {
+        headers['Content-Type'] = 'application/json';
+    }
+    // Добавляем Accept по умолчанию, если он не задан
+    if (!headers['Accept']) {
+        headers['Accept'] = 'application/json';
+    }
+
+    // Добавляем токен в заголовок Authorization, если он есть
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    const fetchOptions = {
+        ...options,
+        headers: headers,
+    };
+
+    // Формируем полный URL
+    const fullUrl = url.startsWith('http') ? url : `${API_GATEWAY_BASE_URL}${url}`;
+
+    console.log(`Выполняется запрос ${fetchOptions.method || 'GET'} на ${fullUrl}`);
+
+    try {
+        const response = await fetch(fullUrl, fetchOptions);
+
+        // Базовая обработка неавторизованных запросов
+        if (response.status === 401 || response.status === 403) {
+            console.warn(`Запрос на ${fullUrl} вернул ${response.status}. Возможно, токен истек или недействителен.`);
+            // Здесь можно добавить логику для выхода пользователя или попытки обновления токена
+            // Например:
+            // clearTokenAndRedirectToLogin();
+        }
+
+        return response;
+    } catch (error) {
+        console.error(`Ошибка сети при запросе на ${fullUrl}:`, error);
+        throw error; // Перебрасываем ошибку для дальнейшей обработки
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", function () {
     // Загружаем проекты
     loadProjects();
@@ -15,7 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для получения проектов
     async function fetchProjects() {
-        const response = await fetch("http://localhost:8080/task-manager-api/projects");
+        const response = await fetchWithAuth("/task-manager-api/projects"); //await fetch("http://localhost:8080/task-manager-api/projects");
+        console.log(response)
         if (!response.ok) {
             throw new Error("Ошибка при загрузке проектов");
         }
