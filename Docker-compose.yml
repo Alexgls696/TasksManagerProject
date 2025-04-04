@@ -61,6 +61,13 @@ services:
     networks:
       - keycloak-network
     restart: unless-stopped
+    healthcheck:
+      # Команда для проверки готовности Postgres
+      test: [ "CMD-SHELL", "pg_isready -U keycloak -d keycloak" ]
+      interval: 10s    # Как часто проверять
+      timeout: 5s     # Сколько ждать ответа
+      retries: 5      # Сколько раз повторить при неудаче перед тем, как считать нездоровым
+      # ------------------------------------
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -93,7 +100,7 @@ services:
 
   redis_session_store:
     image: redis:7-alpine
-    container_name: redis-session-store )
+    container_name: redis-session-store
     hostname: redis
     ports:
       - "6379:6379"
