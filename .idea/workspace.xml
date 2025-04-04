@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Миграции, безопасность, контейнеры">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/realm-export.json" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Добавлена конфигурация докер-файла">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +290,7 @@
       <workItem from="1743619384375" duration="765000" />
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
-      <workItem from="1743751981902" duration="17674000" />
+      <workItem from="1743751981902" duration="18297000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -415,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743769503211</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Добавлена конфигурация докер-файла">
+      <option name="closed" value="true" />
+      <created>1743769933300</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1743769933300</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +456,8 @@
     <MESSAGE value="Попытка в безопасность" />
     <MESSAGE value="Рабочая безопасность (вроде)" />
     <MESSAGE value="Миграции, безопасность, контейнеры" />
-    <option name="LAST_COMMIT_MESSAGE" value="Миграции, безопасность, контейнеры" />
+    <MESSAGE value="Добавлена конфигурация докер-файла" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена конфигурация докер-файла" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

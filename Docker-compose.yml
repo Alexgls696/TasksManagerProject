@@ -2,6 +2,7 @@ volumes:
   projects_catalogue:
   mongodb_data:
   tasks_catalogue:
+  postgres_data:
   redis_session_data:
     driver: local
 
@@ -62,7 +63,7 @@ services:
     restart: unless-stopped
 
   keycloak:
-    build: .
+    image: quay.io/keycloak/keycloak:latest
     environment:
       DB_VENDOR: postgres
       DB_ADDR: postgres
@@ -78,6 +79,8 @@ services:
     command: [ "start-dev" ] # Для production используйте: ["start", "--optimized"]
     ports:
       - "8090:8080"
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
     depends_on:
       - postgres-keycloak
     networks:
