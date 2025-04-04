@@ -62,7 +62,7 @@ services:
     restart: unless-stopped
 
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    build: .
     environment:
       DB_VENDOR: postgres
       DB_ADDR: postgres

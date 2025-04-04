@@ -4,37 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Рабочая безопасность (вроде)">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembersId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskMembersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_stored_function_changeset.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Миграции, безопасность, контейнеры">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realm-export.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +92,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "jbr-17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Alexandr/Desktop/TasksManagerProject/ProjectsService/src/main/java/org/example/projectsservice/client",
+    "last_opened_file_path": "C:/Users/Alexandr/Desktop/TasksManagerProject",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -148,6 +122,7 @@
       <recent name="org.example.taskservice" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice\client" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice" />
     </key>
@@ -318,7 +293,7 @@
       <workItem from="1743619384375" duration="765000" />
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
-      <workItem from="1743751981902" duration="17028000" />
+      <workItem from="1743751981902" duration="17674000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -432,7 +407,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743757254430</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Миграции, безопасность, контейнеры">
+      <option name="closed" value="true" />
+      <created>1743769503211</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1743769503211</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,7 +450,8 @@
     <MESSAGE value="Добавлен общий docker-compose" />
     <MESSAGE value="Попытка в безопасность" />
     <MESSAGE value="Рабочая безопасность (вроде)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рабочая безопасность (вроде)" />
+    <MESSAGE value="Миграции, безопасность, контейнеры" />
+    <option name="LAST_COMMIT_MESSAGE" value="Миграции, безопасность, контейнеры" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
