@@ -84,6 +84,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
       KEYCLOAK_IMPORT: ./realm-config.json
 
+
       KC_HTTP_ENABLED: 'true'     # Разрешаем HTTP для start-dev
       KC_HOSTNAME_STRICT: 'false' # Отключаем строгую проверку hostname для start-dev
 

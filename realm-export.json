@@ -849,7 +849,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "CjOqCisDEx7nOLYJwqvDw5tLpPdlEqMl",
       "redirectUris": [
         "http://localhost:8080/login/oauth2/code/keycloak"
       ],

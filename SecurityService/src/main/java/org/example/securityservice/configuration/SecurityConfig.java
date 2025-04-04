@@ -56,22 +56,6 @@ public class SecurityConfig {
         this.clientRegistrationRepository = clientRegistrationRepository;
     }
 
-   /* @Bean
-    public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-
-        objectMapper.registerModules(SecurityJackson2Modules.getModules(getClass().getClassLoader()));
-
-        var ptv = BasicPolymorphicTypeValidator.builder()
-                .allowIfBaseType(Object.class) // Или более специфичный базовый тип
-                .allowIfSubType("org.springframework.security")
-                .allowIfSubType("java.util")
-                .build();
-        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
-
-        return new GenericJackson2JsonRedisSerializer(objectMapper);
-    }*/
 
     @Bean
     public LogoutSuccessHandler oidcLogoutSuccessHandler(

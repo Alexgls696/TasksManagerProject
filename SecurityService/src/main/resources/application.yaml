@@ -25,7 +25,6 @@ keycloak:
 frontend:
   redirect:
     uri: http://localhost:8080/login-callback
-    logout-uri: http://localhost:8080/index
   logout:
     redirect:
       uri: http://localhost:8080/home
