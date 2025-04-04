@@ -1,6 +1,10 @@
 server:
   port: 8086
   forward-headers-strategy: FRAMEWORK
+  servlet:
+    session:
+      cookie:
+        path: /
 
 keycloak:
   auth-server-url: http://localhost:8090  # URL сервера Keycloak
@@ -22,6 +26,9 @@ frontend:
   redirect:
     uri: http://localhost:8080/login-callback
     logout-uri: http://localhost:8080/index
+  logout:
+    redirect:
+      uri: http://localhost:8080/home
 
 spring:
   security:
@@ -37,3 +44,23 @@ spring:
           keycloak:
             issuer-uri: http://localhost:8090/realms/task-manager-realm
             user-name-attribute: preferred_username
+
+  redis:
+    session:
+      store-type: redis
+      redis:
+        flush-mode: on_save
+  data:
+    redis:
+      host: localhost
+      password: redis_AS04SERa1
+      port: 6379
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2.client: TRACE
+
+    org.springframework.session: DEBUG # или TRACE
+    org.springframework.security.oauth2.core: TRACE

@@ -4,15 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Попытка в безопасность">
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Рабочая безопасность (вроде)">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembersId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskMembersRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_stored_function_changeset.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +47,10 @@
         <option value="Exception" />
         <option value="package.json" />
         <option value="CSS File" />
-        <option value="Interface" />
         <option value="Record" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -74,6 +96,8 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
     "Docker.ProjectsService: Compose Deployment.executor": "Run",
+    "Docker.SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment.executor": "Run",
+    "Docker.SecurityService/docker-compose.yaml.redis_session_store: Compose Deployment.executor": "Run",
     "Docker.SecurityService/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -82,7 +106,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
+    "Spring Boot.ProjectsServiceApplication.executor": "Run",
     "Spring Boot.SecurityServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
@@ -108,7 +132,8 @@
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mongo",
-      "postgresql"
+      "postgresql",
+      "redis"
     ]
   }
 }]]></component>
@@ -127,6 +152,7 @@
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\ProjectsService\src\main\java\org\example\projectsservice" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TaskService\src\main\resources\db\changelog\changeset\0.0.1" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\templates" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\static\styles" />
       <recent name="C:\Users\Alexandr\Desktop\TasksManagerProject\TasksManagerUserApplication\src\main\resources\static\js" />
@@ -163,19 +189,6 @@
     <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="TaskManagerApiGatewayService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskNotesServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="TaskNotesService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.tasknotesservice.TaskNotesServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.tasknotesservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -220,9 +233,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SecurityService/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="services">
+            <list>
+              <option value="redis-session-store" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="SecurityService/docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="SecurityService/docker-compose.yaml.redis_session_store: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="redis_session_store" />
+            </list>
+          </option>
           <option name="sourceFilePath" value="SecurityService/docker-compose.yaml" />
         </settings>
       </deployment>
@@ -235,22 +266,22 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.SecurityService/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment" />
+      <item itemvalue="Docker.SecurityService/docker-compose.yaml.redis_session_store: Compose Deployment" />
       <item itemvalue="Spring Boot.SecurityServiceApplication" />
       <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
       <item itemvalue="Spring Boot.ProjectsServiceApplication" />
-      <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       <item itemvalue="Spring Boot.TaskServiceApplication" />
       <item itemvalue="Spring Boot.TasksManager" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.TaskServiceApplication" />
         <item itemvalue="Spring Boot.TasksManager" />
-        <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
         <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Docker.SecurityService/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Docker.SecurityService/docker-compose.yaml.redis_session_store: Compose Deployment" />
+        <item itemvalue="Docker.SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +318,7 @@
       <workItem from="1743619384375" duration="765000" />
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
-      <workItem from="1743751981902" duration="4923000" />
+      <workItem from="1743751981902" duration="17028000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -393,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743697307839</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Рабочая безопасность (вроде)">
+      <option name="closed" value="true" />
+      <created>1743757254430</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743757254430</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +466,8 @@
     <MESSAGE value="Изменен интерфейс, добавлены заметки к задачам на фронт" />
     <MESSAGE value="Добавлен общий docker-compose" />
     <MESSAGE value="Попытка в безопасность" />
-    <option name="LAST_COMMIT_MESSAGE" value="Попытка в безопасность" />
+    <MESSAGE value="Рабочая безопасность (вроде)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Рабочая безопасность (вроде)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

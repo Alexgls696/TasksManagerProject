@@ -5,6 +5,15 @@
 </head>
 <body>
 <h1>Welcome, <span th:text="${#authentication.name}">User</span>!</h1>
-<a th:href="@{/logout}">Logout</a>
+<a href="#" onclick="logout()">Logout</a>
 </body>
+
+<script>
+    function logout() {
+        sessionStorage.removeItem('accessToken'); // или localStorage
+        console.log("Локальный токен удален.");
+
+        window.location.href = 'http://localhost:8080/security/logout';
+    }
+</script>
 </html>

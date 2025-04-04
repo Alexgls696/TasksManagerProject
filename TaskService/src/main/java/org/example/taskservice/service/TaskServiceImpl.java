@@ -8,6 +8,7 @@ import org.example.taskservice.controller.payload.UpdateTaskPayload;
 import org.example.taskservice.entity.*;
 import org.example.taskservice.exceptions.NoSuchTaskException;
 import org.example.taskservice.repository.CategoryRepository;
+import org.example.taskservice.repository.TaskMembersRepository;
 import org.example.taskservice.repository.TaskRepository;
 import org.example.taskservice.repository.TaskStatusRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final TaskStatusRepository taskStatusRepository;
     private final CategoryRepository categoryRepository;
+    private final TaskMembersRepository taskMembersRepository;
 
     private final ProjectsRestClient projectsRestClient;
     private final UsersRestClient usersRestClient;
@@ -86,6 +88,13 @@ public class TaskServiceImpl implements TaskService {
         task.setAssignee(assignee);
 
         task.setAssigneeId(payload.assigneeId());
+
+        taskMembersRepository.deleteByTaskId(id);
+        payload.membersId()
+                .forEach(userId->{
+                    TaskMembers taskMembers = new TaskMembers(task,userId);
+                    taskMembersRepository.save(taskMembers);
+                });
         taskRepository.save(task);
     }
 
@@ -117,6 +126,12 @@ public class TaskServiceImpl implements TaskService {
         task.setAssigneeId(payload.assigneeId());
         task.setProjectId(payload.projectId());
         task.setCreatorId(payload.assigneeId());
+
+        payload.membersId()
+                .forEach(id->{
+                    TaskMembers taskMembers = new TaskMembers(task,id);
+                    taskMembersRepository.save(taskMembers);
+                });
 
         return taskRepository.save(task);
     }

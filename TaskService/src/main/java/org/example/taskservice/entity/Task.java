@@ -50,6 +50,8 @@ public class Task {
     @Column(name = "project_id")
     private Integer projectId;
 
+
+
     private transient Project project;
     private transient User assignee;
     private transient User creator;

@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  postgres:
+  postgres-keycloak:
     image: postgres
     environment:
       POSTGRES_DB: keycloak
@@ -31,12 +31,24 @@ services:
     ports:
       - "8090:8080"
     depends_on:
-      - postgres
+      - postgres-keycloak
     networks:
       - keycloak-network
     restart: unless-stopped
 
+  redis_session_store:
+    image: redis:7-alpine
+    container_name: redis-session-store
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+        - redis_session_data:/data
+    command: redis-server --requirepass redis_AS04SERa1
+
 volumes:
+  redis_session_data:
+    driver: local
   postgres_data:
 
 networks:

@@ -5,6 +5,7 @@ import org.example.taskservice.entity.TaskStatus;
 import org.example.taskservice.entity.User;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record UpdateTaskPayload(
         @NotBlank(message = "{validation.task.title_is_blank}")
@@ -25,7 +26,10 @@ public record UpdateTaskPayload(
         LocalDateTime deadline,
 
         @NotNull(message = "{validation.task.assignee_is_null}")
-        Integer assigneeId //Кому назначена задача
+        Integer assigneeId, //Кому назначена задача
+
+        @NotNull(message = "{validation.members_list_is_null}")
+        List<Integer> membersId
 
 ) {
 }

@@ -2,7 +2,12 @@ volumes:
   projects_catalogue:
   mongodb_data:
   tasks_catalogue:
+  redis_session_data:
+    driver: local
 
+networks:
+  keycloak-network:
+    driver: bridge
 
 services:
   projects_db:
@@ -42,3 +47,51 @@ services:
       - tasks_catalogue:/var/lib/postgresql/data
     ports:
       - "127.0.0.3:5433:5432"
+
+
+  postgres-keycloak:
+    image: postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - keycloak-network
+    restart: unless-stopped
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      # Для production используйте HTTPS:
+      # KC_HOSTNAME: your.domain.com
+      # KC_HTTP_ENABLED: false
+      # KC_PROXY: edge
+    command: [ "start-dev" ] # Для production используйте: ["start", "--optimized"]
+    ports:
+      - "8090:8080"
+    depends_on:
+      - postgres-keycloak
+    networks:
+      - keycloak-network
+    restart: unless-stopped
+
+  redis_session_store:
+    image: redis:7-alpine # Используйте стабильный тег, alpine - легковесный
+    container_name: redis-session-store # Имя контейнера (опционально)
+    hostname: redis # Имя хоста, которое используется в spring.redis.host
+    ports:
+      # Открываем порт наружу (на хост), если нужно подключаться Redis клиентом для отладки
+      # Если доступ нужен только из других контейнеров, это не обязательно
+      - "6379:6379"
+    volumes:
+      - redis_session_data:/data # <-- Том для персистентности данных Redis
+    command: redis-server --requirepass redis_AS04SERa1

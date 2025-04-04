@@ -1,26 +1,36 @@
 package org.example.securityservice.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
+import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.cors.CorsConfiguration;
@@ -29,8 +39,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,45 +47,60 @@ import static java.util.Optional.ofNullable;
 @Configuration
 public class SecurityConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+
+    // Внедряем репозиторий регистраций клиентов OAuth2/OIDC
+    private final ClientRegistrationRepository clientRegistrationRepository;
+
+    public SecurityConfig(ClientRegistrationRepository clientRegistrationRepository) {
+        this.clientRegistrationRepository = clientRegistrationRepository;
+    }
+
+   /* @Bean
+    public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+
+        objectMapper.registerModules(SecurityJackson2Modules.getModules(getClass().getClassLoader()));
+
+        var ptv = BasicPolymorphicTypeValidator.builder()
+                .allowIfBaseType(Object.class) // Или более специфичный базовый тип
+                .allowIfSubType("org.springframework.security")
+                .allowIfSubType("java.util")
+                .build();
+        objectMapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
+
+        return new GenericJackson2JsonRedisSerializer(objectMapper);
+    }*/
+
     @Bean
-    protected LogoutSuccessHandler logoutSuccessHandler() {
-        return (request, response, authentication) -> {
-            try {
-                String idToken = null;
-
-                // Проверяем, что authentication не null и principal является OidcUser
-                if (authentication != null && authentication.getPrincipal() instanceof OidcUser) {
-                    idToken = ((OidcUser) authentication.getPrincipal()).getIdToken().getTokenValue();
-                }
-
-                // Если idToken не получен, попробуем получить его из сессии
-                if (idToken == null) {
-                    HttpSession session = request.getSession(false);
-                    if (session != null) {
-                        idToken = (String) session.getAttribute("id_token");
-                    }
-                }
-
-                String logoutUrl = "http://localhost:8090/realms/task-manager-realm/protocol/openid-connect/logout" +
-                        (idToken != null ? "?id_token_hint=" + idToken : "") +
-                        "&post_logout_redirect_uri=" + URLEncoder.encode("http://localhost:8080/", StandardCharsets.UTF_8);
-
-                response.sendRedirect(logoutUrl);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to redirect to logout page", e);
-            }
-        };
+    public LogoutSuccessHandler oidcLogoutSuccessHandler(
+            // Внедряем URI через @Value как параметр
+            @Value("${frontend.logout.redirect.uri}") String postLogoutRedirectUri) {
+        OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler =
+                new OidcClientInitiatedLogoutSuccessHandler(this.clientRegistrationRepository);
+        // Устанавливаем URI
+        oidcLogoutSuccessHandler.setPostLogoutRedirectUri(postLogoutRedirectUri);
+        log.info("OIDC Logout Success Handler configured with postLogoutRedirectUri: {}", postLogoutRedirectUri);
+        return oidcLogoutSuccessHandler;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
             @Value("${frontend.redirect.uri}") String frontendRedirectUri,
-            // ----- Внедряем OAuth2AuthorizedClientService как параметр -----
-            OAuth2AuthorizedClientService authorizedClientService
+            OAuth2AuthorizedClientService authorizedClientService,
+            LogoutSuccessHandler oidcLogoutSuccessHandler,
+            // Внедряем бины для других конфигураций, если они не определены здесь же
+            CorsConfigurationSource corsConfigurationSource,
+            OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService
     ) throws Exception {
+
+        // Имя атрибута сессии для ID Token
+        String idTokenSessionAttributeName = "oidcIdToken";
+
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors -> cors.configurationSource(corsConfigurationSource)) // Используем внедренный бин
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/profile", "/user-info", "/logout").authenticated()
@@ -86,55 +109,61 @@ public class SecurityConfig {
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization/keycloak")
                         .userInfoEndpoint(userInfo -> userInfo
-                                .oidcUserService(oidcUserService())
-                        )
+                                .oidcUserService(oidcUserService)) // Используем внедренный бин
+                        // ----- Добавляем try/catch/finally в successHandler -----
                         .successHandler((request, response, authentication) -> {
                             String tokenValue = null;
-                            // Проверяем, что аутентификация - это OAuth2AuthenticationToken
-                            if (authentication instanceof OAuth2AuthenticationToken oauthToken) {
-                                // ---- Используем внедренный authorizedClientService ----
-                                OAuth2AuthorizedClient authorizedClient =
-                                        authorizedClientService.loadAuthorizedClient(
-                                                oauthToken.getAuthorizedClientRegistrationId(), // ID регистрации клиента (например, "keycloak")
-                                                authentication.getName()); // Имя принципала (обычно sub из токена)
-
-                                if (authorizedClient != null && authorizedClient.getAccessToken() != null) {
-                                    tokenValue = authorizedClient.getAccessToken().getTokenValue();
-                                    System.out.println("Access Token получен!"); // Логирование для отладки
-                                } else {
-                                    System.out.println("AuthorizedClient или Access Token не найдены."); // Логирование
+                            String finalRedirectUri = frontendRedirectUri + "#error=handler_failed";
+                            try {
+                                if (authentication.getPrincipal() instanceof OidcUser oidcUser) {
+                                    String idToken = oidcUser.getIdToken().getTokenValue();
+                                    request.getSession().setAttribute(idTokenSessionAttributeName, idToken);
+                                    log.debug("ID Token сохранен в сессии для logout.");
                                 }
-                            } else {
-                                System.out.println("Тип Authentication не OAuth2AuthenticationToken: " + authentication.getClass().getName());
-                            }
 
-                            // Запасной вариант: ID Token (если Access Token не нужен или не получен)
-                            if (tokenValue == null && authentication.getPrincipal() instanceof OidcUser oidcUser) {
-                                tokenValue = oidcUser.getIdToken().getTokenValue();
-                                request.getSession().setAttribute("id_token", tokenValue);
-                                System.out.println("Используется ID Token как запасной вариант."); // Логирование
-                            }
+                                if (authentication instanceof OAuth2AuthenticationToken oauthToken) {
+                                    OAuth2AuthorizedClient authorizedClient = authorizedClientService.loadAuthorizedClient(
+                                            oauthToken.getAuthorizedClientRegistrationId(), authentication.getName());
+                                    if (authorizedClient != null && authorizedClient.getAccessToken() != null) {
+                                        tokenValue = authorizedClient.getAccessToken().getTokenValue();
+                                        log.info("Access Token получен успешно.");
+                                    } else {
+                                        log.warn("AuthorizedClient или Access Token не найдены.");
+                                    }
+                                } else {
+                                    log.warn("Тип Authentication не OAuth2AuthenticationToken: {}", authentication.getClass().getName());
+                                }
 
-                            if (tokenValue != null) {
-                                System.out.println("Перенаправление на фронтенд с токеном..."); // Логирование
-                                response.sendRedirect(frontendRedirectUri + "#access_token=" + tokenValue);
-                            } else {
-                                System.err.println("Токен не был получен, перенаправление с ошибкой."); // Логирование ошибки
-                                response.sendRedirect(frontendRedirectUri + "#error=token_missing");
+                                if (tokenValue == null && authentication.getPrincipal() instanceof OidcUser oidcUser) {
+                                    tokenValue = oidcUser.getIdToken().getTokenValue();
+                                }
+
+                                if (tokenValue != null) {
+                                    log.info("Перенаправление на фронтенд с токеном...");
+                                    finalRedirectUri = frontendRedirectUri + "#access_token=" + tokenValue;
+                                } else {
+                                    log.error("Токен не был получен для передачи фронтенду.");
+                                    finalRedirectUri = frontendRedirectUri + "#error=token_missing";
+                                }
+                            } catch (Exception e) {
+                                log.error("Исключение в successHandler: {}", e.getMessage(), e);
+                            } finally {
+                                try {
+                                    log.info("Выполняется редирект после логина на: {}", finalRedirectUri);
+                                    response.sendRedirect(finalRedirectUri);
+                                } catch (IOException ioException) {
+                                    log.error("Не удалось выполнить sendRedirect после логина: {}", ioException.getMessage(), ioException);
+                                }
                             }
                         })
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                        // Убедитесь, что ваш logoutSuccessHandler тоже внедрен или создан правильно
-                        // .logoutSuccessHandler(logoutSuccessHandler())
-                        .logoutSuccessHandler((request, response, authentication) -> {
-                            System.out.println("Выход выполнен, перенаправление на фронтенд..."); // Логирование
-                            response.sendRedirect(frontendRedirectUri);
-                        })
+                        // ----- ИСПОЛЬЗУЕМ ВНЕДРЕННЫЙ БИН -----
+                        .logoutSuccessHandler(oidcLogoutSuccessHandler)
                         .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
+                        .deleteCookies("SESSION")
+                        .clearAuthentication(true)
                 )
                 .build();
     }

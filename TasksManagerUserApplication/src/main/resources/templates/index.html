@@ -19,6 +19,7 @@
                 <ul>
                     <li><a href="/"><i class="fas fa-home"></i> Главная</a></li>
                     <li><a href="/create-project" class="btn-primary"><i class="fas fa-plus"></i> Создать проект</a></li>
+                    <li><a id="login_or_logout" href="#" onclick="handleLogout()">Выйти</a> </li>
                 </ul>
             </nav>
         </div>
@@ -54,7 +55,8 @@
 </div>
 
 <!-- Скрипты -->
-<script th:src="@{/js/projects.js}"></script>
+<script th:src="@{/js/projects.js}" type="module"></script>
+<script th:src="@{/js/auth_utils.js}" type="module"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
