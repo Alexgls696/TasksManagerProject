@@ -82,15 +82,16 @@ services:
 
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_IMPORT: ./realm-export.json
 
       KC_HTTP_ENABLED: 'true'     # Разрешаем HTTP для start-dev
       KC_HOSTNAME_STRICT: 'false' # Отключаем строгую проверку hostname для start-dev
 
-    command: [ "start-dev" ]
+    command: [ "start-dev", "--import realm" ]
     ports:
       - "8090:8080"
     volumes:
-      - ./my-realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
+      - ./realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
     depends_on:
       postgres-keycloak:
         condition: service_healthy

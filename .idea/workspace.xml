@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Изменена конфигурация контейнера keycloak">
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realm-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/realm-export.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +292,7 @@
       <workItem from="1743619384375" duration="765000" />
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
-      <workItem from="1743751981902" duration="21073000" />
+      <workItem from="1743751981902" duration="21798000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -444,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743771916883</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="1">
+      <option name="closed" value="true" />
+      <created>1743774235353</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1743774235353</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +475,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="1" />
     <MESSAGE value="2" />
     <MESSAGE value="Настроено добавление и удаление задач" />
     <MESSAGE value="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим." />
@@ -482,7 +491,8 @@
     <MESSAGE value="Миграции, безопасность, контейнеры" />
     <MESSAGE value="Добавлена конфигурация докер-файла" />
     <MESSAGE value="Изменена конфигурация контейнера keycloak" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменена конфигурация контейнера keycloak" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
