@@ -33,7 +33,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: AS04SERa1
       MONGO_INITDB_DATABASE: task_notes
     ports:
-      - "127.0.0.2:27017:27017"
+      - "127.0.0.1:27017:27017"
     volumes:
       - mongodb_data:/data/db
 
@@ -47,11 +47,11 @@ services:
     volumes:
       - tasks_catalogue:/var/lib/postgresql/data
     ports:
-      - "127.0.0.3:5433:5432"
+      - "127.0.0.1:5433:5432"
 
 
   postgres-keycloak:
-    image: postgres
+    image: postgres:16
     environment:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
