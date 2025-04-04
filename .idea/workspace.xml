@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Добавлена конфигурация докер-файла">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Изменена конфигурация контейнера keycloak" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -290,7 +288,7 @@
       <workItem from="1743619384375" duration="765000" />
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
-      <workItem from="1743751981902" duration="18297000" />
+      <workItem from="1743751981902" duration="18658000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -420,7 +418,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743769933300</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Изменена конфигурация контейнера keycloak">
+      <option name="closed" value="true" />
+      <created>1743770658334</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743770658334</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -457,7 +463,8 @@
     <MESSAGE value="Рабочая безопасность (вроде)" />
     <MESSAGE value="Миграции, безопасность, контейнеры" />
     <MESSAGE value="Добавлена конфигурация докер-файла" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена конфигурация докер-файла" />
+    <MESSAGE value="Изменена конфигурация контейнера keycloak" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменена конфигурация контейнера keycloak" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

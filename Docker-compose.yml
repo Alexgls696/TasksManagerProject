@@ -65,35 +65,37 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     environment:
-      DB_VENDOR: postgres
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_PASSWORD: password
+      # --- Переменные для подключения к БД (ИСПОЛЬЗУЕМ ТОЛЬКО KC_*) ---
+      KC_DB: postgres             # Тип БД
+      KC_DB_URL_HOST: postgres-keycloak # Имя сервиса БД (hostname)
+      KC_DB_URL_DATABASE: keycloak    # Имя БД
+      KC_DB_USERNAME: keycloak      # Пользователь БД
+      KC_DB_PASSWORD: password      # Пароль БД
+      # KC_DB_URL_PORT: 5432        # Порт БД (если не стандартный 5432)
+
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      # Для production используйте HTTPS:
-      # KC_HOSTNAME: your.domain.com
-      # KC_HTTP_ENABLED: false
-      # KC_PROXY: edge
-    command: [ "start-dev" ] # Для production используйте: ["start", "--optimized"]
+
+      KC_HTTP_ENABLED: 'true'     # Разрешаем HTTP для start-dev
+      KC_HOSTNAME_STRICT: 'false' # Отключаем строгую проверку hostname для start-dev
+
+    command: [ "start-dev" ]
     ports:
       - "8090:8080"
     volumes:
-      - ./realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
+      - ./my-realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
     depends_on:
-      - postgres-keycloak
+      postgres-keycloak:
+        condition: service_healthy
     networks:
       - keycloak-network
     restart: unless-stopped
 
   redis_session_store:
-    image: redis:7-alpine # Используйте стабильный тег, alpine - легковесный
-    container_name: redis-session-store # Имя контейнера (опционально)
-    hostname: redis # Имя хоста, которое используется в spring.redis.host
+    image: redis:7-alpine
+    container_name: redis-session-store )
+    hostname: redis
     ports:
-      # Открываем порт наружу (на хост), если нужно подключаться Redis клиентом для отладки
-      # Если доступ нужен только из других контейнеров, это не обязательно
       - "6379:6379"
     volumes:
       - redis_session_data:/data # <-- Том для персистентности данных Redis
