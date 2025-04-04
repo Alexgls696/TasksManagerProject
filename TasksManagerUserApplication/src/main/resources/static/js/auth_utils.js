@@ -84,3 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // console.warn("Auth Utils: Кнопка выхода не найдена на этой странице.");
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Ищем элемент по ID, который вы используете в HTML
+    const logoutLink = document.getElementById('login_or_logout'); // <--- Ищем правильный ID
+
+    if (logoutLink) {
+        // Привязываем функцию handleLogout к событию 'click'
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем стандартный переход по ссылке '#'
+            handleLogout();       // Вызываем нашу функцию
+        });
+        console.log("Обработчик выхода привязан к элементу #login_or_logout.");
+    } else {
+        console.warn("Auth Utils: Ссылка для выхода (#login_or_logout) не найдена на этой странице.");
+    }
+});
