@@ -16,9 +16,6 @@ public record NewUserPayload(
         @Size(min = 3,max = 30,message = "{validation.errors.username_size_error}")
         String username,
 
-        @Size(min = 6,max = 30,message = "{validation.errors.password_size_error}")
-        String password,
-
         @NotBlank(message = "{validation.errors.email_is_blank}")
         @EmailValidation(message = "{validation.errors.email_is_invalid}")
         String email

@@ -1,5 +1,6 @@
 package org.example.projectsservice.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,11 +34,13 @@ public class Project {
     private LocalDateTime creationDate;
     private LocalDateTime deadline;
 
+    @Column(name = "status_id")
+    private Integer statusId;
+
     @Transient
     private GetUserPayload creator;
 
-    @JoinColumn(name = "status_id")
-    @OneToOne
+    @Transient
     private ProjectStatus projectStatus; // ID статуса проекта
 
     @Transient
@@ -49,6 +52,7 @@ public class Project {
         creatorId= payload.creatorId();
         deadline= payload.deadline();
         creationDate=LocalDateTime.now();
+        statusId=1;
     }
 
     public void update(UpdateProjectPayload payload){
@@ -56,6 +60,7 @@ public class Project {
         description= payload.description();
         deadline= payload.deadline();
         projectStatus = payload.status();
+        statusId = payload.status().getId();
     }
 
 }

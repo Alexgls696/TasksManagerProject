@@ -19,11 +19,7 @@ public class User {
     private int id;
     private String name;
     private String surname;
-
     private String username;
-    private String password;
-
-    private String role;
     private String email;
 
     public User(NewUserPayload payload){
@@ -31,14 +27,12 @@ public class User {
         this.name = payload.name();
         this.surname = payload.surname();
         this.username = payload.username();
-        this.password = payload.password();
     }
 
     public void update(UpdateUserPayload payload){
         this.name = payload.name();
         this.surname = payload.surname();
         this.email = payload.email();
-        this.password = payload.password();
     }
 
 }

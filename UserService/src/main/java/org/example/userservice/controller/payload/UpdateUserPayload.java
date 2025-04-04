@@ -13,9 +13,6 @@ public record UpdateUserPayload(
         @Size(max = 50,message = "{validation.errors.surname_is_too_big}")
         String surname,
 
-        @Size(min = 6,max = 30,message = "{validation.errors.password_size_error}")
-        String password,
-
         @NotBlank(message = "{validation.errors.email_is_blank}")
         @EmailValidation(message = "{validation.errors.email_is_invalid}")
         String email

@@ -1,0 +1,15 @@
+volumes:
+  postgres_users_data:
+
+services:
+  postgres-users:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_users_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5436:5432"

@@ -5,6 +5,7 @@ server:
     session:
       cookie:
         path: /
+      timeout: 86400
 
 keycloak:
   auth-server-url: http://localhost:8090  # URL сервера Keycloak
@@ -46,6 +47,7 @@ spring:
 
   redis:
     session:
+      timeout: 86400 #24 часа
       store-type: redis
       redis:
         flush-mode: on_save

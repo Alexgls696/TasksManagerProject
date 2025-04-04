@@ -5,6 +5,7 @@ volumes:
   postgres_data:
   redis_session_data:
     driver: local
+  postgres_users_data:
 
 networks:
   keycloak-network:
@@ -49,6 +50,18 @@ services:
     ports:
       - "127.0.0.1:5433:5432"
 
+  postgres-users:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: users_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_users_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5436:5432"
+
 
   postgres-keycloak:
     image: postgres:16
@@ -64,10 +77,10 @@ services:
     healthcheck:
       # Команда для проверки готовности Postgres
       test: [ "CMD-SHELL", "pg_isready -U keycloak -d keycloak" ]
-      interval: 10s    # Как часто проверять
-      timeout: 5s     # Сколько ждать ответа
-      retries: 5      # Сколько раз повторить при неудаче перед тем, как считать нездоровым
-      # ------------------------------------
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest

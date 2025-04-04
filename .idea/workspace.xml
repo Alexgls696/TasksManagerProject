@@ -5,17 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="4">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0b52c3b3-bcd8-4c08-a141-0ef3fb4eb379.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca69dd8-2565-44fa-ae2f-8b031fad9e48.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/709260f5-7708-4845-933d-7228c034b933.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/Docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/create-users-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/fix-users-table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4510ae19-2c4a-41b6-be8b-57c12b878d47/storage_v2/_src_/database/tasks_db.z6Kb5w/schema/public.abK9xQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d030bb54-cedf-4477-a77c-6eeb57950d00.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d030bb54-cedf-4477-a77c-6eeb57950d00/storage_v2/_src_/database/projects_db.Y84IyA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d030bb54-cedf-4477-a77c-6eeb57950d00/storage_v2/_src_/database/projects_db.Y84IyA/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d030bb54-cedf-4477-a77c-6eeb57950d00/storage_v2/_src_/database/projects_db.Y84IyA/schema/public.abK9xQ.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realm-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/realm-export.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/TaskNotesServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/TaskNotesServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/NewUserPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/NewUserPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/UpdateUserPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/UpdateUserPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +77,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Alexgls696/TasksManagerProject.git&quot;,
-    &quot;accountId&quot;: &quot;09d82c74-2524-41c5-9281-20c68f1baea6&quot;
+    &quot;accountId&quot;: &quot;d7d25a6e-b81e-4aa5-97a7-7347f85c6f3b&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -75,20 +99,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
-    "Docker.Docker-compose.yml.keycloak: Compose Deployment.executor": "Run",
     "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
     "Docker.ProjectsService: Compose Deployment.executor": "Run",
     "Docker.SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment.executor": "Run",
     "Docker.SecurityService/docker-compose.yaml.redis_session_store: Compose Deployment.executor": "Run",
     "Docker.SecurityService/docker-compose.yaml: Compose Deployment.executor": "Run",
     "Docker.TaskNotesService/Docker-compose.yml.task_notes_mongo_db: Compose Deployment.executor": "Run",
+    "Docker.UserService/Docker-compose.yml: Compose Deployment.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Run",
+    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
     "Spring Boot.SecurityServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
@@ -114,8 +138,8 @@
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mongo",
-      "postgresql",
-      "redis"
+      "redis",
+      "postgresql"
     ]
   }
 }]]></component>
@@ -154,7 +178,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Docker.Docker-compose.yml.keycloak: Compose Deployment">
+  <component name="RunManager" selected="Spring Boot.ProjectsServiceApplication">
     <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="ProjectsService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
@@ -229,15 +253,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Docker-compose.yml.keycloak: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="UserService/Docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="keycloak" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="Docker-compose.yml" />
+          <option name="sourceFilePath" value="UserService/Docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
@@ -249,7 +268,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
+      <item itemvalue="Docker.UserService/Docker-compose.yml: Compose Deployment" />
       <item itemvalue="Spring Boot.SecurityServiceApplication" />
       <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
       <item itemvalue="Spring Boot.ProjectsServiceApplication" />
@@ -261,18 +280,18 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskServiceApplication" />
         <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
-        <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
+        <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Docker.UserService/Docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
       </set>
     </attachedChunks>
   </component>
@@ -302,8 +321,6 @@
       <workItem from="1743668286586" duration="12398000" />
       <workItem from="1743688243025" duration="9149000" />
       <workItem from="1743751981902" duration="22799000" />
-      <workItem from="1743777098272" duration="1249000" />
-      <workItem from="1743779345248" duration="1579000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -529,6 +546,17 @@
     <MESSAGE value="3" />
     <MESSAGE value="4" />
     <option name="LAST_COMMIT_MESSAGE" value="4" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

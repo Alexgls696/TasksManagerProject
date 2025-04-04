@@ -8,10 +8,12 @@ import org.example.projectsservice.controller.payload.NewProjectPayload;
 import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 import org.example.projectsservice.entity.Project;
 import org.example.projectsservice.entity.ProjectMembers;
+import org.example.projectsservice.entity.ProjectStatus;
 import org.example.projectsservice.entity.User;
 import org.example.projectsservice.exception.NoSuchProjectException;
 import org.example.projectsservice.repository.ProjectMembersRepository;
 import org.example.projectsservice.repository.ProjectRepository;
+import org.example.projectsservice.repository.ProjectStatusRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,15 +29,18 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final ProjectMembersRepository projectMembersRepository;
     private final UsersRestClient usersRestClient;
+    private final ProjectStatusRepository projectStatusRepository;
+
 
     @Override
     public Iterable<Project> findAll() {
-        Iterable<Project>projects = projectRepository.findAll();
-        return StreamSupport.stream(projects.spliterator(),false)
+        Iterable<Project> projects = projectRepository.findAll();
+        return StreamSupport.stream(projects.spliterator(), false)
                 .peek(project -> {
                     var user = usersRestClient.findUserById(project.getCreatorId())
-                            .orElseThrow(()-> new NoSuchElementException("User with id " + project.getCreatorId() + " not found"));
+                            .orElseThrow(() -> new NoSuchElementException("User with id " + project.getCreatorId() + " not found"));
                     project.setCreator(new GetUserPayload(user.getName(), user.getSurname()));
+                    project.setProjectStatus(projectStatusRepository.findById(project.getStatusId()).orElseThrow(() -> new NoSuchElementException("Project status not found")));
                 }).collect(Collectors.toList());
     }
 
@@ -44,14 +49,13 @@ public class ProjectServiceImpl implements ProjectService {
         Optional<Project> project = projectRepository.findById(id);
         Set<Integer> membersIds = projectMembersRepository.findAllUsersIdByProjectId(id);
         project.get().setMemberIds(membersIds);
+        project.get().setProjectStatus(projectStatusRepository.findById(project.get().getStatusId()).orElseThrow(() -> new NoSuchElementException("Project status not found")));
         return project;
     }
 
     @Override
     @Transactional
     public Project save(NewProjectPayload payload) {
-        User creator = usersRestClient.findUserById(payload.creatorId())
-                .orElseThrow(() -> new NoSuchElementException("User with id " + payload.creatorId() + "not found."));
         final Project project = projectRepository.save(new Project(payload));
         payload.membersId()
                 .forEach(memberId -> {
@@ -71,7 +75,7 @@ public class ProjectServiceImpl implements ProjectService {
         projectMembersRepository.deleteByProjectId(projectId);
 
         payload.membersId()
-                .forEach(id->{
+                .forEach(id -> {
                     ProjectMembers projectMembers = new ProjectMembers(project, id);
                     projectMembersRepository.save(projectMembers);
                 });

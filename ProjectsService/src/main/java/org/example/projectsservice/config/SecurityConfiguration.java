@@ -26,9 +26,11 @@ public class SecurityConfiguration {
         http
                 .csrf(CsrfConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET,"/task-manager-api/projects/**").hasAnyRole("USER","MANAGER") // Разрешить публичный доступ
+                        .requestMatchers(HttpMethod.GET,"/task-manager-api/projects/**").hasAnyRole("MANAGER","USER")
+                        .requestMatchers(HttpMethod.POST,"/task-manager-api/projects/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PATCH,"/task-manager-api/projects/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE,"/task-manager-api/projects/**").hasRole("MANAGER")// Разрешить публичный доступ
                         .anyRequest().denyAll()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
@@ -41,8 +43,7 @@ public class SecurityConfiguration {
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
-        // Указываем Spring Security использовать наш обновленный конвертер
-        jwtConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRealmRoleConverter()); // <--- Используем наш класс
+        jwtConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRealmRoleConverter());
         return jwtConverter;
     }
 

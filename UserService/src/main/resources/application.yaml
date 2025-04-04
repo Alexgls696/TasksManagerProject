@@ -3,6 +3,6 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/tasks_db
+    url: jdbc:postgresql://localhost:5436/users_db
     username: postgres
     password: admin

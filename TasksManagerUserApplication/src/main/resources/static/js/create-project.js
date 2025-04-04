@@ -1,3 +1,5 @@
+import { fetchWithAuth } from './auth_utils.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("create-project-form");
     const creatorSelect = document.getElementById("creator");
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8080/task-manager-api/users");
+        const response = await fetchWithAuth("/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Функция для создания проекта
     async function createProject(data) {
         try {
-            const response = await fetch("http://localhost:8080/task-manager-api/projects", {
+            const response = await fetchWithAuth("/task-manager-api/projects", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
