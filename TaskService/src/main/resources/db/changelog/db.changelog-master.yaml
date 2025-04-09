@@ -3,3 +3,7 @@ databaseChangeLog:
       file: db/changelog/changeset/0.0.1/initialize-database.sql
   - include:
       file: db/changelog/changeset/0.0.1/add_stored_function_changeset.sql
+  - include:
+      file: db/changelog/changeset/0.0.1/add_data_to_statuses.sql
+  - include:
+      file: db/changelog/changeset/0.0.1/add_data_to_categories.sql

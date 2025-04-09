@@ -1,3 +1,5 @@
+import { fetchWithAuth } from './auth_utils.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     // Получаем ID проекта из URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Функция для загрузки данных проекта
 async function loadProjectData(projectId) {
-    const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`);
+    const response = await fetchWithAuth(`/task-manager-api/projects/${projectId}`);
     if (!response.ok) {
         throw new Error("Ошибка при загрузке данных проекта");
     }
@@ -67,7 +69,7 @@ async function loadTasks(projectId) {
 
 // Функция для получения задач по ID проекта
 async function fetchTasksByProjectId(projectId) {
-    const response = await fetch(`http://localhost:8080/task-manager-api/tasks/by-project-id/${projectId}`);
+    const response = await fetchWithAuth(`/task-manager-api/tasks/by-project-id/${projectId}`);
     if (!response.ok) {
         throw new Error("Ошибка при загрузке задач");
     }
@@ -189,7 +191,7 @@ function confirmDeleteTask(taskId, taskElement) {
 // Удаление задачи
 async function deleteTask(taskId, taskElement) {
     try {
-        const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`, {
+        const response = await fetchWithAuth(`/task-manager-api/tasks/${taskId}`, {
             method: 'DELETE'
         });
 

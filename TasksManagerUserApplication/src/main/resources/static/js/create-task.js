@@ -1,8 +1,13 @@
+import { fetchWithAuth } from './auth_utils.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("create-task-form");
     const categorySelect = document.getElementById("category");
     const assigneeSelect = document.getElementById("assignee");
     const projectSelect = document.getElementById("project");
+
+    const creatorSelect = document.getElementById("creator");
+    const membersSelect = document.getElementById("members");
 
     // Загружаем данные для формы
     Promise.all([fetchCategories(), fetchUsers()])
@@ -23,12 +28,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки категорий
     async function fetchCategories() {
-        const response = await fetch("http://localhost:8080/task-manager-api/tasks/categories");
+        const response = await fetchWithAuth("/task-manager-api/tasks/categories");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке категорий");
         }
         return response.json();
     }
+
+    fetchUsers()
+        .then(users => {
+            fillSelect(creatorSelect, users, "name"); // Заполняем создателя
+            fillSelect(membersSelect, users, "name"); // Заполняем участников
+        })
+        .catch(error => {
+            console.error("Ошибка при загрузке данных:", error);
+            showError("Не удалось загрузить данные для формы.");
+        });
+
+    // Обработчик отправки формы
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        createProject(getFormData());
+    });
+
 
     // Функция для загрузки пользователей
     async function fetchUsers() {
@@ -67,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Функция для создания задачи
     async function createTask(data) {
         try {
-            const response = await fetch("http://localhost:8080/task-manager-api/tasks", {
+            console.log(data);
+            const response = await fetchWithAuth("/task-manager-api/tasks", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

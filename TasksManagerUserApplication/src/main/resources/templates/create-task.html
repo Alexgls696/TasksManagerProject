@@ -50,10 +50,12 @@
         </div>
 
         <div class="form-group">
-            <label for="assignee">Исполнитель:</label>
-            <select id="assignee" name="assigneeId" required>
-                <!-- Исполнители будут заполнены динамически -->
-            </select>
+            <label for="creator">Создатель</label>
+            <select id="creator" name="creator" required></select>
+        </div>
+        <div class="form-group">
+            <label for="members">Участники</label>
+            <select id="members" name="members" multiple></select>
         </div>
 
         <div class="form-group">
@@ -74,7 +76,7 @@
 </footer>
 
 <script th:src="@{/js/auth_utils.js}" type="module"></script>
-<script th:src="@{/js/create-task.js}"></script>
+<script th:src="@{/js/create-task.js}" type="module"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
