@@ -30,6 +30,5 @@ public record UpdateTaskPayload(
 
         @NotNull(message = "{validation.members_list_is_null}")
         List<Integer> membersId
-
 ) {
 }

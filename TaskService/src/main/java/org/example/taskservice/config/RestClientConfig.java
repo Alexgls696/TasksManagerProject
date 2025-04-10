@@ -50,13 +50,11 @@ public class RestClientConfig {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if (authentication != null && authentication.getCredentials() instanceof Jwt jwt) {
                 String token = jwt.getTokenValue();  // <-- Получаем реальный токен
-                System.out.println("Adding Authorization Header: Bearer " + token);
                 request.getHeaders().add("Authorization", "Bearer " + token);
             } else {
                 System.out.println("No authentication found, not adding Authorization header.");
             }
 
-            System.out.println("Final Headers: " + request.getHeaders());
             return execution.execute(request, body);
         }
 

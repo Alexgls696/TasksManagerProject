@@ -4,23 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="4">
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenRefreshController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Безопасность1">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenRefreshController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenRefreshController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_categories.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_statuses.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembers.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/TaskMembers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-task.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/login-callback.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/task-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/task-page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,11 +91,11 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Run",
+    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
     "Spring Boot.SecurityServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
-    "Spring Boot.TaskServiceApplication.executor": "Debug",
+    "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
@@ -427,7 +425,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743775449563</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Безопасность">
+      <option name="closed" value="true" />
+      <created>1744299077885</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1744299077885</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Безопасность1">
+      <option name="closed" value="true" />
+      <created>1744299106535</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1744299106535</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +480,9 @@
     <MESSAGE value="2" />
     <MESSAGE value="3" />
     <MESSAGE value="4" />
-    <option name="LAST_COMMIT_MESSAGE" value="4" />
+    <MESSAGE value="Безопасность" />
+    <MESSAGE value="Безопасность1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Безопасность1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

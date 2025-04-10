@@ -8,10 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -23,61 +22,50 @@ public class TokenRefreshController {
     private static final Logger log = LoggerFactory.getLogger(TokenRefreshController.class);
 
     private final OAuth2AuthorizedClientManager authorizedClientManager;
-    // OAuth2AuthorizedClientService нужен для явной проверки, если менеджер не справился сам
-    private final OAuth2AuthorizedClientService authorizedClientService;
 
-    public TokenRefreshController(OAuth2AuthorizedClientManager authorizedClientManager,
-                                  OAuth2AuthorizedClientService authorizedClientService) {
+
+    public TokenRefreshController(OAuth2AuthorizedClientManager authorizedClientManager) {
         this.authorizedClientManager = authorizedClientManager;
-        this.authorizedClientService = authorizedClientService;
     }
 
-    @PostMapping("/api/refresh-token") // Или другой путь по вашему выбору
+    @GetMapping("/api/refresh-token") // Убедитесь, что этот путь защищен (.requestMatchers("/api/refresh-token").authenticated())
     public ResponseEntity<?> refreshToken(Authentication authentication) {
-        log.info("Получен запрос на обновление токена для пользователя: {}", authentication.getName());
-
-        if (!(authentication instanceof OAuth2AuthenticationToken oauthToken)) {
-            log.warn("Пользователь не аутентифицирован через OAuth2, обновление невозможно.");
-            // Можно вернуть 401 или 403, в зависимости от логики
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", "User not authenticated via OAuth2"));
+        if (!(authentication instanceof OAuth2AuthenticationToken)) {
+            log.warn("Authentication is not an OAuth2AuthenticationToken: {}", authentication.getClass().getName());
+            return ResponseEntity.status(401).body(Map.of("error", "invalid_authentication"));
         }
 
+        OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
         String clientRegistrationId = oauthToken.getAuthorizedClientRegistrationId();
+        String principalName = oauthToken.getName();
 
-        // Попытка получить/обновить токен с помощью менеджера
+        // Создаем запрос на авторизацию (даже если просто для обновления)
+        // Передаем текущую аутентификацию и HTTP запрос/ответ (если нужны для контекста)
+        // Если вызывать ВНЕ HTTP-запроса, контекст нужно будет настроить в manager'е
         OAuth2AuthorizeRequest authorizeRequest = OAuth2AuthorizeRequest
                 .withClientRegistrationId(clientRegistrationId)
-                .principal(authentication) // Передаем текущую аутентификацию
+                .principal(authentication)
                 .build();
 
+        log.info("Attempting to refresh token for client '{}' and principal '{}'", clientRegistrationId, principalName);
+
+        // Пытаемся получить/обновить авторизованный клиент
+        // Менеджер сам использует Refresh Token, если Access Token истек
         OAuth2AuthorizedClient authorizedClient = this.authorizedClientManager.authorize(authorizeRequest);
 
         if (authorizedClient == null || authorizedClient.getAccessToken() == null) {
-            // Это может случиться, если Refresh Token истек или отозван
-            log.warn("Не удалось обновить токен для пользователя {}. Возможно, Refresh Token истек.", authentication.getName());
-
-            // Дополнительная проверка: пытаемся загрузить старый клиент, чтобы понять, был ли там refresh token
-            OAuth2AuthorizedClient oldClient = authorizedClientService.loadAuthorizedClient(clientRegistrationId, authentication.getName());
-            if (oldClient == null || oldClient.getRefreshToken() == null) {
-                log.warn("Refresh Token изначально отсутствовал для пользователя {}.", authentication.getName());
-            } else {
-                log.warn("Refresh Token присутствовал, но обновление не удалось. Истек или отозван?");
-            }
-
-            // Отправляем 401, чтобы фронтенд понял, что нужна полная переаутентификация
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", "refresh_failed", "error_description", "Unable to refresh access token. Please log in again."));
+            log.error("Could not refresh token for client '{}' and principal '{}'. Authorized client or access token is null.", clientRegistrationId, principalName);
+            // Возможно, Refresh Token истек или отозван
+            return ResponseEntity.status(401).body(Map.of("error", "refresh_failed", "message", "Could not obtain new access token. Please log in again."));
         }
 
         OAuth2AccessToken newAccessToken = authorizedClient.getAccessToken();
-        log.info("Токен успешно обновлен для пользователя {}", authentication.getName());
+        log.info("Successfully refreshed token for client '{}' and principal '{}'. New token expires at: {}",
+                clientRegistrationId, principalName, newAccessToken.getExpiresAt());
 
-        // Возвращаем НОВЫЙ Access Token фронтенду
-        return ResponseEntity.ok(Map.of(
-                "access_token", newAccessToken.getTokenValue(),
-                "expires_at", Objects.requireNonNull(newAccessToken.getExpiresAt()).toEpochMilli() // Время истечения в мс
-                // Можно добавить и другие данные, если нужно
+        // Возвращаем новый токен фронтенду
+        return ResponseEntity.ok(Map.of("access_token", newAccessToken.getTokenValue(),
+                "expires_at", Objects.requireNonNull(newAccessToken.getExpiresAt()).toEpochMilli() // Опционально: время истечения
         ));
     }
 }

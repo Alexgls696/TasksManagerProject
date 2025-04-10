@@ -1,3 +1,6 @@
+import { fetchWithAuth } from './auth_utils.js';
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("edit-task-form");
     const assigneeSelect = document.getElementById("assignee");
@@ -36,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки задачи
     async function fetchTask(taskId) {
-        const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`);
+        const response = await fetchWithAuth(`/task-manager-api/tasks/${taskId}`);
         if (!response.ok) {
             throw new Error("Ошибка при загрузке задачи");
         }
@@ -53,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchStatuses(){
-        const response = await fetch('http://localhost:8080/task-manager-api/tasks/statuses');
+        const response = await fetchWithAuth('/task-manager-api/tasks/statuses');
         if(!response.ok){
             throw new Error("Ошибка при загрузке статусов задачи");
         }
@@ -74,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let _statues ;
     fetchStatuses()
         .then(statuses => {
+            console.log(statuses);
             fillStatusSelect(statuses); // Заполняем выпадающий список статусами
             _statues = statuses;
         })
@@ -133,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function updateTask(taskId, data) {
         try {
-            const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`, {
+            const response = await fetchWithAuth(`/task-manager-api/tasks/${taskId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

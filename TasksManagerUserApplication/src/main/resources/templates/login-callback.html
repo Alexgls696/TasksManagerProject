@@ -32,8 +32,6 @@
         if (accessToken) {
             console.log("Токен доступа получен.");
             try {
-                // Сохраняем токен. sessionStorage - живет пока открыта вкладка/браузер.
-                // localStorage - живет дольше, но менее безопасно при XSS.
                 localStorage.setItem(storageKey, accessToken);
                 console.log("Токен сохранен в sessionStorage.");
 

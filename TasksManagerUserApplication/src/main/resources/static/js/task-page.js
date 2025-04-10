@@ -1,3 +1,5 @@
+import { fetchWithAuth } from './auth_utils.js';
+
 // Получаем ID задачи из URL
 const taskId = window.location.pathname.split('/').pop();
 
@@ -18,7 +20,7 @@ function formatDate(dateString) {
 async function fetchProject(projectId) {
     if (!projectId) return 'Не указан';
     try {
-        const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`);
+        const response = await fetchWithAuth(`/task-manager-api/projects/${projectId}`);
         if (!response.ok) {
             throw new Error('Ошибка при получении данных проекта');
         }
@@ -100,7 +102,7 @@ async function displayNotes(notes) {
 // Функция для получения данных задачи
 async function fetchTaskDetails(taskId) {
     try {
-        const response = await fetch(`http://localhost:8080/task-manager-api/tasks/${taskId}`);
+        const response = await fetchWithAuth(`/task-manager-api/tasks/${taskId}`);
         if (!response.ok) {
             throw new Error('Ошибка при получении данных задачи');
         }
@@ -181,7 +183,7 @@ async function addNote() {
         charCounter.textContent = noteContent.length;
     }
 
-    if (noteTitle.length > 50 || noteTitle.length > 3) {
+    if (noteTitle.length > 50 || noteTitle.length < 3) {
         alert('Заголовок заметки не должен превышать 50 символов и быть не короче 3 символов');
         return;
     }
