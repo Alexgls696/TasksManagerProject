@@ -8,7 +8,7 @@ create table if not exists statuses(
     status varchar(255)
 );
 
-insert into statuses(status) values ('Создан'),
+insert into statuses(status) values ('Создана'),
                                     ('В процессе'),
                                     ('Остановлена'),
                                     ('Завершена'),
