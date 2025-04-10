@@ -12,6 +12,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -51,14 +54,27 @@ public class SecurityConfiguration {
         @Override
         @SuppressWarnings("unchecked") // Подавляем предупреждение о непроверенном приведении типов
         public Collection<GrantedAuthority> convert(Jwt jwt) {
+            System.out.println("JWT claims: " + jwt.getClaims()); // Логируем все данные JWT
             final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().getOrDefault("realm_access", Collections.emptyMap());
             final List<String> roles = (List<String>) realmAccess.getOrDefault("roles", Collections.emptyList());
             return roles.stream()
-
                     .filter(roleName -> roleName != null && roleName.startsWith("ROLE_"))
                     .map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());
         }
     }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOriginPattern("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
+
 }
 

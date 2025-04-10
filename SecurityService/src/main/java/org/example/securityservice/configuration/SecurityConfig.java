@@ -19,14 +19,15 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.client.oidc.web.logout.OidcClientInitiatedLogoutSuccessHandler;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizedClientManager;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
@@ -70,6 +71,30 @@ public class SecurityConfig {
     }
 
     @Bean
+    public OAuth2AuthorizedClientManager authorizedClientManager(
+            ClientRegistrationRepository clientRegistrationRepository,
+            OAuth2AuthorizedClientRepository authorizedClientRepository) { // Репозиторий отвечает за сохранение/загрузку
+
+        // Создаем провайдеры для получения токенов
+        OAuth2AuthorizedClientProvider authorizedClientProvider =
+                OAuth2AuthorizedClientProviderBuilder.builder()
+                        .authorizationCode() // Для первоначального входа
+                        .refreshToken()      // <--- КЛЮЧЕВОЙ ПРОВАЙДЕР ДЛЯ ОБНОВЛЕНИЯ
+                        .build();
+
+        // Создаем менеджер
+        DefaultOAuth2AuthorizedClientManager authorizedClientManager =
+                new DefaultOAuth2AuthorizedClientManager(
+                        clientRegistrationRepository, authorizedClientRepository);
+        authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
+
+        // (Опционально) Контекст для обновления вне HTTP запроса (например, в фоновых задачах)
+        // authorizedClientManager.setContextAttributesMapper(request -> ...);
+
+        return authorizedClientManager;
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
             @Value("${frontend.redirect.uri}") String frontendRedirectUri,
@@ -89,8 +114,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/profile", "/user-info", "/logout").authenticated()
                         .requestMatchers("/manager").hasRole("MANAGER")
-                        .anyRequest().permitAll())
-                .oauth2Login(oauth2 -> oauth2
+                        .requestMatchers("/api/refresh-token").authenticated() // <--- РАЗРЕШАЕМ ДОСТУП
+                        .anyRequest().permitAll()
+                ).oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization/keycloak")
                         .userInfoEndpoint(userInfo -> userInfo
                                 .oidcUserService(oidcUserService)) // Используем внедренный бин

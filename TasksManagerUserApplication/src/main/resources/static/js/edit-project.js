@@ -1,3 +1,5 @@
+import { fetchWithAuth } from './auth_utils.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("edit-project-form");
     const statusSelect = document.getElementById("status");
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки проекта
     async function fetchProject(projectId) {
-        const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`);
+        const response = await fetchWithAuth(`/task-manager-api/projects/${projectId}`);
         if (!response.ok) {
             throw new Error("Ошибка при загрузке проекта");
         }
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки списка статусов
     async function fetchStatuses() {
-        const response = await fetch("http://localhost:8080/task-manager-api/projects/statuses");
+        const response = await fetchWithAuth("/task-manager-api/projects/statuses");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке статусов");
         }
@@ -120,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function updateProject(projectId, data) {
         try {
             console.log(data);
-            const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`, {
+            const response = await fetchWithAuth(`/task-manager-api/projects/${projectId}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

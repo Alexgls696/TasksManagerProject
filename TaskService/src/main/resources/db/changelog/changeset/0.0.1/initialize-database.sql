@@ -8,10 +8,17 @@ create table if not exists statuses(
     status varchar(255)
 );
 
+insert into statuses(status) values ('Создан'),
+                                    ('В процессе'),
+                                    ('Остановлена'),
+                                    ('Завершена'),
+                                    ('Срок выполнения истёк');
+
 create table if not exists task_categories(
     id integer primary key generated always as identity,
     name varchar(255)
 );
+insert into task_categories (name) values ('Работа'),('Учеба'),('Дом');
 
 create table if not exists tasks(
     id integer primary key generated always as identity,

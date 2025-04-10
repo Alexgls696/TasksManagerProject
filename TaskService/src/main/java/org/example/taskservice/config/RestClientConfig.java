@@ -11,7 +11,9 @@ import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.client.RestClient;
 
 import java.io.IOException;
@@ -23,7 +25,6 @@ public class RestClientConfig {
     public UsersRestClient usersRestClient(@Value("${services.user-service.url}") String url) {
         return new UsersRestClientImpl(RestClient
                 .builder()
-                .requestInterceptor(new JwtTokenInterceptor())
                 .baseUrl(url)
                 .build());
     }
@@ -33,15 +34,31 @@ public class RestClientConfig {
         return new ProjectsRestClientImpl(RestClient
                 .builder()
                 .baseUrl(url)
+                .requestInterceptor(new JwtTokenInterceptor())
                 .build());
+    }
+
+    @Bean
+    public JwtTokenInterceptor jwtTokenInterceptor() {
+        return new JwtTokenInterceptor();
     }
 
     public static class JwtTokenInterceptor implements ClientHttpRequestInterceptor {
         @Override
-        public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-            String jwt = SecurityContextHolder.getContext().getAuthentication().getCredentials().toString();
-            request.getHeaders().add("Authorization", "Bearer " + jwt);
+        public ClientHttpResponse intercept(HttpRequest request, byte[] body,
+                                            ClientHttpRequestExecution execution) throws IOException {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (authentication != null && authentication.getCredentials() instanceof Jwt jwt) {
+                String token = jwt.getTokenValue();  // <-- Получаем реальный токен
+                System.out.println("Adding Authorization Header: Bearer " + token);
+                request.getHeaders().add("Authorization", "Bearer " + token);
+            } else {
+                System.out.println("No authentication found, not adding Authorization header.");
+            }
+
+            System.out.println("Final Headers: " + request.getHeaders());
             return execution.execute(request, body);
         }
+
     }
 }

@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Удаление проекта
     async function deleteProject(projectId, projectElement) {
         try {
-            const response = await fetch(`http://localhost:8080/task-manager-api/projects/${projectId}`, {
+            const response = await fetchWithAuth(`/task-manager-api/projects/${projectId}`, {
                 method: 'DELETE'
             });
 

@@ -5,15 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const categorySelect = document.getElementById("category");
     const assigneeSelect = document.getElementById("assignee");
     const projectSelect = document.getElementById("project");
-
     const creatorSelect = document.getElementById("creator");
     const membersSelect = document.getElementById("members");
 
     // Загружаем данные для формы
     Promise.all([fetchCategories(), fetchUsers()])
-        .then(([categories, users, projects]) => {
+        .then(([categories, users]) => {
             fillSelect(categorySelect, categories, "name"); // Заполняем категории
-            fillSelect(assigneeSelect, users, "name"); // Заполняем исполнителей// Заполняем проекты
+            fillSelect(assigneeSelect, users, "name"); // Заполняем исполнителей
+            fillSelect(creatorSelect, users, "name"); // Заполняем создателей
+            fillSelect(membersSelect, users, "name", true); // Заполняем участников (множественный выбор)
         })
         .catch(error => {
             console.error("Ошибка при загрузке данных:", error);
@@ -35,36 +36,35 @@ document.addEventListener("DOMContentLoaded", function () {
         return response.json();
     }
 
-    fetchUsers()
-        .then(users => {
-            fillSelect(creatorSelect, users, "name"); // Заполняем создателя
-            fillSelect(membersSelect, users, "name"); // Заполняем участников
-        })
-        .catch(error => {
-            console.error("Ошибка при загрузке данных:", error);
-            showError("Не удалось загрузить данные для формы.");
-        });
-
-    // Обработчик отправки формы
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        createProject(getFormData());
-    });
-
-
     // Функция для загрузки пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8080/task-manager-api/users");
+        const response = await fetchWithAuth("http://localhost:8080/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
         return response.json();
     }
 
-    // Функция для загрузки проектов
-
     // Функция для заполнения выпадающего списка
-    function fillSelect(select, data, displayField) {
+    function fillSelect(select, data, displayField, isMultiple = false) {
+        if (!select) {
+            console.error(`Элемент select не найден: ${select?.id}`);
+            return;
+        }
+
+        // Очищаем существующие опции
+        select.innerHTML = '';
+
+        // Для не-множественного выбора добавляем пустую опцию
+        if (!isMultiple) {
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.textContent = "-- Выберите --";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            select.appendChild(defaultOption);
+        }
+
         data.forEach(item => {
             const option = document.createElement("option");
             option.value = item.id;
@@ -75,21 +75,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для получения данных из формы
     function getFormData() {
+        // Получаем выбранных участников
+        const membersOptions = Array.from(document.getElementById("members").selectedOptions);
+        const members = membersOptions.map(option => parseInt(option.value));
+
         return {
             title: document.getElementById("title").value,
             description: document.getElementById("description").value,
             priority: parseInt(document.getElementById("priority").value),
             deadline: document.getElementById("deadline").value,
             categoryId: parseInt(document.getElementById("category").value),
-            assigneeId: parseInt(document.getElementById("assignee").value),
-            projectId: parseInt(document.getElementById("project").value)
+            assigneeId: parseInt(document.getElementById("creator").value),
+            projectId: parseInt(document.getElementById("project").value),
+            creatorId: parseInt(document.getElementById("creator").value),
+            membersId: members
         };
     }
 
     // Функция для создания задачи
     async function createTask(data) {
         try {
-            console.log(data);
+            console.log("Отправляемые данные:", data);
             const response = await fetchWithAuth("/task-manager-api/tasks", {
                 method: "POST",
                 headers: {
@@ -99,15 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (!response.ok) {
-                throw new Error("Ошибка при создании задачи");
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Ошибка при создании задачи");
             }
 
             showSuccess("Задача успешно создана!", () => {
-                window.location.href = `/tasks?projectId=${data.projectId}`; // Перенаправляем на главную страницу
+                window.location.href = `/tasks?projectId=${data.projectId}`;
             });
         } catch (error) {
             console.error("Ошибка:", error);
-            showError("Не удалось создать задачу.");
+            showError(error.message || "Не удалось создать задачу.");
         }
     }
 

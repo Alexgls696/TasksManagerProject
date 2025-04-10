@@ -38,7 +38,7 @@ spring:
           keycloak:
             client-id: spring-auth-app
             client-secret: "CjOqCisDEx7nOLYJwqvDw5tLpPdlEqMl"
-            scope: openid,profile, email, view_projects, edit_projects, microprofile-jwt
+            scope: openid,profile, email, view_projects, edit_projects, microprofile-jwt, offline_access
             redirect-uri: "http://localhost:8080/login/oauth2/code/keycloak" # <--- ИЗМЕНЕНИЕ ЗДЕСЬ
         provider:
           keycloak:

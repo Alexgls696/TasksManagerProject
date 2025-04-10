@@ -5,22 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="4">
-      <change afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_project_statuses.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_categories.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_statuses.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenRefreshController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/add_data_to_statuses.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/edit-project.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +35,8 @@
         <option value="CSS File" />
         <option value="Record" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,11 +93,11 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsServiceApplication.executor": "Debug",
+    "Spring Boot.ProjectsServiceApplication.executor": "Run",
     "Spring Boot.SecurityServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
-    "Spring Boot.TaskServiceApplication.executor": "Run",
+    "Spring Boot.TaskServiceApplication.executor": "Debug",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
@@ -160,74 +160,13 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProjectsServiceApplication">
-    <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="ProjectsService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SecurityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="SecurityService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.securityservice.SecurityServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="TaskManagerApiGatewayService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskNotesServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="TaskNotesService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.tasknotesservice.TaskNotesServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.tasknotesservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.TaskServiceApplication">
     <configuration name="TaskServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="TaskService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskservice.TaskServiceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.taskservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TasksManager" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="TasksManagerUserApplication" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.tasksmanager.TasksManager" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.tasksmanager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="UserService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.userservice.UserServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.userservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -256,20 +195,11 @@
     </configuration>
     <list>
       <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
-      <item itemvalue="Spring Boot.SecurityServiceApplication" />
-      <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
-      <item itemvalue="Spring Boot.ProjectsServiceApplication" />
-      <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       <item itemvalue="Spring Boot.TaskServiceApplication" />
-      <item itemvalue="Spring Boot.TasksManager" />
-      <item itemvalue="Spring Boot.UserServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskServiceApplication" />
-        <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
         <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -537,27 +467,6 @@
     <MESSAGE value="3" />
     <MESSAGE value="4" />
     <option name="LAST_COMMIT_MESSAGE" value="4" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
