@@ -8,8 +8,6 @@ import org.example.projectsservice.controller.payload.NewProjectPayload;
 import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 import org.example.projectsservice.entity.Project;
 import org.example.projectsservice.entity.ProjectMembers;
-import org.example.projectsservice.entity.ProjectStatus;
-import org.example.projectsservice.entity.User;
 import org.example.projectsservice.exception.NoSuchProjectException;
 import org.example.projectsservice.repository.ProjectMembersRepository;
 import org.example.projectsservice.repository.ProjectRepository;
@@ -31,10 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final UsersRestClient usersRestClient;
     private final ProjectStatusRepository projectStatusRepository;
 
-
-    @Override
-    public Iterable<Project> findAll() {
-        Iterable<Project> projects = projectRepository.findAll();
+    public Iterable<Project>getProjectsWithUserInfo(Iterable<Project>projects){
         return StreamSupport.stream(projects.spliterator(), false)
                 .peek(project -> {
                     var user = usersRestClient.findUserById(project.getCreatorId())
@@ -42,6 +37,17 @@ public class ProjectServiceImpl implements ProjectService {
                     project.setCreator(new GetUserPayload(user.getName(), user.getSurname()));
                     project.setProjectStatus(projectStatusRepository.findById(project.getStatusId()).orElseThrow(() -> new NoSuchElementException("Project status not found")));
                 }).collect(Collectors.toList());
+    }
+    @Override
+    public Iterable<Project> findAll() {
+        Iterable<Project> projects = projectRepository.findAll();
+        return getProjectsWithUserInfo(projects);
+    }
+
+    @Override
+    public Iterable<Project> findAllByMemberId(Integer memberId) {
+        Iterable<Project> projects = projectRepository.findAllByMemberId(memberId);
+        return getProjectsWithUserInfo(projects);
     }
 
     @Override

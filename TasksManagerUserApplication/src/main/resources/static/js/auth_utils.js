@@ -220,7 +220,7 @@ async function getUserProfile() {
 // --- Инициализация обработчика кнопки выхода ---
 document.addEventListener("DOMContentLoaded", function () {
     // Используйте селектор, который точно соответствует вашей кнопке/ссылке выхода
-    const logoutElement = document.querySelector('#logout-button') || document.querySelector('a[href="/logout"]'); // Пример селекторов
+    const logoutElement = document.getElementById('exit-button') // Пример селекторов
     if (logoutElement) {
         logoutElement.addEventListener('click', function(event) {
             event.preventDefault(); // Предотвращаем стандартный переход по ссылке, если это <a>

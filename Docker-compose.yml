@@ -61,6 +61,8 @@ services:
       - postgres_users_data:/var/lib/postgresql/data
     ports:
       - "127.0.0.1:5436:5432"
+    networks:
+      - keycloak-network
 
 
   postgres-keycloak:
@@ -83,7 +85,7 @@ services:
 
 
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:26.1.4
     environment:
       # --- Переменные для подключения к БД (ИСПОЛЬЗУЕМ ТОЛЬКО KC_*) ---
       KC_DB: postgres             # Тип БД
@@ -101,6 +103,10 @@ services:
       KC_HTTP_ENABLED: 'true'     # Разрешаем HTTP для start-dev
       KC_HOSTNAME_STRICT: 'false' # Отключаем строгую проверку hostname для start-dev
 
+      EXTERNAL_DB_URL: "jdbc:postgresql://postgres-users:5432/users_db"
+      EXTERNAL_DB_USER: "postgres"
+      EXTERNAL_DB_PASSWORD: "admin"
+
     command:
       - start-dev
       -  --import-realm
@@ -108,6 +114,7 @@ services:
       - "8090:8080"
     volumes:
       - ./realm-export.json:/opt/keycloak/data/import/realm-config.json:ro
+      - ./RegistrationEventListener.jar:/opt/keycloak/providers/RegistrationEventListener.jar
     depends_on:
       postgres-keycloak:
         condition: service_healthy
