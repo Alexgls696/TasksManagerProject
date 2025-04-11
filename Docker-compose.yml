@@ -87,14 +87,11 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.1.4
     environment:
-      # --- Переменные для подключения к БД (ИСПОЛЬЗУЕМ ТОЛЬКО KC_*) ---
       KC_DB: postgres             # Тип БД
-      KC_DB_URL_HOST: postgres-keycloak # Имя сервиса БД (hostname)
-      KC_DB_URL_DATABASE: keycloak    # Имя БД
-      KC_DB_USERNAME: keycloak      # Пользователь БД
-      KC_DB_PASSWORD: password      # Пароль БД
-      # KC_DB_URL_PORT: 5432        # Порт БД (если не стандартный 5432)
-
+      KC_DB_URL_HOST: postgres-keycloak
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KEYCLOAK_IMPORT: ./realm-config.json
@@ -107,9 +104,11 @@ services:
       EXTERNAL_DB_USER: "postgres"
       EXTERNAL_DB_PASSWORD: "admin"
 
+
     command:
       - start-dev
       -  --import-realm
+      -  --log-level=DEBUG
     ports:
       - "8090:8080"
     volumes:

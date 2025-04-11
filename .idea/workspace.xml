@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Правильно настроены сессии">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="restart: always для redis">
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/create_many_to_many_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/resources/db/changelog/changeset/0.0.1/initialize-database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/create-users-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/create-users-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/fix-users-table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegistrationEventListener.jar" beforeDir="false" afterPath="$PROJECT_DIR$/RegistrationEventListener.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realm-export.json" beforeDir="false" afterPath="$PROJECT_DIR$/realm-export.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,10 +235,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
         <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
         <item itemvalue="Spring Boot.SecurityServiceApplication" />
+        <item itemvalue="Spring Boot.TasksManager" />
       </list>
     </recent_temporary>
   </component>
@@ -286,7 +280,7 @@
       <workItem from="1743779345248" duration="1579000" />
       <workItem from="1744117416299" duration="455000" />
       <workItem from="1744200762571" duration="4876000" />
-      <workItem from="1744359142873" duration="3664000" />
+      <workItem from="1744359142873" duration="11322000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -496,7 +490,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744302484676</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Автосоздание пользователя во внешней БД при регистрации в Keycloak">
+      <option name="closed" value="true" />
+      <created>1744362983421</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1744362983421</updated>
+    </task>
+    <task id="LOCAL-00028" summary="restart: always для redis">
+      <option name="closed" value="true" />
+      <created>1744363225614</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1744363225614</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +548,9 @@
     <MESSAGE value="Безопасность" />
     <MESSAGE value="Безопасность1" />
     <MESSAGE value="Правильно настроены сессии" />
-    <option name="LAST_COMMIT_MESSAGE" value="Правильно настроены сессии" />
+    <MESSAGE value="Автосоздание пользователя во внешней БД при регистрации в Keycloak" />
+    <MESSAGE value="restart: always для redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="restart: always для redis" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
