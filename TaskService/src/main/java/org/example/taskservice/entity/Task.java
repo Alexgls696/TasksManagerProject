@@ -9,6 +9,7 @@ import org.example.taskservice.controller.payload.NewTaskPayload;
 import org.example.taskservice.controller.payload.UpdateTaskPayload;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tasks")
@@ -41,8 +42,6 @@ public class Task {
     @OneToOne
     private Category category;
 
-    @Column(name = "assignee_id")
-    private Integer assigneeId; //Кому назначена задача
 
     @Column(name = "creator_id")
     private Integer creatorId;
@@ -50,10 +49,9 @@ public class Task {
     @Column(name = "project_id")
     private Integer projectId;
 
-
-
+    @Transient
+    private List<Integer> membersId;
     private transient Project project;
-    private transient User assignee;
     private transient User creator;
 
     public Task(NewTaskPayload payload) {

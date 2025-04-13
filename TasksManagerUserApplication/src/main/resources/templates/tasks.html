@@ -16,8 +16,12 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a id="back-to-projects" href="/index"><i class="fas fa-arrow-left"></i> Назад к проектам</a></li>
-                    <li><a href="/index"><i class="fas fa-home"></i> Главная</a></li>
+                    <!-- Левая часть -->
+                    <li><a href="/"><i class="fas fa-home"></i> Главная</a></li>
+
+                    <!-- Правая часть -->
+                    <li class="right-aligned"><a id="exit-button" href="#"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
+                    <li class="right-aligned"><a href="/profile" class="nav-link active"><i class="fas fa-user"></i> Профиль</a></li>
                 </ul>
             </nav>
         </div>
@@ -39,7 +43,7 @@
                 <!-- Задачи будут добавляться динамически -->
                 <div class="empty-tasks">
                     <i class="fas fa-tasks"></i>
-                    <p>Нет задач в этом проекте</p>
+                    <p>Вы пока не участвуете ни в одной из задач</p>
                 </div>
             </div>
         </section>

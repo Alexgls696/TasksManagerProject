@@ -1,4 +1,4 @@
-package org.example.projectsservice.config;
+package org.example.userservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,10 +30,10 @@ public class SecurityConfiguration {
                 .csrf(CsrfConfigurer::disable)
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET,"/task-manager-api/projects/**").hasAnyRole("MANAGER","USER")
-                        .requestMatchers(HttpMethod.POST,"/task-manager-api/projects/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PATCH,"/task-manager-api/projects/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE,"/task-manager-api/projects/**").hasRole("MANAGER")// Разрешить публичный доступ
+                        .requestMatchers(HttpMethod.GET,"/task-manager-api/users/**").hasAnyRole("MANAGER","USER")
+                        .requestMatchers(HttpMethod.POST,"/task-manager-api/users/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PATCH,"/task-manager-api/users/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE,"/task-manager-api/users/**").hasRole("MANAGER")// Разрешить публичный доступ
                         .anyRequest().denyAll()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
@@ -54,7 +54,6 @@ public class SecurityConfiguration {
         @Override
         @SuppressWarnings("unchecked") // Подавляем предупреждение о непроверенном приведении типов
         public Collection<GrantedAuthority> convert(Jwt jwt) {
-            //System.out.println("JWT claims: " + jwt.getClaims()); // Логируем все данные JWT
             final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().getOrDefault("realm_access", Collections.emptyMap());
             final List<String> roles = (List<String>) realmAccess.getOrDefault("roles", Collections.emptyList());
             return roles.stream()
@@ -77,4 +76,3 @@ public class SecurityConfiguration {
     }
 
 }
-

@@ -7,6 +7,7 @@ import org.example.projectsservice.entity.Project;
 import org.example.projectsservice.exception.NoSuchProjectException;
 import org.example.projectsservice.service.ProjectService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class ProjectController {
         return projectService.findById(id).orElseThrow(()->new NoSuchProjectException("Project with id " + id + " not found"));
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @PatchMapping
     public ResponseEntity<Void> updateProject(@PathVariable int id, @Valid @RequestBody UpdateProjectPayload payload, BindingResult bindingResult)  throws BindException {
         if(bindingResult.hasErrors()) {
@@ -38,6 +40,7 @@ public class ProjectController {
         }
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @DeleteMapping
     public ResponseEntity<Void> deleteProject(@PathVariable int id) {
         projectService.deleteById(id);

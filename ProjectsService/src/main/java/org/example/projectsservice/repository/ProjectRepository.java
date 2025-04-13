@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProjectRepository extends CrudRepository<Project,Integer> {
-    @Query(nativeQuery = true,value = "select * from getprojectbyuserid(:memberId)")
+    @Query(nativeQuery = true,value = "select * from getprojectsbymemberid(:memberId)")
     Iterable<Project>findAllByMemberId(@Param("memberId")int memberId);
 }

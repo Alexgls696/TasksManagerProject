@@ -25,9 +25,6 @@ public record UpdateTaskPayload(
         @NotNull(message = "{validation.task.deadline_is_null}")
         LocalDateTime deadline,
 
-        @NotNull(message = "{validation.task.assignee_is_null}")
-        Integer assigneeId, //Кому назначена задача
-
         @NotNull(message = "{validation.members_list_is_null}")
         List<Integer> membersId
 ) {

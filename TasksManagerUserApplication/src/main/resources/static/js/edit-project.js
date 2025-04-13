@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки списка пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8080/task-manager-api/users");
+        const response = await fetchWithAuth("/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }

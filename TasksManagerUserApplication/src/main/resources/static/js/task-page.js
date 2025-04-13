@@ -69,7 +69,7 @@ async function displayNotes(notes) {
     const notesWithCreators = await Promise.all(notes.map(async note => {
         try {
             // Загружаем данные создателя заметки
-            const response = await fetch(`http://localhost:8080/task-manager-api/users/${note.creatorId}/initials`);
+            const response = await fetchWithAuth(`/task-manager-api/users/${note.creatorId}/initials`);
             if (!response.ok) {
                 throw new Error('Ошибка при загрузке данных пользователя');
             }
@@ -99,6 +99,24 @@ async function displayNotes(notes) {
     });
 }
 
+async function displayMembers(membersIds) {
+    const membersList = document.getElementById('task-members');
+    membersList.innerHTML = '';
+
+    for (const memberId of membersIds) {
+        try {
+            const user = await fetchWithAuth(`/task-manager-api/users/${memberId}`);
+            const data = await user.json();
+            console.log(data);
+            const memberItem = document.createElement('li');
+            memberItem.textContent = `${data.username} (${data.name} ${data.surname})`;
+            membersList.appendChild(memberItem);
+        } catch (error) {
+            console.error(`Ошибка при загрузке пользователя ${memberId}:`, error);
+        }
+    }
+}
+
 // Функция для получения данных задачи
 async function fetchTaskDetails(taskId) {
     try {
@@ -107,7 +125,9 @@ async function fetchTaskDetails(taskId) {
             throw new Error('Ошибка при получении данных задачи');
         }
         const task = await response.json();
+        console.log(task);
 
+        await displayMembers(task.membersId);
         // Заполняем поля на странице
         const backLink = document.getElementById('back-to-task-list');
         if (backLink && task.projectId) {
@@ -155,8 +175,8 @@ async function fetchTaskDetails(taskId) {
         document.getElementById('task-category').textContent = task.category?.name || 'Не указана';
 
         // Люди
-        document.getElementById('task-assignee').textContent = task.assignee ?
-            `${task.assignee.name} ${task.assignee.surname}` : 'Не назначен';
+
+
         document.getElementById('task-creator').textContent = task.creator ?
             `${task.creator.name} ${task.creator.surname}` : 'Не указан';
 

@@ -29,6 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final UsersRestClient usersRestClient;
     private final ProjectStatusRepository projectStatusRepository;
 
+
     public Iterable<Project>getProjectsWithUserInfo(Iterable<Project>projects){
         return StreamSupport.stream(projects.spliterator(), false)
                 .peek(project -> {
@@ -45,9 +46,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Iterable<Project> findAllByMemberId(Integer memberId) {
-        Iterable<Project> projects = projectRepository.findAllByMemberId(memberId);
-        return getProjectsWithUserInfo(projects);
+    public Iterable<Project> findAllByCurrentUser(String username) {
+        var user = usersRestClient.findUserByUsername(username).orElseThrow(() -> new NoSuchElementException("User with name " + username + " not found"));
+        return projectRepository.findAllByMemberId(user.getId());
     }
 
     @Override

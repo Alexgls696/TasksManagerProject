@@ -25,6 +25,7 @@ public class RestClientConfig {
     public UsersRestClient usersRestClient(@Value("${services.user-service.url}") String url) {
         return new UsersRestClientImpl(RestClient
                 .builder()
+                .requestInterceptor(new JwtTokenInterceptor())
                 .baseUrl(url)
                 .build());
     }

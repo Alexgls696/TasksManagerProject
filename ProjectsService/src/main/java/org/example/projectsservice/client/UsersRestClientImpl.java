@@ -7,6 +7,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class UsersRestClientImpl implements UsersRestClient {
     private final RestClient restClient;
 
     private static final ParameterizedTypeReference<Iterable<User>>PARAMETERIZED_TYPE_REFERENCE = new ParameterizedTypeReference<>() {};
+
     @Override
     public Iterable<User> findAllUsers() {
         return restClient
@@ -34,5 +36,14 @@ public class UsersRestClientImpl implements UsersRestClient {
         }catch (HttpClientErrorException.NotFound exception){
             return Optional.empty();
         }
+    }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return Optional.ofNullable(restClient
+                .get()
+                .uri("task-manager-api/users/by-username/{username}", username)
+                .retrieve()
+                .body(User.class));
     }
 }

@@ -14,6 +14,11 @@ public class PagesController {
         return "index";
     }
 
+    @RequestMapping("/profile")
+    public String profile() {
+        return "profile";
+    }
+
     @RequestMapping("/edit-task")
     public String editTaskPage(@RequestParam("id") int id) {
         return "edit-task";

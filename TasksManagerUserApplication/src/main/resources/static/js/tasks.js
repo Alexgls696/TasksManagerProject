@@ -85,7 +85,7 @@ function displayTasks(tasks) {
         tasksList.innerHTML = `
             <div class="empty-tasks">
                 <i class="fas fa-tasks"></i>
-                <p>Нет задач в этом проекте</p>
+                <p>Вы пока не участвуете ни в одной из задач</p>
             </div>
         `;
         return;

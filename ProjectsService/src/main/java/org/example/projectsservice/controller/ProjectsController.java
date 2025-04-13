@@ -11,12 +11,12 @@ import org.example.projectsservice.service.ProjectStatusService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.security.Principal;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -34,12 +34,15 @@ public class ProjectsController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/by-user-id")
-    public Iterable<Project> getAllProjectsByUserId(Authentication authentication) {
-        System.out.println(authentication);
-        return projectService.findAllByMemberId(0);
+    @GetMapping("/by-user")
+    public Iterable<Project> getAllProjectsByCurrentUser(Authentication authentication) {
+        JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
+        Map<String,Object> attributes = jwtAuthenticationToken.getTokenAttributes();
+        String username = (String)attributes.get("preferred_username");
+        return projectService.findAllByCurrentUser(username);
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @PostMapping
     public ResponseEntity<Project> createProject(@Valid @RequestBody NewProjectPayload payload, BindingResult bindingResult, UriComponentsBuilder uriBuilder) throws BindException {
         if(bindingResult.hasErrors()) {

@@ -37,17 +37,14 @@ public class TaskServiceImpl implements TaskService {
     public Iterable<Task> findAllByProjectId(Integer projectId) {
         return taskRepository.findAllByProjectId(projectId)
                 .stream()
-                .peek(task->{
+                .peek(task -> {
                     var project = projectsRestClient.findProjectById(task.getProjectId())
-                            .orElseThrow(()->new NoSuchElementException("Project with id " + task.getProjectId() + " not found"));
+                            .orElseThrow(() -> new NoSuchElementException("Project with id " + task.getProjectId() + " not found"));
 
-                    var assignee = usersRestClient.findUserById(task.getAssigneeId())
-                            .orElseThrow(()->new NoSuchElementException("User with id " + task.getAssigneeId() + " not found"));
 
-                    var creator =  usersRestClient.findUserById(project.getCreatorId())
-                            .orElseThrow(()->new NoSuchElementException("User with id " + task.getCreatorId() + " not found"));
+                    var creator = usersRestClient.findUserById(project.getCreatorId())
+                            .orElseThrow(() -> new NoSuchElementException("User with id " + task.getCreatorId() + " not found"));
 
-                    task.setAssignee(assignee);
                     task.setCreator(creator);
                     task.setProject(project);
                 })
@@ -55,19 +52,27 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Iterable<Task> findAllByProjectIdAndMemberId(Integer projectId, Integer memberId) {
+        var tasksByProjectId = taskRepository.findAllByProjectId(projectId);
+        var tasksByUserId = taskMembersRepository.findAllTaskIdsByUserId(memberId);
+        return tasksByProjectId
+                .stream()
+                .filter(task -> tasksByUserId.contains(task.getId()))
+                .toList();
+    }
+
+    @Override
     public Optional<Task> findById(int id) {
         var task = taskRepository.findById(id)
-                .orElseThrow(()->new NoSuchTaskException("Task with id " + id + " not found"));
+                .orElseThrow(() -> new NoSuchTaskException("Task with id " + id + " not found"));
         var project = projectsRestClient.findProjectById(task.getProjectId())
-                .orElseThrow(()->new NoSuchElementException("Project with id " + task.getProjectId() + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Project with id " + task.getProjectId() + " not found"));
 
-        var assignee = usersRestClient.findUserById(task.getAssigneeId())
-                .orElseThrow(()->new NoSuchElementException("User with id " + task.getAssigneeId() + " not found"));
+        var creator = usersRestClient.findUserById(project.getCreatorId())
+                .orElseThrow(() -> new NoSuchElementException("User with id " + task.getCreatorId() + " not found"));
 
-        var creator =  usersRestClient.findUserById(project.getCreatorId())
-                .orElseThrow(()->new NoSuchElementException("User with id " + task.getCreatorId() + " not found"));
-
-        task.setAssignee(assignee);
+        var membersIds = taskMembersRepository.findMembersIdsByTaskId(id);
+        task.setMembersId(membersIds);
         task.setCreator(creator);
         task.setProject(project);
         return Optional.of(task);
@@ -77,22 +82,18 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void update(int id, UpdateTaskPayload payload) {
         var task = taskRepository.findById(id)
-                .orElseThrow(()->new NoSuchTaskException("Task with id " + id + " not found"));
+                .orElseThrow(() -> new NoSuchTaskException("Task with id " + id + " not found"));
         var status = taskStatusRepository.findById(payload.statusId())
-                .orElseThrow(()->new NoSuchElementException("Status with id " + payload.statusId() + " not found"));
-        var assignee = usersRestClient.findUserById(payload.assigneeId())
-                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Status with id " + payload.statusId() + " not found"));
 
         task.update(payload);
         task.setStatus(status);
-        task.setAssignee(assignee);
 
-        task.setAssigneeId(payload.assigneeId());
+        taskMembersRepository.deleteAllByTaskId(id);
 
-        taskMembersRepository.deleteByTaskId(id);
         payload.membersId()
-                .forEach(userId->{
-                    TaskMembers taskMembers = new TaskMembers(task,userId);
+                .forEach(userId -> {
+                    TaskMembers taskMembers = new TaskMembers(task, userId);
                     taskMembersRepository.save(taskMembers);
                 });
         taskRepository.save(task);
@@ -100,49 +101,44 @@ public class TaskServiceImpl implements TaskService {
 
     @Transactional
     @Override
-    public Task save(NewTaskPayload payload) {
-        User creator = usersRestClient.findUserById(payload.assigneeId())
-                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
-
-        User assignee =usersRestClient.findUserById(payload.assigneeId())
-                .orElseThrow(()->new NoSuchElementException("User with id " + payload.assigneeId() + " not found"));
+    public Task save(NewTaskPayload payload, String username) {
+        User creator = usersRestClient.findUserByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("User " + username + " not found"));
 
         Project project = projectsRestClient.findProjectById(payload.projectId())
-                .orElseThrow(()->new NoSuchElementException("Project with id " + payload.projectId() + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Project with id " + payload.projectId() + " not found"));
 
         Category category = categoryRepository.findById(payload.categoryId())
-                .orElseThrow(()->new NoSuchElementException("Category with id " + payload.categoryId() + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Category with id " + payload.categoryId() + " not found"));
 
         var status = taskStatusRepository.findById(1)
-                .orElseThrow(()->new NoSuchElementException("Status with id " + 1 + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Status with id " + 1 + " not found"));
 
         Task task = new Task(payload);
-        task.setAssignee(assignee);
+        task.setCreatorId(creator.getId());
         task.setProject(project);
         task.setCategory(category);
         task.setCreator(creator);
         task.setStatus(status);
 
-        task.setAssigneeId(payload.assigneeId());
         task.setProjectId(payload.projectId());
-        task.setCreatorId(payload.assigneeId());
 
+        Task added =  taskRepository.save(task);
         payload.membersId()
-                .forEach(id->{
-                    TaskMembers taskMembers = new TaskMembers(task,id);
+                .forEach(userId -> {
+                    TaskMembers taskMembers = new TaskMembers(task, userId);
                     taskMembersRepository.save(taskMembers);
                 });
-
-        return taskRepository.save(task);
+        return added;
     }
 
     @Transactional
     @Override
     public void deleteById(int id) throws NoSuchTaskException {
-        if(taskRepository.existsById(id)) {
+        if (taskRepository.existsById(id)) {
             taskRepository.deleteById(id);
-        }
-        else {
+            taskMembersRepository.deleteAllByTaskId(id);
+        } else {
             throw new NoSuchTaskException("No such task with id " + id);
         }
     }

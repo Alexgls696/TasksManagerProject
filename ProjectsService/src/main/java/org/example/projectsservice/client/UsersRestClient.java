@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface UsersRestClient {
     Iterable<User>findAllUsers();
+    Optional<User>findUserByUsername(String username);
     Optional<User> findUserById(int id);
 }

@@ -8,6 +8,7 @@ import org.example.taskservice.entity.User;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public record NewTaskPayload(
 
@@ -27,9 +28,6 @@ public record NewTaskPayload(
 
         @NotNull(message = "{validation.task.category_is_null}")
         Integer categoryId,
-
-        @NotNull(message = "{validation.task.assignee_is_null}")
-        Integer assigneeId,
 
         @NotNull(message = "{validation.task.project_is_null}")
         Integer projectId,

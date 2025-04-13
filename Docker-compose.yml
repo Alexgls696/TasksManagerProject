@@ -122,7 +122,6 @@ services:
     restart: unless-stopped
 
   redis_session_store:
-    restart: always
     image: redis:7-alpine
     container_name: redis-session-store
     hostname: redis

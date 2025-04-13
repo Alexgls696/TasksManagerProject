@@ -1,9 +1,9 @@
 import { fetchWithAuth } from './auth_utils.js';
 //-----------------------------------------------------------------------------------------------------------------------
 
+let access = false;
 document.addEventListener("DOMContentLoaded", function () {
     // Загружаем проекты
-    loadProjects();
 
     // Функция для загрузки проектов
     async function loadProjects() {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для получения проектов
     async function fetchProjects() {
-        const response = await fetchWithAuth("/task-manager-api/projects"); //await fetch("http://localhost:8080/task-manager-api/projects");
+        const response = await fetchWithAuth("/task-manager-api/projects/by-user"); //await fetch("http://localhost:8080/task-manager-api/projects");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке проектов");
         }
@@ -79,6 +79,34 @@ document.addEventListener("DOMContentLoaded", function () {
         // Назначаем обработчики для кнопок
         setupProjectActions();
     }
+
+    async function getUserInfo(){
+        const response = await fetchWithAuth('/security/user-info');
+        if(!response.ok){
+            console.error('Ошибка выполнения запроса пользователя');
+        }
+        if(response.status===401){
+            console.log('Ошибка, вы не авторизованы');
+            access = false;
+            return null;
+        }
+        if (response.status===403){
+            console.log('У вас нет прав для выполнения данной операции');
+            access = false;
+            return null;
+        }
+        return await response.json();
+    }
+
+    function checkPermission(roles){
+        for(let i = 0; i < roles.length; i++){
+            if(roles[i]==='ROLE_MANAGER'){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     // Функция для форматирования даты
     function formatDate(dateString) {
@@ -191,4 +219,21 @@ document.addEventListener("DOMContentLoaded", function () {
             confirmButtonText: 'ОК'
         });
     }
+
+
+    function hideHiddenElements(){
+        document.getElementById('create-project-button').style.display = 'none';
+
+        const editButtons = document.querySelectorAll('.btn-edit');
+        const removeButtons = document.querySelectorAll('.btn-delete');
+        editButtons.forEach(button=>{button.style.display='none'});
+        removeButtons.forEach(button=>{button.style.display='none'});
+    }
+
+    (async ()=>{
+        await loadProjects();
+        const userInfo = await getUserInfo();
+        const permission = checkPermission(userInfo.roles);
+        if(!permission) hideHiddenElements();
+    })();
 });

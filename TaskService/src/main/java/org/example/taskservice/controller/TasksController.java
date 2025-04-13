@@ -9,6 +9,8 @@ import org.example.taskservice.entity.Task;
 import org.example.taskservice.service.CategoryService;
 import org.example.taskservice.service.TaskService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +36,7 @@ public class TasksController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@Valid @RequestBody NewTaskPayload taskPayload, BindingResult bindingResult, UriComponentsBuilder builder) throws BindException {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody NewTaskPayload taskPayload, BindingResult bindingResult, UriComponentsBuilder builder, Authentication authentication) throws BindException {
         if (bindingResult.hasErrors()) {
             if (bindingResult instanceof BindException exception) {
                 throw exception;
@@ -42,7 +44,10 @@ public class TasksController {
                 throw new BindException(bindingResult);
             }
         } else {
-            Task created = taskService.save(taskPayload);
+            JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
+            Map<String,Object> attributes = jwtAuthenticationToken.getTokenAttributes();
+            String username = (String)attributes.get("preferred_username");
+            Task created = taskService.save(taskPayload,username);
             return ResponseEntity
                     .created(builder
                             .replacePath("task-manager-api/tasks/{id}")

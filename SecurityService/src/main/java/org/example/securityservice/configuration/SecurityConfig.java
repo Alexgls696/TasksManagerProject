@@ -120,7 +120,6 @@ public class SecurityConfig {
                         .loginPage("/oauth2/authorization/keycloak")
                         .userInfoEndpoint(userInfo -> userInfo
                                 .oidcUserService(oidcUserService)) // Используем внедренный бин
-                        // ----- Добавляем try/catch/finally в successHandler -----
                         .successHandler((request, response, authentication) -> {
                             String tokenValue = null;
                             String finalRedirectUri = frontendRedirectUri + "#error=handler_failed";
@@ -176,7 +175,6 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        // ----- ИСПОЛЬЗУЕМ ВНЕДРЕННЫЙ БИН -----
                         .logoutSuccessHandler(oidcLogoutSuccessHandler)
                         .invalidateHttpSession(true)
                         .deleteCookies("SESSION")

@@ -6,3 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5436/users_db
     username: postgres
     password: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090/realms/task-manager-realm

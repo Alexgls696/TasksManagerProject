@@ -4,15 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="restart: always для redis">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/changeset/0.0.1/create_many_to_many_table.sql" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Многие ко многим для ролей пользователй">
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/exception/NotAuthorizedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistrationEventListener.jar" beforeDir="false" afterPath="$PROJECT_DIR$/RegistrationEventListener.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/RestClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/RestClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/controller/ProjectsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/exception_handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/client/UsersRestClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/RestClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/NewTaskPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/controller/payload/UpdateTaskPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskMembersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/repository/TaskMembersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/service/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/create-task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/projects-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/projects-page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/create-task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/task-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/task-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/db.changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/db/changelog/db.changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/exception_handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/messages.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +61,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Exception" />
         <option value="package.json" />
         <option value="CSS File" />
         <option value="Record" />
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -47,12 +86,12 @@
     &quot;assignee&quot;: &quot;Alexgls696&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Alexgls696/TasksManagerProject.git",
-    "accountId": "d7d25a6e-b81e-4aa5-97a7-7347f85c6f3b"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Alexgls696/TasksManagerProject.git&quot;,
+    &quot;accountId&quot;: &quot;d7d25a6e-b81e-4aa5-97a7-7347f85c6f3b&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -73,6 +112,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "Docker.Docker-compose.yml.keycloak: Compose Deployment.executor": "Run",
+    "Docker.Docker-compose.yml.redis_session_store: Compose Deployment.executor": "Run",
     "Docker.ProjectsService.projects_db: Compose Deployment.executor": "Run",
     "Docker.ProjectsService: Compose Deployment.executor": "Run",
     "Docker.SecurityService/docker-compose.yaml.redis-session-store: Compose Deployment.executor": "Run",
@@ -89,9 +129,9 @@
     "Spring Boot.SecurityServiceApplication.executor": "Run",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
-    "Spring Boot.TaskServiceApplication.executor": "Run",
-    "Spring Boot.TasksManager.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
+    "Spring Boot.TaskServiceApplication.executor": "Debug",
+    "Spring Boot.TasksManager.executor": "Debug",
+    "Spring Boot.UserServiceApplication.executor": "Debug",
     "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -111,8 +151,8 @@
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mongo",
-      "redis",
-      "postgresql"
+      "postgresql",
+      "redis"
     ]
   }
 }]]></component>
@@ -152,26 +192,13 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
-    <configuration name="SecurityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="SecurityService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.securityservice.SecurityServiceApplication" />
+  <component name="RunManager" selected="Spring Boot.TasksManager">
+    <configuration name="ProjectsServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="ProjectsService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.securityservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="TaskManagerApiGatewayService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.taskmanagerapigatewayservice.*" />
+          <option name="PATTERN" value="org.example.projectsservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -185,6 +212,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.tasknotesservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="TaskService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskservice.TaskServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.taskservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -226,8 +266,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.SecurityServiceApplication" />
-      <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
+      <item itemvalue="Spring Boot.ProjectsServiceApplication" />
+      <item itemvalue="Spring Boot.TaskServiceApplication" />
       <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       <item itemvalue="Spring Boot.TasksManager" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
@@ -235,10 +275,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.UserServiceApplication" />
-        <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
-        <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
-        <item itemvalue="Spring Boot.SecurityServiceApplication" />
         <item itemvalue="Spring Boot.TasksManager" />
+        <item itemvalue="Spring Boot.TaskServiceApplication" />
+        <item itemvalue="Spring Boot.ProjectsServiceApplication" />
+        <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -280,7 +320,9 @@
       <workItem from="1743779345248" duration="1579000" />
       <workItem from="1744117416299" duration="455000" />
       <workItem from="1744200762571" duration="4876000" />
-      <workItem from="1744359142873" duration="11322000" />
+      <workItem from="1744359142873" duration="11597000" />
+      <workItem from="1744476753405" duration="130000" />
+      <workItem from="1744561062723" duration="11287000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -506,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744363225614</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Многие ко многим для ролей пользователй">
+      <option name="closed" value="true" />
+      <created>1744371200116</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1744371200116</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +600,15 @@
     <MESSAGE value="Правильно настроены сессии" />
     <MESSAGE value="Автосоздание пользователя во внешней БД при регистрации в Keycloak" />
     <MESSAGE value="restart: always для redis" />
-    <option name="LAST_COMMIT_MESSAGE" value="restart: always для redis" />
+    <MESSAGE value="Многие ко многим для ролей пользователй" />
+    <option name="LAST_COMMIT_MESSAGE" value="Многие ко многим для ролей пользователй" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="var membersIds = " />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

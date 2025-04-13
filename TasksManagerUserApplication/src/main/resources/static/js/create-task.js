@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const categorySelect = document.getElementById("category");
     const assigneeSelect = document.getElementById("assignee");
     const projectSelect = document.getElementById("project");
-    const creatorSelect = document.getElementById("creator");
     const membersSelect = document.getElementById("members");
 
     // Загружаем данные для формы
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(([categories, users]) => {
             fillSelect(categorySelect, categories, "name"); // Заполняем категории
             fillSelect(assigneeSelect, users, "name"); // Заполняем исполнителей
-            fillSelect(creatorSelect, users, "name"); // Заполняем создателей
             fillSelect(membersSelect, users, "name", true); // Заполняем участников (множественный выбор)
         })
         .catch(error => {
@@ -85,9 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
             priority: parseInt(document.getElementById("priority").value),
             deadline: document.getElementById("deadline").value,
             categoryId: parseInt(document.getElementById("category").value),
-            assigneeId: parseInt(document.getElementById("creator").value),
             projectId: parseInt(document.getElementById("project").value),
-            creatorId: parseInt(document.getElementById("creator").value),
             membersId: members
         };
     }

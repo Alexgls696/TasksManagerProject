@@ -8,6 +8,11 @@
     --dark-color: #343a40;
     --border-radius: 8px;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    --primary: #4a90e2;
+    --primary-hover: #357abd;
+    --danger: #dc3545;
+    --transition: all 0.3s ease;
 }
 
 /* Основные стили */
@@ -43,9 +48,57 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
     align-items: center;
 }
+
+/* Левая часть навигации */
+nav ul li:not(.right-aligned) {
+    margin-right: auto; /* Прижимает все элементы к левому краю */
+}
+
+/* Правая часть навигации */
+nav ul li.right-aligned {
+    margin-left: 20px;
+}
+
+/* Стили для кнопки выхода */
+#exit-button {
+    color: var(--danger);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#exit-button:hover {
+    color: var(--danger);
+    opacity: 0.8;
+}
+
+#exit-button i {
+    font-size: 1rem;
+}
+
+/* Кнопка создания проекта */
+#create-project-button a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+#create-project-button a:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
 
 nav a {
     text-decoration: none;
@@ -253,9 +306,24 @@ nav i {
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
         gap: 10px;
+    }
+
+    nav ul li:not(.right-aligned),
+    nav ul li.right-aligned {
+        margin: 0;
+        flex: 1 1 auto;
+    }
+
+    #create-project-button {
+        order: -1;
+        width: 100%;
+    }
+
+    #create-project-button a {
+        justify-content: center;
+        padding: 10px;
     }
 }
 

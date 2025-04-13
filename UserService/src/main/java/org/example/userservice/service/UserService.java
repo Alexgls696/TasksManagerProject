@@ -1,7 +1,6 @@
 package org.example.userservice.service;
 import org.example.userservice.controller.payload.UpdateUserPayload;
 import org.example.userservice.entity.User;
-import org.example.userservice.exception.NoSuchUserException;
 
 import java.util.Optional;
 

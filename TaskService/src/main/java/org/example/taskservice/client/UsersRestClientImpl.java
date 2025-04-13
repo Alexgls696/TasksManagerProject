@@ -34,4 +34,13 @@ public class UsersRestClientImpl implements UsersRestClient {
             return Optional.empty();
         }
     }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return Optional.ofNullable(restClient
+                .get()
+                .uri("task-manager-api/users/by-username/{username}", username)
+                .retrieve()
+                .body(User.class));
+    }
 }

@@ -2,6 +2,7 @@ package org.example.userservice.exception_handling;
 
 import lombok.RequiredArgsConstructor;
 import org.example.userservice.exception.NoSuchUserException;
+import org.example.userservice.exception.NotAuthorizedException;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -38,6 +39,16 @@ public class GlobalExceptionHandler {
                 messageSource.getMessage("user_service.error.not_found",
                         new Object[0], "user_service.error.not_found", locale));
 
+        problemDetail.setProperty("error", exception.getMessage());
+        return ResponseEntity
+                .badRequest()
+                .body(problemDetail);
+    }
+
+    @ExceptionHandler(NotAuthorizedException.class)
+    public ResponseEntity<ProblemDetail> handleNotAuthorizedException(NotAuthorizedException exception, Locale locale) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED,
+                messageSource.getMessage("user_service.error.unauthorized",new Object[0], "user_service.error.unauthorized", locale));
         problemDetail.setProperty("error", exception.getMessage());
         return ResponseEntity
                 .badRequest()
