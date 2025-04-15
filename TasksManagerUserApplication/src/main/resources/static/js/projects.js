@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="empty-projects">
                     <i class="fas fa-project-diagram"></i>
                     <p>У вас пока нет проектов</p>
-                    <a href="/create-project" class="btn-primary"><i class="fas fa-plus"></i> Создать первый проект</a>
+                    <a id="create-project-big-button" href="/create-project" class="btn-primary"><i class="fas fa-plus"></i> Создать первый проект</a>
                 </div>
             `;
             return;
@@ -223,9 +223,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function hideHiddenElements(){
         document.getElementById('create-project-button').style.display = 'none';
+        document.getElementById('create-project-big-button').style.display = 'none';
 
         const editButtons = document.querySelectorAll('.btn-edit');
         const removeButtons = document.querySelectorAll('.btn-delete');
+
         editButtons.forEach(button=>{button.style.display='none'});
         removeButtons.forEach(button=>{button.style.display='none'});
     }

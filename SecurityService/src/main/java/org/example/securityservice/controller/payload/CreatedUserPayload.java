@@ -18,7 +18,7 @@ public class CreatedUserPayload {
         this.email = payload.email();
         this.name = payload.firstName();
         this.surname = payload.lastName();
-        this.username = payload.username();
+        this.username = payload.username().toLowerCase();
         this.keycloakId = keycloakId;
     }
 

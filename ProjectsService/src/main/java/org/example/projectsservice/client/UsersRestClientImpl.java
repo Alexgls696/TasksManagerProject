@@ -8,6 +8,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -35,6 +36,19 @@ public class UsersRestClientImpl implements UsersRestClient {
                     .body(User.class));
         }catch (HttpClientErrorException.NotFound exception){
             return Optional.empty();
+        }
+    }
+
+    @Override
+    public String findInitialsById(int id) {
+        try {
+            return restClient
+                    .get()
+                    .uri("/task-manager-api/users/%d/initials".formatted(id))
+                    .retrieve()
+                    .body(String.class);
+        }catch (HttpClientErrorException.NotFound exception){
+            throw new NoSuchElementException(exception.getResponseBodyAsString());
         }
     }
 

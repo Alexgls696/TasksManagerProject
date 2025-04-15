@@ -7,8 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProjectRepository extends CrudRepository<Project,Integer> {
     @Query(nativeQuery = true,value = "select * from getprojectsbymemberid(:memberId)")
-    Iterable<Project>findAllByMemberId(@Param("memberId")int memberId);
+    List<Project> findAllByMemberId(@Param("memberId")int memberId);
 }

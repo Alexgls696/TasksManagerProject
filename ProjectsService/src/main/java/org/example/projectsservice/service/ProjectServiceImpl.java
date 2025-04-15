@@ -8,6 +8,8 @@ import org.example.projectsservice.controller.payload.NewProjectPayload;
 import org.example.projectsservice.controller.payload.UpdateProjectPayload;
 import org.example.projectsservice.entity.Project;
 import org.example.projectsservice.entity.ProjectMembers;
+import org.example.projectsservice.entity.ProjectStatus;
+import org.example.projectsservice.entity.User;
 import org.example.projectsservice.exception.NoSuchProjectException;
 import org.example.projectsservice.repository.ProjectMembersRepository;
 import org.example.projectsservice.repository.ProjectRepository;
@@ -15,9 +17,7 @@ import org.example.projectsservice.repository.ProjectStatusRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -28,6 +28,8 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectMembersRepository projectMembersRepository;
     private final UsersRestClient usersRestClient;
     private final ProjectStatusRepository projectStatusRepository;
+
+    private final Map<Integer, ProjectStatus>projectStatusMap = Collections.synchronizedMap(new HashMap<>());
 
 
     public Iterable<Project>getProjectsWithUserInfo(Iterable<Project>projects){
@@ -47,8 +49,22 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Iterable<Project> findAllByCurrentUser(String username) {
-        var user = usersRestClient.findUserByUsername(username).orElseThrow(() -> new NoSuchElementException("User with name " + username + " not found"));
-        return projectRepository.findAllByMemberId(user.getId());
+        var user = usersRestClient.findUserByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("User with name " + username + " not found"));
+        return projectRepository.findAllByMemberId(user.getId())
+                .stream().peek(project -> {
+                    ProjectStatus projectStatus = null;
+                    if(!projectStatusMap.containsKey(project.getStatusId())) {
+                        projectStatus = projectStatusRepository.findById(project.getStatusId())
+                                .orElseThrow(() -> new NoSuchElementException("Project status not found"));
+                        projectStatusMap.put(project.getStatusId(), projectStatus);
+                    }else{
+                        projectStatus = projectStatusMap.get(project.getStatusId());
+                    }
+                    String[]initials = usersRestClient.findInitialsById(project.getCreatorId()).split(" ");
+                    project.setProjectStatus(projectStatus);
+                    project.setCreator(new GetUserPayload(initials[0], initials[1]));
+                }).collect(Collectors.toList());
     }
 
     @Override

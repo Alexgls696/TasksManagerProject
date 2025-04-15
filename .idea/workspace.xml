@@ -4,29 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Сделан профиль, задачи и проекты для конкретного пользователя. Нужно доделать страницы.">
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/client/UserRestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/client/UserRestClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/RestClientConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/payload/CreatedUserPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/payload/NewUserPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/client/SecurityRestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/client/SecurityRestClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/configuration/RestClientConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/payload/NewUserPayload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/styles/registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/registration.html" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RegistrationEventListener.jar" beforeDir="false" afterPath="$PROJECT_DIR$/RegistrationEventListener.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/RegisterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/client/UsersRestClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/repository/ProjectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/service/ProjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/payload/CreatedUserPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/payload/CreatedUserPayload.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/java/com/example/tasksmanager/controller/PagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/NewUserPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/payload/NewUserPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/exception_handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/exception_handling/GlobalExceptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +99,7 @@
     "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.TasksService.executor": "Run",
-    "Spring Boot.UserServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Debug",
     "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -170,7 +161,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TasksService">
+  <component name="RunManager" selected="Spring Boot.ProjectsService">
     <configuration name="ProjectsService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="ProjectsService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.projectsservice.ProjectsServiceApplication" />
@@ -184,6 +175,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.securityservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskManagerApiGatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="TaskManagerApiGatewayService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.taskmanagerapigatewayservice.TaskManagerApiGatewayServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.taskmanagerapigatewayservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -238,19 +242,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Docker-compose.yml.keycloak: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="keycloak" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="Docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -258,9 +249,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
       <item itemvalue="Spring Boot.ProjectsService" />
       <item itemvalue="Spring Boot.TasksService" />
+      <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
       <item itemvalue="Spring Boot.SecurityServiceApplication" />
       <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       <item itemvalue="Spring Boot.TasksManager" />
@@ -268,10 +259,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.Docker-compose.yml.keycloak: Compose Deployment" />
         <item itemvalue="Spring Boot.SecurityServiceApplication" />
-        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.UserServiceApplication" />
+        <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
+        <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       </list>
     </recent_temporary>
@@ -319,7 +310,8 @@
       <workItem from="1744561062723" duration="11678000" />
       <workItem from="1744572837093" duration="183000" />
       <workItem from="1744702552236" duration="6462000" />
-      <workItem from="1744723698585" duration="6043000" />
+      <workItem from="1744723698585" duration="6463000" />
+      <workItem from="1744744273764" duration="3435000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -561,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744572600518</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности">
+      <option name="closed" value="true" />
+      <created>1744730854943</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1744730854943</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +582,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Настроено добавление и удаление задач" />
     <MESSAGE value="Доделать Сервис проектов для работы с пользователями и отношением многие ко многим." />
     <MESSAGE value="Сервис проектов. Доделать обновление и удаление проектов, интерактивные задачи (при условии, что пользователь выполняет данную задачу), создать аутентификацию" />
     <MESSAGE value="Исправление пары моментов" />
@@ -607,9 +606,19 @@
     <MESSAGE value="restart: always для redis" />
     <MESSAGE value="Многие ко многим для ролей пользователй" />
     <MESSAGE value="Сделан профиль, задачи и проекты для конкретного пользователя. Нужно доделать страницы." />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделан профиль, задачи и проекты для конкретного пользователя. Нужно доделать страницы." />
+    <MESSAGE value="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/service/UserService.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="var membersIds = " />

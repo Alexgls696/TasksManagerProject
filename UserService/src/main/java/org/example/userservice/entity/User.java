@@ -33,6 +33,7 @@ public class User {
         this.surname = payload.surname();
         this.username = payload.username();
         this.keycloakId = payload.keycloakId();
+        this.createdTimestamp = System.currentTimeMillis();
     }
 
     public void update(UpdateUserPayload payload) {

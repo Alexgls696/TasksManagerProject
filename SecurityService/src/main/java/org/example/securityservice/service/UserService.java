@@ -42,6 +42,7 @@ public class UserService {
     @Value("${keycloak.client-secret}")
     private String clientSecret;
 
+
     public String registerUser(NewUserPayload payload) {
         try {
             // 1. Создаем подключение к Keycloak

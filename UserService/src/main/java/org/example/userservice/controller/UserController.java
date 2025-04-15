@@ -24,7 +24,8 @@ public class UserController {
 
     @GetMapping("/initials")
     public String getUserInitialsById(@PathVariable("id") int id) {
-        var user = userService.findById(id).orElseThrow(()->new NoSuchUserException("User with id "+id+"not found"));
+        var user = userService.findById(id)
+                .orElseThrow(()->new NoSuchUserException("User with id "+id+"not found"));
         return user.getName() + " "+user.getSurname();
     }
 
