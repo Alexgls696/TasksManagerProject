@@ -1,17 +1,25 @@
 package org.example.securityservice.service;
 
 import jakarta.ws.rs.core.Response;
+import lombok.RequiredArgsConstructor;
+import org.example.securityservice.client.UserRestClient;
+import org.example.securityservice.controller.payload.CreatedUserPayload;
+import org.example.securityservice.controller.payload.NewUserPayload;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
+
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Collections;
-import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class UserService {
+    private final UserRestClient userRestClient;
 
     @Value("${keycloak.auth-server-url}")
     private String authServerUrl;
@@ -34,7 +42,7 @@ public class UserService {
     @Value("${keycloak.client-secret}")
     private String clientSecret;
 
-    public String registerUser(String username, String password) {
+    public String registerUser(NewUserPayload payload) {
         try {
             // 1. Создаем подключение к Keycloak
             Keycloak keycloak = KeycloakBuilder.builder()
@@ -49,22 +57,30 @@ public class UserService {
             // 2. Настраиваем учетные данные пользователя
             CredentialRepresentation credential = new CredentialRepresentation();
             credential.setType(CredentialRepresentation.PASSWORD);
-            credential.setValue(password);
+            credential.setValue(payload.password());
             credential.setTemporary(false);
 
             // 3. Создаем представление пользователя
             UserRepresentation user = new UserRepresentation();
-            user.setUsername(username);
+            user.setUsername(payload.username());
             user.setCredentials(Collections.singletonList(credential));
             user.setEnabled(true);
+            user.setEmail(payload.email());
+            user.setFirstName(payload.firstName());
+            user.setLastName(payload.lastName());
 
             // 4. Создаем пользователя в целевом realm
             Response response = keycloak.realm(targetRealm).users().create(user);
 
-            // 5. Обрабатываем ответ
+
             if (response.getStatus() == 201) {
-                String userId = response.getLocation().getPath()
+                 String userId = response.getLocation().getPath()
                         .replaceAll(".*/([^/]+)$", "$1");
+                 try {
+                     userRestClient.createUser(new CreatedUserPayload(payload, userId));
+                 }catch (HttpClientErrorException exception){
+                     throw exception;
+                 }
                 return "User created successfully with ID: " + userId;
             } else {
                 String error = "Failed to create user. Status: " + response.getStatus();
@@ -73,6 +89,7 @@ public class UserService {
                 }
                 throw new RuntimeException(error);
             }
+
         } catch (Exception e) {
             throw new RuntimeException("Error creating user in Keycloak: " + e.getMessage(), e);
         }

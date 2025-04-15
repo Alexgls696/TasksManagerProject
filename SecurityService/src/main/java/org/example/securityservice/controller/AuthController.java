@@ -1,6 +1,8 @@
 package org.example.securityservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.example.securityservice.controller.payload.NewUserPayload;
 import org.example.securityservice.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -8,11 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -32,10 +31,14 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
+    @PreAuthorize("isAnonymous()")
+    @PostMapping("/registration")
+    @ResponseBody
+    public String registration(@RequestBody NewUserPayload payload){
+        userService.registerUser(payload);
+        return "http://localhost:8080/security/login/oauth2/code/keycloak";
     }
+
 
     @GetMapping("/manager")
     public String manager() {

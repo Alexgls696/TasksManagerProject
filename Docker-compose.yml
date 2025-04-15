@@ -108,7 +108,6 @@ services:
     command:
       - start-dev
       -  --import-realm
-      -  --log-level=DEBUG
     ports:
       - "8090:8080"
     volumes:

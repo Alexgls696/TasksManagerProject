@@ -22,14 +22,20 @@ public class User {
     private String username;
     private String email;
 
-    public User(NewUserPayload payload){
+    @Column(name = "keycloak_id")
+    private String keycloakId;
+    @Column(name = "created_timestamp")
+    private Long createdTimestamp;
+
+    public User(NewUserPayload payload) {
         this.email = payload.email();
         this.name = payload.name();
         this.surname = payload.surname();
         this.username = payload.username();
+        this.keycloakId = payload.keycloakId();
     }
 
-    public void update(UpdateUserPayload payload){
+    public void update(UpdateUserPayload payload) {
         this.name = payload.name();
         this.surname = payload.surname();
         this.email = payload.email();

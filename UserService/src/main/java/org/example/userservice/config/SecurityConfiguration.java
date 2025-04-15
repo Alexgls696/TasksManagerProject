@@ -31,9 +31,9 @@ public class SecurityConfiguration {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET,"/task-manager-api/users/**").hasAnyRole("MANAGER","USER")
-                        .requestMatchers(HttpMethod.POST,"/task-manager-api/users/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PATCH,"/task-manager-api/users/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE,"/task-manager-api/users/**").hasRole("MANAGER")// Разрешить публичный доступ
+                        .requestMatchers(HttpMethod.POST,"/task-manager-api/users/**").anonymous()
+                        .requestMatchers(HttpMethod.PATCH,"/task-manager-api/users/**").hasAnyRole("MANAGER","USER")
+                        .requestMatchers(HttpMethod.DELETE,"/task-manager-api/users/**").hasRole("MANAGER")
                         .anyRequest().denyAll()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

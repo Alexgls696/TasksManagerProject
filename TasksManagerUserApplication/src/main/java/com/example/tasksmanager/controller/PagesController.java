@@ -1,13 +1,20 @@
 package com.example.tasksmanager.controller;
 
+import com.example.tasksmanager.client.SecurityRestClient;
+import com.example.tasksmanager.controller.payload.NewUserPayload;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class PagesController {
+
+    private final SecurityRestClient securityRestClient;
 
     @RequestMapping(value = {"/","index"})
     public String index() {
@@ -17,6 +24,20 @@ public class PagesController {
     @RequestMapping("/profile")
     public String profile() {
         return "profile";
+    }
+
+    @RequestMapping("/registration")
+    public String registration() {
+        return "registration";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String registrationPostMethod(@Valid @RequestBody NewUserPayload payload, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        return securityRestClient.registerUser(payload);
     }
 
     @RequestMapping("/edit-task")

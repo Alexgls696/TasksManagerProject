@@ -8,16 +8,16 @@ server:
       timeout: 86400
 
 keycloak:
-  auth-server-url: http://localhost:8090  # URL сервера Keycloak
-  realm: task-manager-realm                     # Название Realm
-  username: admin                        # Логин админа Keycloak (если используется Admin API)
-  password: admin                        # Пароль админа Keycloak (не храните в коде!)
+  auth-server-url: http://localhost:8090
+  realm: task-manager-realm
+  username: admin
+  password: admin
   client-id: spring-auth-app
   token-store: cookie
   enable-persistent-tokens: true
   remember-me: true
 
-  admin-realm: master       # Реалм, где находится админ
+  admin-realm: master
   admin-username: admin
   admin-password: admin
   admin-client-id: admin-cli
@@ -65,3 +65,7 @@ logging:
 
     org.springframework.session: DEBUG # или TRACE
     org.springframework.security.oauth2.core: TRACE
+
+services:
+  users:
+    uri: http://localhost:8084
