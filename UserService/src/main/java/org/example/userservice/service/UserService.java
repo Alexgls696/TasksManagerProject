@@ -9,7 +9,7 @@ public interface UserService {
     Optional<User> findById(int id);
     Optional<User> findByUsername(String username);
     User update(int id, UpdateUserPayload payload);
-    //User update(User user);
+    Integer findUserIdByUsername(String username);
     User save(User user);
     void delete(int id);
 }

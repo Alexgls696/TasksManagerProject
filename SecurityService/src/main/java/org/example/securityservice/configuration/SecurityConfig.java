@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.client.*;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -32,6 +35,7 @@ import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.session.data.redis.RedisIndexedSessionRepository;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -75,7 +79,6 @@ public class SecurityConfig {
             ClientRegistrationRepository clientRegistrationRepository,
             OAuth2AuthorizedClientRepository authorizedClientRepository) { // Репозиторий отвечает за сохранение/загрузку
 
-        // Создаем провайдеры для получения токенов
         OAuth2AuthorizedClientProvider authorizedClientProvider =
                 OAuth2AuthorizedClientProviderBuilder.builder()
                         .authorizationCode() // Для первоначального входа
@@ -88,8 +91,6 @@ public class SecurityConfig {
                         clientRegistrationRepository, authorizedClientRepository);
         authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
 
-        // (Опционально) Контекст для обновления вне HTTP запроса (например, в фоновых задачах)
-        // authorizedClientManager.setContextAttributesMapper(request -> ...);
 
         return authorizedClientManager;
     }
@@ -109,12 +110,12 @@ public class SecurityConfig {
         String idTokenSessionAttributeName = "oidcIdToken";
 
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource)) // Используем внедренный бин
+                .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/profile", "/user-info", "/logout").authenticated()
                         .requestMatchers("/manager").hasRole("MANAGER")
-                        .requestMatchers("/api/refresh-token").authenticated() // <--- РАЗРЕШАЕМ ДОСТУП
+                        .requestMatchers("/api/refresh-token").authenticated()
                         .anyRequest().permitAll()
                 ).oauth2Login(oauth2 -> oauth2
                         .loginPage("/oauth2/authorization/keycloak")
@@ -147,6 +148,13 @@ public class SecurityConfig {
                                     tokenValue = oidcUser.getIdToken().getTokenValue();
                                 }
 
+                                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                                context.setAuthentication(authentication);
+                                SecurityContextHolder.setContext(context);
+
+                                HttpSessionSecurityContextRepository repo = new HttpSessionSecurityContextRepository();
+                                repo.saveContext(context, request, response);
+
                                 if (tokenValue != null) {
                                     log.info("Перенаправление на фронтенд с токеном...");
                                     finalRedirectUri = frontendRedirectUri + "#access_token=" + tokenValue;
@@ -163,6 +171,15 @@ public class SecurityConfig {
                                 } catch (IOException ioException) {
                                     log.error("Не удалось выполнить sendRedirect после логина: {}", ioException.getMessage(), ioException);
                                 }
+                            }
+                        })
+                )
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            if (request.getRequestURI().startsWith("/security/api/")) {
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                            } else {
+                                response.sendRedirect("/security/oauth2/authorization/keycloak");
                             }
                         })
                 )
@@ -187,7 +204,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:8080"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE","OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
@@ -214,36 +231,6 @@ public class SecurityConfig {
                     .toList();
             return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo(),"preferred_username");
         };
-    }
-
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-
-        // Разрешаем запросы от вашего API Gateway
-        config.addAllowedOrigin("http://localhost:8080"); // или адрес вашего Gateway
-
-        // Разрешаем необходимые HTTP-методы
-        config.addAllowedMethod("GET");
-        config.addAllowedMethod("POST");
-        config.addAllowedMethod("PUT");
-        config.addAllowedMethod("DELETE");
-        config.addAllowedMethod("OPTIONS");
-
-        // Разрешаем необходимые заголовки
-        config.addAllowedHeader("Authorization");
-        config.addAllowedHeader("Content-Type");
-        config.addAllowedHeader("X-Requested-With");
-        config.addAllowedHeader("Accept");
-
-        // Разрешаем передачу куки и авторизационных заголовков
-        config.setAllowCredentials(true);
-
-        // Применяем настройки ко всем путям
-        source.registerCorsConfiguration("/**", config);
-
-        return new CorsFilter(source);
     }
 
 }

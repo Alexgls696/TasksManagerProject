@@ -74,4 +74,9 @@ public class UsersController {
             throw new NoSuchUserException("User with username " + username + " not found");
         }
     }
+
+    @GetMapping("/id-by-username/{username}")
+    public Integer findIdByUsername(@PathVariable("username") String username) {
+        return userService.findUserIdByUsername(username);
+    }
 }

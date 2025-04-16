@@ -35,7 +35,7 @@ async function fetchProject(projectId) {
 // Функция для загрузки заметок задачи
 async function fetchTaskNotes(taskId) {
     try {
-        const response = await fetch(`http://localhost:8080/task-manager-api/task-notes/by-task-id/${taskId}`);
+        const response = await fetchWithAuth(`/task-manager-api/task-notes/by-task-id/${taskId}`);
         if (!response.ok) {
             throw new Error('Ошибка при получении заметок');
         }
@@ -83,6 +83,7 @@ async function displayNotes(notes) {
 
     // Отображаем заметки с информацией о создателе
     notesWithCreators.forEach(note => {
+        console.log(note);
         const noteElement = document.createElement('div');
         noteElement.classList.add('note');
         noteElement.innerHTML = `
@@ -176,7 +177,6 @@ async function fetchTaskDetails(taskId) {
 
         // Люди
 
-
         document.getElementById('task-creator').textContent = task.creator ?
             `${task.creator.name} ${task.creator.surname}` : 'Не указан';
 
@@ -214,7 +214,7 @@ async function addNote() {
     }
 
     try {
-        const response = await fetch('http://localhost:8080/task-manager-api/task-notes', {
+        const response = await fetchWithAuth('/task-manager-api/task-notes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

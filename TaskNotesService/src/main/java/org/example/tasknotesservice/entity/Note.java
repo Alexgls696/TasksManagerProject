@@ -30,10 +30,10 @@ public class Note {
     public Note(NewNotePayload payload) {
         id = UUID.randomUUID();
         this.creationDate = LocalDateTime.now();
-        this.content = payload.content();
-        this.title = payload.title();
-        this.creatorId = payload.creatorId();
-        this.taskId = payload.taskId();
+        this.content = payload.getContent();
+        this.title = payload.getTitle();
+        this.creatorId = payload.getCreatorId();
+        this.taskId = payload.getTaskId();
     }
 
     public void update(UpdateNotePayload payload) {

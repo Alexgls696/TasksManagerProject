@@ -36,24 +36,14 @@ export function handleLogout() {
 async function refreshToken() {
     console.log("Попытка обновить токен...");
     try {
-        // ВАЖНО: Запрос идет на ваш СЕРВИС БЕЗОПАСНОСТИ
-        // Этот запрос будет использовать SESSION куку для аутентификации на бэкенде
         const refreshUrl = `${SECURITY_SERVICE_BASE_URL}/security/api/refresh-token`; // Путь к эндпоинту обновления
-
-        // ЗАМЕЧАНИЕ: Ваша Java конфигурация использует @GetMapping("/api/refresh-token").
-        // Fetch ниже использует 'GET'. Если вы изменили Java на @PostMapping,
-        // измените 'GET' на 'POST' и добавьте пустой body: JSON.stringify({})
-        // если это необходимо бэкенду.
         const response = await fetch(refreshUrl, {
             method: 'GET', // <--- ИЗМЕНИТЬ НА 'POST', если ваш бэкенд ожидает POST
-            // credentials: 'include', // <--- РАСКОММЕНТИРУЙТЕ ЭТО, если UI и Security Service на РАЗНЫХ доменах/портах
+            credentials: 'include', // <--- РАСКОММЕНТИРУЙТЕ ЭТО, если UI и Security Service на РАЗНЫХ доменах/портах
             headers: {
                 'Accept': 'application/json',
-                // 'Content-Type': 'application/json', // <--- Нужно для POST с телом
-                // НЕ НУЖЕН 'Authorization': Bearer здесь, используется сессионная кука
                 'X-Requested-With': 'XMLHttpRequest' // Помогает Spring Security отличить AJAX
             },
-            // body: JSON.stringify({}) // <--- Нужно для POST, если требуется тело
         });
 
         if (response.ok) {
@@ -76,7 +66,7 @@ async function refreshToken() {
     } catch (error) {
         console.error("Критическая ошибка при вызове /api/refresh-token:", error);
         // Если обновление не удалось (сетевая ошибка или серверная), выходим из системы
-        handleLogout(); // Вызываем выход, так как сессия, скорее всего, недействительна
+        //handleLogout(); // Вызываем выход, так как сессия, скорее всего, недействительна
         throw error; // Пробрасываем ошибку дальше, чтобы запросы, ожидавшие токен, упали
     }
 }
@@ -231,3 +221,18 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Элемент для выхода не найден на странице.");
     }
 });
+
+/*setInterval(() => {
+    fetch(API_GATEWAY_BASE_URL+'/security/api/refresh-token', {
+        method: 'GET',
+        credentials: 'include'
+    }).then(async res => {
+        if (res.status === 200) {
+            const data = await res.json();
+            console.log("Новый access_token:", data.access_token);
+            // обновить локальный state токена, если нужно
+        } else if (res.status === 401) {
+            window.location.href = "/security/oauth2/authorization/keycloak"; // или логика перелогина
+        }
+    }).catch(console.error);
+}, 5 * 60 * 1000);*/
