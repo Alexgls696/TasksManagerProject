@@ -854,10 +854,13 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "CjOqCisDEx7nOLYJwqvDw5tLpPdlEqMl",
       "redirectUris": [
+        "http://localhost:8081/*",
+        "http://localhost:8080/*",
         "http://localhost:8080/login/oauth2/code/keycloak"
       ],
       "webOrigins": [
-        "http://localhost:8080"
+        "http://localhost:8080",
+        "http://localhost:8081"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -875,7 +878,7 @@
         "client.secret.creation.time": "1743611246",
         "backchannel.logout.session.required": "false",
         "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:8080/*##http://localhost:8086/*",
+        "post.logout.redirect.uris": "http://localhost:8081/*",
         "display.on.consent.screen": "false",
         "oauth2.device.authorization.grant.enabled": "false",
         "backchannel.logout.revoke.offline.tokens": "true"
@@ -1662,6 +1665,10 @@
     "strictTransportSecurity": "max-age=31536000; includeSubDomains"
   },
   "smtpServer": {},
+  "loginTheme": "keycloak.v2",
+  "accountTheme": "",
+  "adminTheme": "",
+  "emailTheme": "",
   "eventsEnabled": false,
   "eventsListeners": [
     "external-db-sync-listener",
@@ -2677,7 +2684,8 @@
     "parRequestUriLifespan": "60",
     "clientSessionMaxLifespan": "0",
     "shortVerificationUri": "",
-    "actionTokenGeneratedByUserLifespan.reset-credentials": ""
+    "actionTokenGeneratedByUserLifespan.reset-credentials": "",
+    "darkMode": "true"
   },
   "keycloakVersion": "26.1.4",
   "userManagedAccessAllowed": false,
