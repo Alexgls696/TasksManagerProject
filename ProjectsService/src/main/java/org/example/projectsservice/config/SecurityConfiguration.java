@@ -54,7 +54,7 @@ public class SecurityConfiguration {
         @Override
         @SuppressWarnings("unchecked") // Подавляем предупреждение о непроверенном приведении типов
         public Collection<GrantedAuthority> convert(Jwt jwt) {
-            //System.out.println("JWT claims: " + jwt.getClaims()); // Логируем все данные JWT
+            System.out.println("JWT claims: " + jwt.getClaims()); // Логируем все данные JWT
             final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().getOrDefault("realm_access", Collections.emptyMap());
             final List<String> roles = (List<String>) realmAccess.getOrDefault("roles", Collections.emptyList());
             return roles.stream()
@@ -75,6 +75,8 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+
+
 
 }
 

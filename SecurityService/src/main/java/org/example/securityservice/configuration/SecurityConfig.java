@@ -77,20 +77,17 @@ public class SecurityConfig {
     @Bean
     public OAuth2AuthorizedClientManager authorizedClientManager(
             ClientRegistrationRepository clientRegistrationRepository,
-            OAuth2AuthorizedClientRepository authorizedClientRepository) { // Репозиторий отвечает за сохранение/загрузку
+            OAuth2AuthorizedClientService authorizedClientService) {
 
         OAuth2AuthorizedClientProvider authorizedClientProvider =
                 OAuth2AuthorizedClientProviderBuilder.builder()
-                        .authorizationCode() // Для первоначального входа
-                        .refreshToken()      // <--- КЛЮЧЕВОЙ ПРОВАЙДЕР ДЛЯ ОБНОВЛЕНИЯ
+                        .refreshToken() // только обновление по refresh_token
                         .build();
 
-        // Создаем менеджер
-        DefaultOAuth2AuthorizedClientManager authorizedClientManager =
-                new DefaultOAuth2AuthorizedClientManager(
-                        clientRegistrationRepository, authorizedClientRepository);
+        AuthorizedClientServiceOAuth2AuthorizedClientManager authorizedClientManager =
+                new AuthorizedClientServiceOAuth2AuthorizedClientManager(
+                        clientRegistrationRepository, authorizedClientService);
         authorizedClientManager.setAuthorizedClientProvider(authorizedClientProvider);
-
 
         return authorizedClientManager;
     }
@@ -232,5 +229,7 @@ public class SecurityConfig {
             return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo(),"preferred_username");
         };
     }
+
+
 
 }

@@ -54,7 +54,6 @@ public class SecurityConfiguration {
             final Map<String, Object> realmAccess = (Map<String, Object>) jwt.getClaims().getOrDefault("realm_access", Collections.emptyMap());
             final List<String> roles = (List<String>) realmAccess.getOrDefault("roles", Collections.emptyList());
             return roles.stream()
-
                     .filter(roleName -> roleName != null && roleName.startsWith("ROLE_"))
                     .map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());

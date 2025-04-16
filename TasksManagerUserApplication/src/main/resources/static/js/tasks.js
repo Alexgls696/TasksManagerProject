@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Обработчик кнопки "Назад к проектам"
-    document.getElementById('back-to-projects').addEventListener('click', function(event) {
+    document.getElementById('back-button').addEventListener('click', function(event) {
         event.preventDefault();
         window.location.href = "/index";
     });

@@ -28,8 +28,6 @@ export function handleLogout() {
     console.log("Выполняется выход пользователя...");
     localStorage.removeItem(storageKey); // Очищаем старый токен
     console.log("Локальный токен очищен.");
-    // Перенаправляем на эндпоинт logout на СЕРВЕРЕ БЕЗОПАСНОСТИ
-    // Убедитесь, что этот путь соответствует LogoutUrl в SecurityConfig
     window.location.href = `${SECURITY_SERVICE_BASE_URL}/security/logout`;
 }
 
@@ -38,11 +36,11 @@ async function refreshToken() {
     try {
         const refreshUrl = `${SECURITY_SERVICE_BASE_URL}/security/api/refresh-token`; // Путь к эндпоинту обновления
         const response = await fetch(refreshUrl, {
-            method: 'GET', // <--- ИЗМЕНИТЬ НА 'POST', если ваш бэкенд ожидает POST
-            credentials: 'include', // <--- РАСКОММЕНТИРУЙТЕ ЭТО, если UI и Security Service на РАЗНЫХ доменах/портах
+            method: 'GET',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest' // Помогает Spring Security отличить AJAX
+                'X-Requested-With': 'XMLHttpRequest'
             },
         });
 
@@ -119,17 +117,14 @@ export async function fetchWithAuth(url, options = {}, isRetry = false) {
         if (response.status === 401 && !isRetry) {
             console.warn(`Запрос на ${fullUrl} вернул 401. Попытка обновить токен...`);
 
-            if (!isRefreshing) { // Если никто еще не обновляет токен
+            if (!isRefreshing) {
                 isRefreshing = true;
                 try {
-                    const newToken = await refreshToken(); // Вызываем функцию обновления
+                    const newToken = await refreshToken();
                     console.log("Обновление завершено, обрабатываем очередь и повторяем запрос.");
-                    processQueue(null, newToken); // Уведомляем все ждущие запросы об успехе с новым токеном
-                    // Повторяем ИСХОДНЫЙ запрос с НОВЫМ токеном
-                    // Обновляем заголовок Authorization для повторного вызова
+                    processQueue(null, newToken);
                     fetchOptions.headers['Authorization'] = `Bearer ${newToken}`;
-                    // Передаем isRetry = true, чтобы избежать бесконечного цикла
-                    return fetchWithAuth(url, fetchOptions, true); // ВАЖНО: передаем обновленные fetchOptions
+                    return fetchWithAuth(url, fetchOptions, true);
                 } catch (refreshError) {
                     console.error("Не удалось обновить токен:", refreshError);
                     processQueue(refreshError, null); // Уведомляем об ошибке
@@ -161,12 +156,10 @@ export async function fetchWithAuth(url, options = {}, isRetry = false) {
             // Получили 401 даже после попытки обновления - значит что-то серьезно не так
             // (например, бэкенд некорректно выдал токен или права изменились мгновенно)
             console.error("Получен 401 даже после успешной попытки обновления токена. Выход.");
-            handleLogout();
+            //handleLogout();
             // Выбрасываем ошибку, чтобы вызывающий код мог ее обработать
             throw new Error("Authentication failed after token refresh attempt.");
         }
-
-        // Если статус не 401 или это был успешный повторный запрос, возвращаем ответ
         return response;
 
     } catch (error) {
@@ -221,18 +214,3 @@ document.addEventListener("DOMContentLoaded", function () {
         console.warn("Элемент для выхода не найден на странице.");
     }
 });
-
-/*setInterval(() => {
-    fetch(API_GATEWAY_BASE_URL+'/security/api/refresh-token', {
-        method: 'GET',
-        credentials: 'include'
-    }).then(async res => {
-        if (res.status === 200) {
-            const data = await res.json();
-            console.log("Новый access_token:", data.access_token);
-            // обновить локальный state токена, если нужно
-        } else if (res.status === 401) {
-            window.location.href = "/security/oauth2/authorization/keycloak"; // или логика перелогина
-        }
-    }).catch(console.error);
-}, 5 * 60 * 1000);*/

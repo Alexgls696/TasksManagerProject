@@ -4,28 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Различные исправления">
-      <change afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/client/UserRestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/client/UserRestClientImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/config/JwtTokenExchangeFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/config/RestClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/config/SecurityConfiguration.java" afterDir="false" />
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Исправление заметок, сессии пользователя">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenRefreshController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskNotesService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/NewNotePayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/controller/payload/NewNotePayload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/entity/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/java/org/example/tasknotesservice/entity/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskNotesService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskNotesService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,14 +87,14 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ProjectsService.executor": "Run",
+    "Spring Boot.ProjectsService.executor": "Debug",
     "Spring Boot.ProjectsServiceApplication.executor": "Run",
     "Spring Boot.SecurityServiceApplication.executor": "Debug",
     "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
     "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
-    "Spring Boot.TasksService.executor": "Run",
+    "Spring Boot.TasksService.executor": "Debug",
     "Spring Boot.UserServiceApplication.executor": "Run",
     "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "master",
@@ -321,7 +309,7 @@
       <workItem from="1744723698585" duration="6463000" />
       <workItem from="1744744273764" duration="3714000" />
       <workItem from="1744786664611" duration="9798000" />
-      <workItem from="1744815786569" duration="1967000" />
+      <workItem from="1744815786569" duration="5124000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -579,7 +567,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744747953071</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Исправление заметок, сессии пользователя">
+      <option name="closed" value="true" />
+      <created>1744817995800</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1744817995800</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +596,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Сервис проектов. Доделать обновление и удаление проектов, интерактивные задачи (при условии, что пользователь выполняет данную задачу), создать аутентификацию" />
     <MESSAGE value="Исправление пары моментов" />
     <MESSAGE value="Изменение проектов реализовано" />
     <MESSAGE value="Добавлен сервис заметок к задачам" />
@@ -625,7 +620,8 @@
     <MESSAGE value="Сделан профиль, задачи и проекты для конкретного пользователя. Нужно доделать страницы." />
     <MESSAGE value="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности" />
     <MESSAGE value="Различные исправления" />
-    <option name="LAST_COMMIT_MESSAGE" value="Различные исправления" />
+    <MESSAGE value="Исправление заметок, сессии пользователя" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление заметок, сессии пользователя" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,11 +630,6 @@
           <url>file://$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/service/UserService.java</url>
           <line>64</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
