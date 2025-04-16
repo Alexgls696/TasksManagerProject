@@ -16,6 +16,7 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -98,8 +99,6 @@ public class SecurityConfig {
             @Value("${frontend.redirect.uri}") String frontendRedirectUri,
             OAuth2AuthorizedClientService authorizedClientService,
             LogoutSuccessHandler oidcLogoutSuccessHandler,
-            // Внедряем бины для других конфигураций, если они не определены здесь же
-            CorsConfigurationSource corsConfigurationSource,
             OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService
     ) throws Exception {
 
@@ -107,7 +106,7 @@ public class SecurityConfig {
         String idTokenSessionAttributeName = "oidcIdToken";
 
         return http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource))
+                .cors(cors->cors.configurationSource(corsConfigurationSource()))
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/profile", "/user-info", "/logout").authenticated()
@@ -198,17 +197,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:8080"));
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE","OPTIONS"));
-        configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowCredentials(true);
-        configuration.setMaxAge(3600L);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
+    public CorsConfigurationSource corsConfigurationSource() {
+        return new UrlBasedCorsConfigurationSource();
     }
 
     @Bean
@@ -229,7 +219,5 @@ public class SecurityConfig {
             return new DefaultOidcUser(authorities, oidcUser.getIdToken(), oidcUser.getUserInfo(),"preferred_username");
         };
     }
-
-
 
 }

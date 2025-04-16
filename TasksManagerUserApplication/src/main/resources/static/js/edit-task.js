@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки списка пользователей
     async function fetchUsers() {
-        const response = await fetch("http://localhost:8080/task-manager-api/users");
+        const response = await fetchWithAuth("/task-manager-api/users");
         if (!response.ok) {
             throw new Error("Ошибка при загрузке пользователей");
         }
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let _statues ;
     fetchStatuses()
         .then(statuses => {
-            console.log(statuses);
             fillStatusSelect(statuses); // Заполняем выпадающий список статусами
             _statues = statuses;
         })
@@ -88,12 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для заполнения формы данными задачи
     function fillForm(task) {
+        console.log(task);
         document.getElementById("title").value = task.title;
         document.getElementById("description").value = task.description;
         document.getElementById("status").value = task.status.status;
         document.getElementById("priority").value = task.priority;
         document.getElementById("deadline").value = formatDateTimeLocal(task.deadline);
-        let children  =  document.getElementById("assignee").children;
         document.getElementById("assignee").value = task.assignee.id;
     }
 

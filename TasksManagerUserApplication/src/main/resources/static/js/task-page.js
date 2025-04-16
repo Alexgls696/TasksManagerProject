@@ -83,7 +83,6 @@ async function displayNotes(notes) {
 
     // Отображаем заметки с информацией о создателе
     notesWithCreators.forEach(note => {
-        console.log(note);
         const noteElement = document.createElement('div');
         noteElement.classList.add('note');
         noteElement.innerHTML = `

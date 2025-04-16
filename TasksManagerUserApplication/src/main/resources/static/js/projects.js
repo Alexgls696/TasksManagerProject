@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
         setupProjectActions();
     }
 
-    async function getUserInfo(){
-        const response = await fetchWithAuth('/security/user-info');
+    async function getUserRoles(){
+        const response = await fetchWithAuth('/task-manager-api/users/current-user-roles');
         if(!response.ok){
             console.error('Ошибка выполнения запроса пользователя');
         }
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     (async ()=>{
         await loadProjects();
-        const userInfo = await getUserInfo();
+        const userInfo = await getUserRoles();
         const permission = checkPermission(userInfo.roles);
         if(!permission) hideHiddenElements();
     })();

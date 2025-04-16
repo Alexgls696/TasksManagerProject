@@ -7,11 +7,6 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: manager-application
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/**
-          order: 10
 
         - id: tasks-service
           uri: http://localhost:8082/task-manager-api/tasks

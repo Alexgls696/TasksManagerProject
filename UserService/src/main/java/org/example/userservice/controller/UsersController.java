@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -78,5 +79,19 @@ public class UsersController {
     @GetMapping("/id-by-username/{username}")
     public Integer findIdByUsername(@PathVariable("username") String username) {
         return userService.findUserIdByUsername(username);
+    }
+
+    @GetMapping("/current-user-roles")
+    public ResponseEntity<?>getUserInfo(Authentication authentication) {
+        JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
+        Map<String, Object> attributes = jwtAuthenticationToken.getTokenAttributes();
+        Map rolesMap = (Map)attributes.get("realm_access");
+        List<String> roles = ((List<String>)rolesMap.get("roles"))
+                .stream()
+                .filter(role->role.startsWith("ROLE_"))
+                .toList();
+        return ResponseEntity
+                .ok()
+                .body(Map.of("roles", roles));
     }
 }

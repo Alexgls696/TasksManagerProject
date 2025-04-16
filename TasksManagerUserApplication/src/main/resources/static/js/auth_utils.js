@@ -4,7 +4,7 @@ const API_GATEWAY_BASE_URL = 'http://localhost:8080'; // Адрес API Gateway 
 // можно оставить пустым или '/', браузер сам подставит текущий origin.
 // Если они на разных (UI на :3000, Security на :8081), укажите полный адрес Security Service.
 // const SECURITY_SERVICE_BASE_URL = 'http://localhost:8081'; // Пример, если они разделены
-const SECURITY_SERVICE_BASE_URL = ''; // Используем пустую строку, если UI и Security на одном origin
+const SECURITY_SERVICE_BASE_URL = 'http://localhost:8080'; // Используем пустую строку, если UI и Security на одном origin
 
 const storageKey = 'accessToken';
 let isRefreshing = false; // Флаг, чтобы избежать одновременных запросов на обновление
@@ -108,8 +108,6 @@ export async function fetchWithAuth(url, options = {}, isRetry = false) {
 
     // Формируем полный URL для запроса к API GATEWAY
     const fullUrl = url.startsWith('http') ? url : `${API_GATEWAY_BASE_URL}${url}`;
-    console.log(`Выполняется запрос ${fetchOptions.method || 'GET'} на ${fullUrl}` + (isRetry ? ' (Повтор)' : ''));
-
     try {
         const response = await fetch(fullUrl, fetchOptions);
 

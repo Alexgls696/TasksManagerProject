@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Исправление заметок, сессии пользователя">
+    <list default="true" id="7dce8bce-3df3-4574-a72b-c927174fb46e" name="Changes" comment="Исправление сервиса безопасности">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectsService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectsService/src/main/java/org/example/projectsservice/config/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/TokenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/TaskService/src/main/java/org/example/taskservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SecurityService/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/TaskManagerApiGatewayService/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/auth_utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/tasks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/templates/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/edit-task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/projects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/TasksManagerUserApplication/src/main/resources/static/js/task-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,12 +92,12 @@
     "Spring Boot.ProjectsService.executor": "Debug",
     "Spring Boot.ProjectsServiceApplication.executor": "Run",
     "Spring Boot.SecurityServiceApplication.executor": "Debug",
-    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Run",
+    "Spring Boot.TaskManagerApiGatewayServiceApplication.executor": "Debug",
     "Spring Boot.TaskNotesServiceApplication.executor": "Run",
     "Spring Boot.TaskServiceApplication.executor": "Run",
     "Spring Boot.TasksManager.executor": "Run",
     "Spring Boot.TasksService.executor": "Debug",
-    "Spring Boot.UserServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Debug",
     "data.sources.detected.do.not.suggest.again": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -255,9 +257,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Spring Boot.SecurityServiceApplication" />
         <item itemvalue="Spring Boot.TaskManagerApiGatewayServiceApplication" />
-        <item itemvalue="Spring Boot.UserServiceApplication" />
         <item itemvalue="Spring Boot.TasksManager" />
         <item itemvalue="Spring Boot.TaskNotesServiceApplication" />
       </list>
@@ -309,7 +311,7 @@
       <workItem from="1744723698585" duration="6463000" />
       <workItem from="1744744273764" duration="3714000" />
       <workItem from="1744786664611" duration="9798000" />
-      <workItem from="1744815786569" duration="5124000" />
+      <workItem from="1744815786569" duration="10465000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <option name="closed" value="true" />
@@ -575,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744817995800</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Исправление сервиса безопасности">
+      <option name="closed" value="true" />
+      <created>1744820999902</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1744820999902</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +606,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Исправление пары моментов" />
     <MESSAGE value="Изменение проектов реализовано" />
     <MESSAGE value="Добавлен сервис заметок к задачам" />
     <MESSAGE value="Соединены задачи, страница задачи" />
@@ -621,7 +630,8 @@
     <MESSAGE value="Добавить свою форму входа&#10;Сделано: удаление пользователей, изменены сервисы пользователей, безопасности" />
     <MESSAGE value="Различные исправления" />
     <MESSAGE value="Исправление заметок, сессии пользователя" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправление заметок, сессии пользователя" />
+    <MESSAGE value="Исправление сервиса безопасности" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправление сервиса безопасности" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -630,6 +640,16 @@
           <url>file://$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/service/UserService.java</url>
           <line>64</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/SecurityService/src/main/java/org/example/securityservice/controller/AuthController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UserService/src/main/java/org/example/userservice/controller/UsersController.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

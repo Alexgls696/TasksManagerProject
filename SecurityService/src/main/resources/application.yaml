@@ -25,10 +25,10 @@ keycloak:
 
 frontend:
   redirect:
-    uri: http://localhost:8080/login-callback
+    uri: http://localhost:8081/login-callback
   logout:
     redirect:
-      uri: http://localhost:8080/home
+      uri: http://localhost:8081/home
 
 spring:
   security:
